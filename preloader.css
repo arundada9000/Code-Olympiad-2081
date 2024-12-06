@@ -1,0 +1,206 @@
+body {
+  height: 100svh;
+  width: 100vw;
+}
+
+.preloader-wrapper {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.circle-outer {
+  stroke-dasharray: 471.24;
+  stroke-dashoffset: 471.24;
+  animation: draw-circle 1s ease-out forwards;
+}
+
+.circle-inner {
+  stroke-dasharray: 314.16;
+  stroke-dashoffset: -314.16;
+  animation: draw-circle 1s ease-out forwards;
+}
+
+@keyframes draw-circle {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.preloader {
+  position: relative;
+  flex: 7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: rotate-div 6s ease-out forwards;
+}
+
+@keyframes rotate-div {
+  0% {
+    transform: rotateZ(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotateZ(360deg) scale(1.5);
+  }
+
+  100% {
+    transform: rotateZ(360deg) scale(2);
+  }
+}
+
+.ribbon-left,
+.ribbon-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+}
+
+.ribbon-left {
+  left: -100vw;
+  animation: moveInFromLeft 2s ease-out forwards,
+    showText 0.5s ease-in 2s forwards;
+}
+
+.ribbon-right {
+  right: -100vw;
+  /* Start off-screen on the right */
+  animation: moveInFromRight 2s ease-out forwards,
+    showText 0.5s ease-in 2s forwards;
+}
+
+@keyframes moveInFromLeft {
+  to {
+    left: 75px;
+    /* Move to the center */
+    opacity: 1;
+    transform: translate(-100%, -50%);
+  }
+}
+
+@keyframes moveInFromRight {
+  to {
+    right: 75px;
+    /* Move to the center */
+    opacity: 1;
+    transform: translate(100%, -50%);
+  }
+}
+
+@keyframes showText {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Initially hide the text */
+.ribbon-left text,
+.ribbon-right text {
+  opacity: 0;
+}
+
+/* Show the text after animation */
+.ribbon-left text,
+.ribbon-right text {
+  animation: showText 0.5s ease-in 2.5s forwards;
+}
+
+.text {
+  font-size: 1.35rem;
+  fill: black;
+  font-weight: bold;
+  opacity: 0;
+  font-family: Arial Helvetica, sans-serif;
+  animation: showText 0.5s ease-in 2.5s forwards;
+}
+
+#curve {
+  fill: transparent;
+}
+
+.igniting .text {
+  font-size: 0.65rem;
+  font-weight: bold;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animated-image {
+  animation: fadeIn 1s ease-in forwards, spin 2s linear 1s forwards;
+  animation-delay: 2s, 2s;
+  opacity: 0;
+  transform-origin: 50% 50%;
+}
+
+.main-content {
+  display: none;
+}
+
+@keyframes brushEffect {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.text-preloader-wrapper {
+  height: 20%;
+  flex: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.text-preloader {
+  background-color: transparent;
+}
+
+.text-preloader path {
+  fill: none;
+  stroke: #0049af;
+  stroke-width: 2;
+  stroke-dasharray: 800;
+  stroke-dashoffset: 800;
+  animation: brushEffect 8s ease-out forwards;
+  animation-delay: 3s;
+}
+
+@media (max-width: 600px) {
+  .text-preloader-text {
+    transform: scale(1.6);
+  }
+
+  .preloader {
+    flex: 6;
+  }
+
+  .text-preloader-wrapper {
+    flex: 4;
+    align-items: start;
+  }
+}
