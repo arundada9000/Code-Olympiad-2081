@@ -126,7 +126,7 @@
 
 
                         <!-- Main Content (Code Editor) -->
-                        <div class="main-content">
+                        <div class="editor-main-content">
                             <!-- Terminal -->
                             <div class="terminal-container">
                                 <div class="terminal">
@@ -302,8 +302,9 @@
         }
 
         // Start Typing Effect
-        typeCode();
-
+        let timeout = setTimeout(() => {
+            typeCode();
+        }, 6000);
     </script>
 
 </body>
