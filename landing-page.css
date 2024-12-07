@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .landing-page-container {
   margin: 0;
   padding: 0;
@@ -127,7 +132,27 @@
 .close {
   background: #e74c3c;
 }
+/* Fullscreen class */
+.fullscreen {
+  width: 98vw;
+  margin: 2px;
+  margin-right: 5px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: var(
+    --editor-bg,
+    #1e1e1e
+  ); /* Optional, make it visually consistent */
+  box-shadow: none;
+}
 
+/* Hidden state for close button */
+.hidden {
+  display: none;
+}
 .code-main-area-wrapper {
   width: 100%;
   display: flex;
@@ -136,6 +161,7 @@
 /* Sidebar */
 .sidebar {
   width: 15%;
+  min-width: 11ch;
   background: #252526;
   color: #d4d4d4;
   padding: 10px;
@@ -223,7 +249,7 @@
 @media screen and (max-width: 768px) {
   .landing-page {
     flex-direction: column;
-    height: 80%;
+    height: 90%;
     width: 100%;
   }
 

@@ -111,8 +111,8 @@
                             <div class="code-content-wrapper">
                                 <!-- Tabs -->
                                 <div class="tabs">
-                                    <span class="tab active">main.c</span>
-                                    <span class="tab">README.md</span>
+                                    <span class="tab active" id="main-tab">main.c</span>
+                                    <span class="tab" id="readme-tab">README.md</span>
                                 </div>
 
                                 <!-- Code Editor -->
@@ -236,6 +236,7 @@
             </div>
         </footer>
     </div>
+
     <script>
         const preloader = document.querySelector('.preloader-wrapper');
         const mainContent = document.querySelector('.main-content');
@@ -253,58 +254,127 @@
         const terminalOutput = document.getElementById('terminal-output');
 
         // Code to type
-        const codeLines = [
+        const codeLines1 = [
             '#include <stdio.h>',
             '',
             'int main() {',
             '    printf("Welcome to Code Olympiad 2024!\\n");',
             '    return 0;',
-            '}',
+            '}'
+        ];
+        const readme = [
+            '# Code Olympiad 2024',
+            '',
+            '**Welcome to Code Olympiad 2024!**',
+            'Code Olympiad is an exciting coding competition',
+            'focused on enhancing logical thinking and',
+            'problem-solving skills through engaging challenges.',
+            '',
+            'This event is proudly organized by **BMC IT Club**',
+            'at Bhairahawa Multiple Campus.',
+            '',
+            '0101 Everyone is invited to participate 1010',
+            'Scroll down for more information.'
         ];
 
         // Typing effect for the code editor
         let lineIndex = 0;
         let charIndex = 0;
+        let activeTimeouts = [];
 
-        function typeCode() {
-            if (lineIndex < codeLines.length) {
-                if (charIndex < codeLines[lineIndex].length) {
-                    codeElement.textContent += codeLines[lineIndex][charIndex++];
-                    setTimeout(typeCode, 50);
-                } else {
-                    codeElement.textContent += '\n'; // Move to the next line
-                    charIndex = 0;
-                    lineIndex++;
-                    setTimeout(typeCode, 300); // Pause between lines
+        // Function to type code
+        function typeCode(content, callback) {
+            // Clear existing animations and reset state
+            resetTypingState();
+
+            // Start typing animation
+            function typeNextChar() {
+                if (lineIndex < content.length) {
+                    if (charIndex < content[lineIndex].length) {
+                        codeElement.textContent += content[lineIndex][charIndex++];
+                        activeTimeouts.push(setTimeout(typeNextChar, 50));
+                    } else {
+                        codeElement.textContent += '\n'; // Move to the next line
+                        charIndex = 0;
+                        lineIndex++;
+                        activeTimeouts.push(setTimeout(typeNextChar, 300));
+                    }
+                } else if (callback) {
+                    callback();
                 }
-            } else {
-                // Trigger the terminal simulation after typing completes
-                simulateTerminal();
             }
+            typeNextChar();
         }
 
-        // Terminal Simulation
+        // Terminal simulation
         function simulateTerminal() {
             const steps = ['Compiling...', 'Running...'];
             let stepIndex = 0;
 
-            function showStep() {
+            function displayStep() {
                 if (stepIndex < steps.length) {
                     terminalOutput.textContent = `${steps[stepIndex++]} `;
-                    setTimeout(showStep, 1000);
+                    activeTimeouts.push(setTimeout(displayStep, 1000));
                 } else {
-                    // Final Output
+                    // Final output
                     terminalOutput.textContent = '\nWelcome to Code Olympiad 2024!';
                 }
             }
-
-            showStep();
+            displayStep();
         }
 
-        // Start Typing Effect
-        let timeout = setTimeout(() => {
-            typeCode();
+        // Reset typing state
+        function resetTypingState() {
+            // Clear all ongoing timeouts
+            activeTimeouts.forEach(timeout => clearTimeout(timeout));
+            activeTimeouts = [];
+            // Reset text and indices
+            codeElement.textContent = '';
+            terminalOutput.textContent = '';
+            lineIndex = 0;
+            charIndex = 0;
+        }
+
+        // Tab switching logic
+        document.getElementById("readme-tab").addEventListener("click", () => {
+            document.getElementById("main-tab").classList.remove("active");
+            document.getElementById("readme-tab").classList.add("active");
+            typeCode(readme);
+        });
+
+        document.getElementById("main-tab").addEventListener("click", () => {
+            document.getElementById("main-tab").classList.add("active");
+            document.getElementById("readme-tab").classList.remove("active");
+            typeCode(codeLines1, simulateTerminal);
+        });
+
+        // Initial typing animation after preloader
+        setTimeout(() => {
+            typeCode(codeLines1, simulateTerminal);
         }, 6000);
+
+        const vscodeContainer = document.querySelector('.vscode-container');
+        const minimizeButton = document.querySelector('.control.minimize');
+        const maximizeButton = document.querySelector('.control.maximize');
+        const closeButton = document.querySelector('.control.close');
+
+        maximizeButton.addEventListener('click', () => {
+            if (!vscodeContainer.classList.contains('fullscreen')) {
+                vscodeContainer.classList.add('fullscreen');
+            }
+        });
+
+        minimizeButton.addEventListener('click', () => {
+            if (vscodeContainer.classList.contains('fullscreen')) {
+                vscodeContainer.classList.remove('fullscreen');
+            }
+
+        });
+
+        closeButton.addEventListener('click', () => {
+            vscodeContainer.classList.add('hidden');
+        });
+
     </script>
 
 </body>
