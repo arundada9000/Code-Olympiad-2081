@@ -4,14 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code Olympiad 2081</title>
+    <title>Code Olympiad</title>
     <link rel="stylesheet" href="./preloader.css">
     <link rel="stylesheet" href="./styles.css">
-    <link rel="stylesheet" href="./landing-page.css">
 </head>
 
 <body>
-
     <div class="preloader-wrapper">
         <div class="preloader">
             <svg width="80" height="40" xmlns="http://www.w3.org/2000/svg" class="ribbon-left">
@@ -72,79 +70,6 @@
     </div>
 
     <div class="main-content">
-
-        <div class="landing-page-container">
-            <div class="landing-page">
-                <!-- Left Section -->
-                <div class="left">
-                    <h1>
-                        Step Up for<br><span>Code Olympiad 2024</span>
-                    </h1>
-                    <p>Compete. Conquer. Code.</p>
-                </div>
-
-                <!-- Right Section -->
-                <div class="right">
-                    <div class="vscode-container">
-                        <!-- Title Bar -->
-                        <div class="title-bar">
-                            <span class="title">Code Olympiad 2024 - Visual Studio Code</span>
-                            <div class="window-controls">
-                                <span class="control minimize"></span>
-                                <span class="control maximize"></span>
-                                <span class="control close"></span>
-                            </div>
-                        </div>
-
-                        <div class="code-main-area-wrapper">
-                            <!-- Sidebar -->
-                            <div class="sidebar">
-                                <ul>
-                                    <li>Explorer</li>
-                                    <li>Search</li>
-                                    <li>Source Control</li>
-                                    <li>Run and Debug</li>
-                                    <li>Extensions</li>
-                                </ul>
-                            </div>
-
-                            <div class="code-content-wrapper">
-                                <!-- Tabs -->
-                                <div class="tabs">
-                                    <span class="tab active">main.c</span>
-                                    <span class="tab">README.md</span>
-                                </div>
-
-                                <!-- Code Editor -->
-                                <div class="code-editor">
-                                    <pre id="code"></pre>
-                                </div>
-                            </div>
-
-                        </div>
-
-
-
-                        <!-- Main Content (Code Editor) -->
-                        <div class="main-content">
-                            <!-- Terminal -->
-                            <div class="terminal-container">
-                                <div class="terminal">
-                                    <div class="terminal-header">Terminal</div>
-                                    <div class="terminal-body">
-                                        <p>
-                                            <span class="terminal-path">C:\Bhairahawa\BMC It Club></span>
-                                            <span id="terminal-output"></span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <header>
             <nav>
                 <div class="logo">
@@ -247,65 +172,6 @@
         });
 
     </script>
-
-    <script>
-        const codeElement = document.getElementById('code');
-        const terminalOutput = document.getElementById('terminal-output');
-
-        // Code to type
-        const codeLines = [
-            '#include <stdio.h>',
-            '',
-            'int main() {',
-            '    printf("Welcome to Code Olympiad 2024!\\n");',
-            '    return 0;',
-            '}',
-        ];
-
-        // Typing effect for the code editor
-        let lineIndex = 0;
-        let charIndex = 0;
-
-        function typeCode() {
-            if (lineIndex < codeLines.length) {
-                if (charIndex < codeLines[lineIndex].length) {
-                    codeElement.textContent += codeLines[lineIndex][charIndex++];
-                    setTimeout(typeCode, 50);
-                } else {
-                    codeElement.textContent += '\n'; // Move to the next line
-                    charIndex = 0;
-                    lineIndex++;
-                    setTimeout(typeCode, 300); // Pause between lines
-                }
-            } else {
-                // Trigger the terminal simulation after typing completes
-                simulateTerminal();
-            }
-        }
-
-        // Terminal Simulation
-        function simulateTerminal() {
-            const steps = ['Compiling...', 'Running...'];
-            let stepIndex = 0;
-
-            function showStep() {
-                if (stepIndex < steps.length) {
-                    terminalOutput.textContent = `${steps[stepIndex++]} `;
-                    setTimeout(showStep, 1000);
-                } else {
-                    // Final Output
-                    terminalOutput.textContent = '\nWelcome to Code Olympiad 2024!';
-                }
-            }
-
-            showStep();
-        }
-
-        // Start Typing Effect
-        typeCode();
-
-    </script>
-
 </body>
 
 </html>

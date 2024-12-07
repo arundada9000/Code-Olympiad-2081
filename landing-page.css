@@ -1,0 +1,253 @@
+.landing-page-container {
+  margin: 0;
+  padding: 0;
+  font-family: "Courier New", Courier, monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100svh;
+  background: linear-gradient(to right, #fbf8f8, #20b7ee);
+}
+
+.landing-page {
+  display: flex;
+  width: 90%;
+  max-width: 1200px;
+  height: 80%;
+}
+
+.left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 20px;
+}
+
+.left h1 {
+  font-size: 2.8rem;
+  color: #007acc;
+  margin-bottom: 0;
+  animation: slide-in 1.5s ease-out;
+}
+
+.left h1 span {
+  color: #1c01b4;
+}
+
+.left p {
+  font-size: 1.5rem;
+  margin-top: 10px;
+  font-weight: bold;
+  animation: fade-in 2s ease-out;
+  color: #000000;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  flex-direction: column;
+  padding: 10px;
+}
+
+/* VS Code Container */
+.vscode-container {
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+  width: 100%;
+  height: 100%;
+  min-height: 350px;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: auto;
+}
+
+/* Title Bar */
+.title-bar {
+  background: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  font-size: 0.9rem;
+}
+
+.window-controls {
+  display: flex;
+  gap: 5px;
+}
+
+.control {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.minimize {
+  background: #f3c623;
+}
+
+.maximize {
+  background: #27ae60;
+}
+
+.close {
+  background: #e74c3c;
+}
+
+.code-main-area-wrapper {
+  width: 100%;
+  display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 15%;
+  background: #252526;
+  color: #d4d4d4;
+  padding: 10px;
+  font-size: 0.85rem;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  position: relative;
+}
+
+/* Tabs */
+.tabs {
+  background: #252526;
+  color: #fff;
+  display: flex;
+  padding: 5px 10px;
+}
+
+.tab {
+  margin-right: 10px;
+  padding: 5px 10px;
+  background: #333;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.tab.active {
+  background: #007acc;
+}
+
+/* Code Editor */
+.code-editor {
+  flex: 1;
+  padding: 10px;
+  background: #1e1e1e;
+  color: #d4d4d4;
+  overflow-y: auto;
+  font-family: "Courier New", monospace;
+}
+
+/* Terminal Container */
+.terminal-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 0;
+}
+
+/* Terminal */
+.terminal {
+  background: #252526;
+  color: #00ff00;
+  flex: 1;
+  border-top: 1px solid #333;
+}
+
+.terminal-header {
+  background: #333;
+  padding: 5px 10px;
+  color: #fff;
+}
+
+.terminal-body {
+  padding: 10px;
+}
+
+.terminal-path {
+  color: #fff;
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .landing-page {
+    flex-direction: column;
+    height: 80%;
+    width: 100%;
+  }
+
+  .left {
+    flex: 1;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+  }
+
+  .left h1 {
+    font-size: 2rem;
+  }
+
+  .left p {
+    font-size: 1.25rem;
+  }
+
+  .right {
+    flex: 2;
+    padding: 5px;
+  }
+
+  .sidebar {
+    display: none;
+  }
+}
