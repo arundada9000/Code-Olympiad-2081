@@ -5,16 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Olympiad 2081</title>
-    <link rel="stylesheet" href="./binary-rain.css">
+    <!-- <link rel="stylesheet" href="./binary-rain.css"> -->
     <link rel="stylesheet" href="./preloader.css">
     <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="./landing-page.css">
 </head>
 
 <body>
-
-    <div class="binary-rain"></div>
-
+    <!-- <div class="binary-rain"></div> -->
     <div class="preloader-wrapper">
         <div class="preloader">
             <svg width="80" height="40" xmlns="http://www.w3.org/2000/svg" class="ribbon-left">
@@ -77,7 +75,9 @@
     <div class="main-content">
 
         <div class="landing-page-container">
+
             <div class="landing-page">
+
                 <!-- Left Section -->
                 <div class="left">
                     <h1>
@@ -241,7 +241,7 @@
     </div>
 
     <!-- Binary rain -->
-    <script>
+    <!-- <script>
         const binaryRain = document.querySelector('.binary-rain');
         const totalColumns = Math.floor(window.innerWidth / 20); // Calculate columns based on viewport width
         const totalRows = Math.floor(window.innerHeight / 20);   // Calculate rows based on viewport height
@@ -258,18 +258,16 @@
 
         createBinaryGrid();
 
-    </script>
+    </script> -->
 
     <!-- Hiding loader and showing site -->
     <script>
         const preloader = document.querySelector('.preloader-wrapper');
         const mainContent = document.querySelector('.main-content');
-        const binaryRainDiv = document.querySelector(".binary-rain");
+        // const binaryRainDiv = document.querySelector(".binary-rain");
         window.addEventListener('load', () => {
             setTimeout(() => {
                 preloader.style.display = "none";
-                binaryRainDiv.innerHTML = '';
-                binaryRainDiv.style.display = "none";
                 mainContent.style.display = "block";
             }, 6000);
         });
