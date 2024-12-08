@@ -1,8 +1,3 @@
-body {
-  height: 100svh;
-  width: 100vw;
-}
-
 .preloader-wrapper {
   height: 100vh;
   width: 100vw;
@@ -11,6 +6,7 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  z-index: 1;
 }
 
 .circle-outer {

@@ -5,12 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Olympiad 2081</title>
+    <link rel="stylesheet" href="./binary-rain.css">
     <link rel="stylesheet" href="./preloader.css">
     <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="./landing-page.css">
 </head>
 
 <body>
+
+    <div class="binary-rain"></div>
 
     <div class="preloader-wrapper">
         <div class="preloader">
@@ -237,12 +240,36 @@
         </footer>
     </div>
 
+    <!-- Binary rain -->
+    <script>
+        const binaryRain = document.querySelector('.binary-rain');
+        const totalColumns = Math.floor(window.innerWidth / 20); // Calculate columns based on viewport width
+        const totalRows = Math.floor(window.innerHeight / 20);   // Calculate rows based on viewport height
+
+        function createBinaryGrid() {
+            for (let i = 0; i < totalColumns * totalRows; i++) {
+                const binaryNum = document.createElement('span');
+                binaryNum.textContent = Math.random() > 0.5 ? '1' : '0';
+                binaryNum.style.animationDuration = `${2 + Math.random() * 5}s`;
+                binaryNum.style.animationDelay = `${Math.random() * 5}s`;
+                binaryRain.appendChild(binaryNum);
+            }
+        }
+
+        createBinaryGrid();
+
+    </script>
+
+    <!-- Hiding loader and showing site -->
     <script>
         const preloader = document.querySelector('.preloader-wrapper');
         const mainContent = document.querySelector('.main-content');
+        const binaryRainDiv = document.querySelector(".binary-rain");
         window.addEventListener('load', () => {
             setTimeout(() => {
                 preloader.style.display = "none";
+                binaryRainDiv.innerHTML = '';
+                binaryRainDiv.style.display = "none";
                 mainContent.style.display = "block";
             }, 6000);
         });
