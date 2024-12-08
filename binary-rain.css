@@ -2,7 +2,7 @@ body,
 html {
   height: 100svh;
   width: 100vw;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 /* Binary rain container */
