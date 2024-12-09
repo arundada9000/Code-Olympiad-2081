@@ -211,6 +211,63 @@ form .btn:hover {
   background: #2d2d2d;
   color: #dcdcdc;
 }
+.multi-select-container {
+  position: relative;
+  border: 1px solid #555;
+  border-radius: 5px;
+  background: #2d2d2d;
+  color: #dcdcdc;
+  cursor: pointer;
+}
+
+.multi-select-header {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.multi-select-arrow {
+  margin-left: 10px;
+  color: #20b7ee;
+}
+
+.multi-select-options {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: #2d2d2d;
+  border: 1px solid #555;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.multi-select-options.show {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.multi-select-options label {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.multi-select-options label:hover {
+  background: #333;
+}
+
+.multi-select-options input {
+  margin-right: 10px;
+}
 
 @media (max-width: 600px) {
   .button-group {

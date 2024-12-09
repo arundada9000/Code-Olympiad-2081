@@ -275,22 +275,29 @@
                     <!-- Preferred Programming Languages -->
                     <div class="form-group">
                         <label for="languages">Preferred Programming Languages</label>
-                        <select id="languages" multiple required>
-                            <option value="C">C</option>
-                            <option value="C++">C++</option>
-                            <option value="Java">Java</option>
-                            <option value="Python">Python</option>
-                            <option value="JavaScript">JavaScript</option>
-                            <option value="PHP">PHP</option>
-                            <option value="Ruby">Ruby</option>
-                            <option value="Swift">Swift</option>
-                            <option value="other">Other</option>
-                        </select>
+                        <div id="custom-multi-select" class="multi-select-container">
+                            <div class="multi-select-header">
+                                <span id="multi-select-placeholder">Select programming languages</span>
+                                <div class="multi-select-arrow">▼</div>
+                            </div>
+                            <div class="multi-select-options">
+                                <label><input type="checkbox" value="C"> C</label>
+                                <label><input type="checkbox" value="C++"> C++</label>
+                                <label><input type="checkbox" value="Java"> Java</label>
+                                <label><input type="checkbox" value="Python"> Python</label>
+                                <label><input type="checkbox" value="JavaScript"> JavaScript</label>
+                                <label><input type="checkbox" value="PHP"> PHP</label>
+                                <label><input type="checkbox" value="C#"> Ruby</label>
+                                <label><input type="checkbox" value="Dart"> Swift</label>
+                                <label><input type="checkbox" value="other"> Other</label>
+                            </div>
+                        </div>
                     </div>
                     <div id="custom-language-container" class="form-group" style="display: none;">
                         <label for="custom-language">Specify Other Language</label>
                         <input type="text" id="custom-language" placeholder="Enter your preferred language">
                     </div>
+
 
                     <!-- Buttons -->
                     <div class="button-group">
@@ -340,19 +347,51 @@
 
     <!-- Form -->
     <script>
-        const languagesSelect = document.getElementById("languages");
+        const multiSelectContainer = document.querySelector(".multi-select-container");
+        const multiSelectHeader = document.querySelector(".multi-select-header");
+        const multiSelectOptions = document.querySelector(".multi-select-options");
+        const placeholder = document.getElementById("multi-select-placeholder");
+        const checkboxes = multiSelectOptions.querySelectorAll("input[type='checkbox']");
         const customLanguageContainer = document.getElementById("custom-language-container");
         const customLanguageInput = document.getElementById("custom-language");
 
-        languagesSelect.addEventListener("change", function () {
-            // Check if "Other" is selected
-            const selectedOptions = Array.from(this.selectedOptions).map(option => option.value);
-            if (selectedOptions.includes("other")) {
-                customLanguageContainer.style.display = "block";
-                customLanguageInput.setAttribute("required", "true");
-            } else {
-                customLanguageContainer.style.display = "none";
-                customLanguageInput.removeAttribute("required");
+        let selectedLanguages = [];
+
+        // Toggle options dropdown
+        multiSelectHeader.addEventListener("click", () => {
+            multiSelectOptions.classList.toggle("show");
+        });
+
+        // Handle checkbox changes
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener("change", function () {
+                const value = this.value;
+
+                if (this.checked) {
+                    selectedLanguages.push(value);
+                    if (value === "other") {
+                        customLanguageContainer.style.display = "block";
+                        customLanguageInput.setAttribute("required", "true");
+                    }
+                } else {
+                    selectedLanguages = selectedLanguages.filter(lang => lang !== value);
+                    if (value === "other") {
+                        customLanguageContainer.style.display = "none";
+                        customLanguageInput.removeAttribute("required");
+                    }
+                }
+
+                // Update placeholder text
+                placeholder.textContent = selectedLanguages.length
+                    ? selectedLanguages.join(", ")
+                    : "Select programming languages";
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener("click", (event) => {
+            if (!multiSelectContainer.contains(event.target)) {
+                multiSelectOptions.classList.remove("show");
             }
         });
 
