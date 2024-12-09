@@ -7,8 +7,7 @@
     <title>Code Olympiad 2081</title>
     <link rel="stylesheet" href="./preloader.css">
     <link rel="stylesheet" href="./landing-page.css">
-    <link rel="stylesheet" href="./details.css">
-    <link rel="stylesheet" href="./footer.css">
+    <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
@@ -148,28 +147,98 @@
             <!-- Event Details Section -->
             <section id="event-details">
                 <h2>Event Details</h2>
-                <div class="details-content">
-                    <div class="detail-item">
-                        <h3>Syllabus</h3>
+                <div class="syllabus-container">
+                    <h2>📚 Code Olympiad Syllabus</h2>
+                    <p>Prepare for the competition with a focused syllabus covering fundamental programming concepts,
+                        data structures, algorithms, and web development. Here’s what to expect:</p>
+
+                    <div class="syllabus-section">
+                        <h3>1️⃣ Core Programming Fundamentals</h3>
                         <ul>
-                            <li>Data Structures and Algorithms</li>
-                            <li>Logical Problem Solving</li>
-                            <li>Mathematical Programming</li>
-                            <li>Basic Cryptography</li>
+                            <li>Variables, Data Types, Loops, Conditional Statements</li>
+                            <li>Arrays, Strings, Integers, Matrices</li>
+                            <li>Functions and Recursion</li>
                         </ul>
+                        <p><strong>Focus:</strong> Logical thinking and problem-solving basics.</p>
                     </div>
-                    <div class="detail-item">
-                        <h3>Date & Time</h3>
-                        <p>January 15, 2024 | 10:00 AM - 4:00 PM</p>
+
+                    <div class="syllabus-section">
+                        <h3>2️⃣ Data Structures & Algorithms</h3>
+                        <ul>
+                            <li>Basic Data Structures: Stack, Queue</li>
+                            <li>Sorting: Bubble Sort, Selection Sort, Merge Sort</li>
+                            <li>Searching: Linear Search, Binary Search</li>
+                            <li>Basic Dynamic Programming: Fibonacci, Subset Sum</li>
+                        </ul>
+                        <p><strong>Focus:</strong> Understanding and implementing efficient algorithms.</p>
+                    </div>
+
+                    <div class="syllabus-section">
+                        <h3>3️⃣ Web Development Essentials</h3>
+                        <ul>
+                            <li><strong>HTML:</strong> Semantics (e.g.nav, header), Forms,
+                                Tables</li>
+                            <li><strong>CSS:</strong> Box Model, Flexbox, Grid, Media Queries</li>
+                            <li><strong>Styling:</strong> Typography, Colors, Transitions, Pseudo-classes</li>
+                        </ul>
+                        <p><strong>Focus:</strong> Designing visually appealing and responsive web pages.</p>
+                    </div>
+
+                    <div class="syllabus-section bonus-section">
+                        <h3>✨ Bonus Topics (Optional)</h3>
+                        <ul>
+                            <li>Advanced Recursion (e.g., Backtracking)</li>
+                            <li>CSS Keyframe Animations</li>
+                        </ul>
+                        <p><strong>Note:</strong> Bonus topics are for advanced participants seeking additional
+                            challenges.</p>
                     </div>
                 </div>
-            </section>
 
+
+            </section id="date-and-time">
+            <h2>Date & Time</h2>
+            <p>Coming soon | 11:00 AM - 4:00 PM</p>
+            <section>
+
+            </section>
             <!-- Participant Information Section -->
             <section id="participants">
                 <h2>Participants</h2>
                 <p>Maximum Participants Per Team : <strong>4</strong></p>
-                <p>Registration Deadline: <strong>January 10, 2024</strong></p>
+                <p>Registration Deadline: <strong>Coming Soon</strong></p>
+            </section>
+
+            <!-- Prizes Section -->
+            <section id="prizes">
+                <h2>Prizes</h2>
+                <div class="prize-cards">
+                    <div class="card">
+                        <h3>1st Prize</h3>
+                        <p>Cash Prize: Nrs 15000</p>
+                    </div>
+                    <div class="card">
+                        <h3>2nd Prize</h3>
+                        <p>Cash Prize: Nrs. 10000</p>
+                    </div>
+                    <div class="card">
+                        <h3>3rd Prize</h3>
+                        <p>Cash Prize: Nrs. 5000</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Demo Questions Section -->
+            <section id="demo-questions">
+                <h2>Demo Questions</h2>
+                <div class="question">
+                    <h3>Question 1</h3>
+                    <p>Write a program to check if a given string is a palindrome.</p>
+                </div>
+                <div class="question">
+                    <h3>Question 2</h3>
+                    <p>Swap two integer variables without using a third variable.</p>
+                </div>
             </section>
 
             <!-- Submission Form Section -->
@@ -191,38 +260,6 @@
                     <button type="submit" class="btn">Submit</button>
                 </form>
             </section>
-
-            <!-- Prizes Section -->
-            <section id="prizes">
-                <h2>Prizes</h2>
-                <div class="prize-cards">
-                    <div class="card">
-                        <h3>1st Prize</h3>
-                        <p>Cash Prize: Nrs 1500</p>
-                    </div>
-                    <div class="card">
-                        <h3>2nd Prize</h3>
-                        <p>Cash Prize: Nrs. 10000</p>
-                    </div>
-                    <div class="card">
-                        <h3>3rd Prize</h3>
-                        <p>Cash Prize: Nrs. 5000</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Demo Questions Section -->
-            <section id="demo-questions">
-                <h2>Demo Questions</h2>
-                <div class="question">
-                    <h3>Question 1</h3>
-                    <p>Write a program to check if a number is prime.</p>
-                </div>
-                <div class="question">
-                    <h3>Question 2</h3>
-                    <p>Solve the N-Queens problem.</p>
-                </div>
-            </section>
         </div>
 
         <footer class="footer">
@@ -234,17 +271,17 @@
                 <div class="footer-links">
                     <h2>Quick Links</h2>
                     <ul>
-                        <li><a href="#">Syllabus</a></li>
-                        <li><a href="#">Date and Time</a></li>
-                        <li><a href="#">Participants</a></li>
-                        <li><a href="#">Register</a></li>
+                        <li><a href="#syllabus">Syllabus</a></li>
+                        <li><a href="#date-and-time">Date and Time</a></li>
+                        <li><a href="#participants">Participants</a></li>
+                        <li><a href="#submission-form">Register</a></li>
                     </ul>
                 </div>
                 <div class="footer-social">
                     <h2>Follow Us</h2>
                     <ul class="social-icons">
-                        <li><a href="https://www.facebook.com/profile.php?id=100094504922018"><img src="./assets/icons/facebook-icon.png"
-                                    alt="Facebook"></a></li>
+                        <li><a href="https://www.facebook.com/profile.php?id=100094504922018"><img
+                                    src="./assets/icons/facebook-icon.png" alt="Facebook"></a></li>
                         <li><a href="https://www.github.com/arundada9000/"><img src="./assets/icons/github-icon.png"
                                     alt="Github"></a></li>
                         <li><a href="https://www.instagram.com/arundada9000"><img
@@ -269,7 +306,7 @@
             setTimeout(() => {
                 preloader.style.display = "none";
                 mainContent.style.display = "block";
-                document.body.style.backgroundColor = "#1e1e1e";
+                document.body.style.backgroundColor = "rgb(20, 27, 31 )";
             }, 6000);
         });
 

@@ -5,6 +5,9 @@ html {
   font-family: "Courier New", Courier, monospace;
   color: #d4d4d4;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 /* Header Section */
 .header-section {
@@ -25,18 +28,6 @@ html {
 .tagline {
   font-size: 1.5rem;
   color: #a0a0a0;
-}
-
-@keyframes slide-in {
-  from {
-    transform: translateX(-50px);
-    opacity: 0;
-  }
-
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
 }
 
 .container {
@@ -120,8 +111,21 @@ form .btn {
   }
   .card {
     flex: 1;
+    padding: 0;
     background: #1e1e1e;
     border-radius: 8px;
     text-align: center;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
   }
 }

@@ -6,7 +6,6 @@
   justify-content: center;
   align-items: center;
   height: 100svh;
-  /* background: linear-gradient(to right, #fbf8f8, #20b7ee); */
 }
 
 .landing-page {
@@ -22,7 +21,6 @@
   justify-content: center;
   flex-direction: column;
 }
-
 
 @keyframes fade-in {
   from {
