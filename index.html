@@ -5,14 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Olympiad 2081</title>
-    <!-- <link rel="stylesheet" href="./binary-rain.css"> -->
     <link rel="stylesheet" href="./preloader.css">
-    <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="./landing-page.css">
+    <link rel="stylesheet" href="./details.css">
 </head>
 
 <body>
-    <!-- <div class="binary-rain"></div> -->
     <div class="preloader-wrapper">
         <div class="preloader">
             <svg width="80" height="40" xmlns="http://www.w3.org/2000/svg" class="ribbon-left">
@@ -79,12 +77,11 @@
             <div class="landing-page">
 
                 <!-- Left Section -->
-                <div class="left">
-                    <h1>
-                        Step Up for<br><span>Code Olympiad 2024</span>
-                    </h1>
-                    <p>Compete. Conquer. Code.</p>
-                </div>
+                <header class="header-section left">
+                    <h1 class="main-title">Welcome to <span class="highlight">Code Olympiad 2024</span></h1>
+                    <p class="tagline">Where logic meets creativity. Challenge your skills, redefine coding excellence.
+                    </p>
+                </header>
 
                 <!-- Right Section -->
                 <div class="right">
@@ -126,8 +123,6 @@
 
                         </div>
 
-
-
                         <!-- Main Content (Code Editor) -->
                         <div class="editor-main-content">
                             <!-- Terminal -->
@@ -148,117 +143,87 @@
             </div>
         </div>
 
-        <header>
-            <nav>
-                <div class="logo">
-                    <h1>Code Olympiad 2081</h1>
+        <div class="container">
+            <!-- Event Details Section -->
+            <section id="event-details">
+                <h2>Event Details</h2>
+                <div class="details-content">
+                    <div class="detail-item">
+                        <h3>Syllabus</h3>
+                        <ul>
+                            <li>Data Structures and Algorithms</li>
+                            <li>Logical Problem Solving</li>
+                            <li>Mathematical Programming</li>
+                            <li>Basic Cryptography</li>
+                        </ul>
+                    </div>
+                    <div class="detail-item">
+                        <h3>Date & Time</h3>
+                        <p>January 15, 2024 | 10:00 AM - 4:00 PM</p>
+                    </div>
                 </div>
-                <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#syllabus">Syllabus</a></li>
-                    <li><a href="#schedule">Schedule</a></li>
-                    <li><a href="#registration">Registration</a></li>
-                </ul>
-            </nav>
-        </header>
+            </section>
 
-        <section id="about" class="section">
-            <div class="container">
-                <h2>About the Competition</h2>
-                <p>Welcome to the Code Olympiad 2081! This event is designed for coders of all skill levels to showcase
-                    their problem-solving abilities. Participants will tackle coding challenges and compete for exciting
-                    prizes!</p>
-                <p>Whether you're a beginner or a seasoned pro, this competition will push your limits and help you grow
-                    as
-                    a coder.</p>
-            </div>
-        </section>
+            <!-- Participant Information Section -->
+            <section id="participants">
+                <h2>Participants</h2>
+                <p>Maximum Participants Per Team : <strong>4</strong></p>
+                <p>Registration Deadline: <strong>January 10, 2024</strong></p>
+            </section>
 
-        <section id="syllabus" class="section bg-light">
-            <div class="container">
-                <h2>Competition Syllabus</h2>
-                <p>The competition will cover various topics, ranging from basic programming to more advanced algorithms
-                    and
-                    data structures. Here's a breakdown of the syllabus:</p>
-                <ul>
-                    <li>Variables , data types , loops, conditional statements</li>
-                    <li>Introduction to Algorithms</li>
-                    <li>Data Structures (Arrays, Linked Lists, Stacks, Queues)</li>
-                    <li>Sorting and Searching Algorithms</li>
-                    <li>Dynamic Programming</li>
-                    <li>Graph Theory</li>
-                    <li>Greedy Algorithms</li>
-                    <li>Competitive Programming Practices</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="schedule" class="section">
-            <div class="container">
-                <h2>Competition Schedule</h2>
-                <div class="schedule-item">
-                    <h3>Time , Date and Place</h3>
-                    <p>The competition will take place at Bhairahawa Multiple Campus on Mangsir 29, 2081 (December 15,
-                        2024), commencing at 11:00 AM. Participants are required to arrive on time, as late arrivals
-                        will result in disqualification.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <section id="registration" class="section bg-light">
-            <div class="container">
-                <h2>Registration</h2>
-                <p>Ready to compete? Sign up now for the Code Olympiad 2081!</p>
-                <form action="#" method="POST">
-                    <label for="name">Team Name</label>
-                    <input type="text" id="name" name="name" placeholder="Enter your team name" required>
-
-                    <label for="campus-name">Campus Name</label>
-                    <input id="campus-name" type="text" name="Campus-name" placeholder="Enter your campus name"
-                        required />
-
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
-
-                    <label for="level">Coding Experience Level</label>
-                    <select id="level" name="level" required>
-                        <option value="beginner">Beginner</option>
-                        <option value="intermediate">Intermediate</option>
-                        <option value="advanced">Advanced</option>
-                    </select>
-
-                    <button type="submit">Register Now</button>
+            <!-- Submission Form Section -->
+            <section id="submission-form">
+                <h2>Register Now</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="campus">Campus</label>
+                        <input type="text" id="campus" placeholder="Enter your Campus name" required>
+                    </div>
+                    <button type="submit" class="btn">Submit</button>
                 </form>
-            </div>
-        </section>
+            </section>
 
-        <footer>
-            <div class="container">
-                <p>&copy; Coding Competition 2081. All rights reserved.</p>
-            </div>
-        </footer>
+            <!-- Prizes Section -->
+            <section id="prizes">
+                <h2>Prizes</h2>
+                <div class="prize-cards">
+                    <div class="card">
+                        <h3>1st Prize</h3>
+                        <p>Cash Prize: Nrs 1500</p>
+                    </div>
+                    <div class="card">
+                        <h3>2nd Prize</h3>
+                        <p>Cash Prize: Nrs. 10000</p>
+                    </div>
+                    <div class="card">
+                        <h3>3rd Prize</h3>
+                        <p>Cash Prize: Nrs. 5000</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Demo Questions Section -->
+            <section id="demo-questions">
+                <h2>Demo Questions</h2>
+                <div class="question">
+                    <h3>Question 1</h3>
+                    <p>Write a program to check if a number is prime.</p>
+                </div>
+                <div class="question">
+                    <h3>Question 2</h3>
+                    <p>Solve the N-Queens problem.</p>
+                </div>
+            </section>
+        </div>
     </div>
-
-    <!-- Binary rain -->
-    <!-- <script>
-        const binaryRain = document.querySelector('.binary-rain');
-        const totalColumns = Math.floor(window.innerWidth / 20); // Calculate columns based on viewport width
-        const totalRows = Math.floor(window.innerHeight / 20);   // Calculate rows based on viewport height
-
-        function createBinaryGrid() {
-            for (let i = 0; i < totalColumns * totalRows; i++) {
-                const binaryNum = document.createElement('span');
-                binaryNum.textContent = Math.random() > 0.5 ? '1' : '0';
-                binaryNum.style.animationDuration = `${2 + Math.random() * 5}s`;
-                binaryNum.style.animationDelay = `${Math.random() * 5}s`;
-                binaryRain.appendChild(binaryNum);
-            }
-        }
-
-        createBinaryGrid();
-
-    </script> -->
 
     <!-- Hiding loader and showing site -->
     <script>
@@ -269,6 +234,7 @@
             setTimeout(() => {
                 preloader.style.display = "none";
                 mainContent.style.display = "block";
+                document.body.style.backgroundColor = "#1e1e1e";
             }, 6000);
         });
 

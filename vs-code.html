@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+        }
+
+        /* Header Section */
+        .header-section {
+            text-align: center;
+            padding: 10px 20px;
+        }
+
+        .main-title {
+            font-size: 3rem;
+            color: #64b5f6;
+        }
+
+        .highlight {
+            color: #ffcc00;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: #a0a0a0;
+        }
+
+        /* VSCode Wrapper */
+        .vscode-wrapper {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .vscode-container {
+            width: 800px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #252526;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            margin: 0 auto;
+        }
+
+        /* Title Bar */
+        .title-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1e1e1e;
+            padding: 8px 16px;
+            color: #fff;
+        }
+
+        .window-controls .control {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            margin-left: 8px;
+            border-radius: 50%;
+        }
+
+        .control.minimize {
+            background-color: #f4bf4f;
+        }
+
+        .control.maximize {
+            background-color: #6ac259;
+        }
+
+        .control.close {
+            background-color: #e81123;
+        }
+
+        /* Code Area */
+        .code-main-area {
+            display: flex;
+        }
+
+        .sidebar {
+            width: 150px;
+            background-color: #333;
+            padding: 20px 10px;
+            color: #fff;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            margin: 10px 0;
+            color: #d4d4d4;
+        }
+
+        /* Code Editor */
+        .code-content {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: #1e1e1e;
+        }
+
+        .code-editor {
+            font-family: 'Courier New', Courier, monospace;
+            color: #d4d4d4;
+        }
+
+        .code-keyword {
+            color: #569cd6;
+        }
+
+        .code-string {
+            color: #ce9178;
+        }
+
+        .code-function {
+            color: #dcdcaa;
+        }
+
+        .code-number {
+            color: #b5cea8;
+        }
+
+        .code-comment {
+            color: #6a9955;
+        }
+
+        /* Terminal */
+        .terminal {
+            background-color: #000;
+            padding: 10px;
+            font-size: 0.9rem;
+            color: #00ff00;
+            border-top: 1px solid #333;
+        }
+
+        .terminal-header {
+            background-color: #1e1e1e;
+            color: #fff;
+            padding: 8px;
+        }
+
+        .terminal-path {
+            color: #d4d4d4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: 'Roboto Mono', monospace;
+            color: #dcdcdc;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            border-bottom: 2px solid #20b7ee;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+
+        .details-content {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .detail-item {
+            width: 45%;
+        }
+
+        .prize-cards {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .card {
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            width: 30%;
+        }
+
+        .card h3 {
+            color: #20b7ee;
+        }
+
+        .question {
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        form input,
+        .btn {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        form input {
+            background: #2d2d2d;
+            color: #dcdcdc;
+        }
+
+        form .btn {
+            background: #20b7ee;
+            color: #1e1e1e;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+
+        /* Mobile-friendly adjustments */
+        @media (max-width: 768px) {
+
+            /* General Adjustments */
+            body,
+            html {
+                font-size: 90%;
+            }
+
+            /* Header Section */
+            .header-section {
+                padding: 30px 10px;
+            }
+
+            .main-title {
+                font-size: 2rem;
+            }
+
+            .tagline {
+                font-size: 1.2rem;
+            }
+
+            /* VSCode Wrapper */
+            .vscode-wrapper {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .vscode-container {
+                width: 90%;
+                /* Use almost the full width of the screen */
+                max-width: 480px;
+            }
+
+            /* Title Bar */
+            .title-bar {
+                padding: 6px 12px;
+                font-size: 0.9rem;
+            }
+
+            .window-controls .control {
+                width: 10px;
+                height: 10px;
+            }
+
+            /* Code Main Area */
+            .code-main-area {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                /* Make sidebar take full width */
+                padding: 10px 5px;
+                text-align: center;
+            }
+
+            .sidebar ul {
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+            }
+
+            .sidebar li {
+                margin: 5px 0;
+            }
+
+            /* Code Editor */
+            .code-content {
+                padding: 10px;
+                font-size: 0.9rem;
+            }
+
+            /* Terminal */
+            .terminal {
+                font-size: 0.8rem;
+            }
+
+            .terminal-header {
+                padding: 5px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="main-container">
+        <!-- Header Section -->
+        <header class="header-section">
+            <h1 class="main-title">Welcome to <span class="highlight">Code Olympiad 2024</span></h1>
+            <p class="tagline">Where logic meets creativity. Challenge your skills, redefine coding excellence.</p>
+        </header>
+
+        <!-- VSCode-inspired Interactive Section -->
+        <section class="vscode-wrapper">
+            <div class="vscode-container">
+                <!-- Title Bar -->
+                <div class="title-bar">
+                    <span class="title">Code Olympiad - main.c</span>
+                    <div class="window-controls">
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
+                        <span class="control close"></span>
+                    </div>
+                </div>
+
+                <!-- Sidebar and Code Editor -->
+                <div class="code-main-area">
+                    <!-- Sidebar -->
+                    <div class="sidebar">
+                        <ul>
+                            <li>Explorer</li>
+                            <li>Search</li>
+                            <li>Source Control</li>
+                            <li>Run and Debug</li>
+                            <li>Extensions</li>
+                        </ul>
+                    </div>
+
+                    <!-- Code Editor -->
+                    <div class="code-content">
+                        <div class="tabs">
+                            <span class="tab active">main.c</span>
+                            <span class="tab">README.md</span>
+                        </div>
+                        <pre class="code-editor" id="code">
+    <span class="code-keyword">#include</span> <span class="code-string">&lt;stdio.h&gt;</span>
+    
+    <span class="code-keyword">int</span> <span class="code-function">main</span>() {
+        <span class="code-function">printf</span>(<span class="code-string">"Welcome to Code Olympiad 2024!\n"</span>);
+        <span class="code-keyword">return</span> <span class="code-number">0</span>;
+    }
+                        </pre>
+                    </div>
+                </div>
+
+                <!-- Terminal -->
+                <div class="terminal">
+                    <div class="terminal-header">Terminal</div>
+                    <div class="terminal-body">
+                        <p>
+                            <span class="terminal-path">C:\Bhairahawa\BMC It Club></span>
+                            <span id="terminal-output"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <!-- Event Details Section -->
+                <section id="event-details">
+                    <h2>Event Details</h2>
+                    <div class="details-content">
+                        <div class="detail-item">
+                            <h3>Syllabus</h3>
+                            <ul>
+                                <li>Data Structures and Algorithms</li>
+                                <li>Logical Problem Solving</li>
+                                <li>Mathematical Programming</li>
+                                <li>Basic Cryptography</li>
+                            </ul>
+                        </div>
+                        <div class="detail-item">
+                            <h3>Date & Time</h3>
+                            <p>January 15, 2024 | 10:00 AM - 4:00 PM</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Participant Information Section -->
+                <section id="participants">
+                    <h2>Participants</h2>
+                    <p>Maximum Participants Per Team : <strong>4</strong></p>
+                    <p>Registration Deadline: <strong>January 10, 2024</strong></p>
+                </section>
+
+                <!-- Submission Form Section -->
+                <section id="submission-form">
+                    <h2>Register Now</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="institution">Institution</label>
+                            <input type="text" id="institution" placeholder="Enter your institution" required>
+                        </div>
+                        <button type="submit" class="btn">Submit</button>
+                    </form>
+                </section>
+
+                <!-- Prizes Section -->
+                <section id="prizes">
+                    <h2>Prizes</h2>
+                    <div class="prize-cards">
+                        <div class="card">
+                            <h3>1st Prize</h3>
+                            <p>Cash Prize: $500</p>
+                        </div>
+                        <div class="card">
+                            <h3>2nd Prize</h3>
+                            <p>Cash Prize: $300</p>
+                        </div>
+                        <div class="card">
+                            <h3>3rd Prize</h3>
+                            <p>Cash Prize: $200</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Demo Questions Section -->
+                <section id="demo-questions">
+                    <h2>Demo Questions</h2>
+                    <div class="question">
+                        <h3>Question 1</h3>
+                        <p>Write a program to check if a number is prime.</p>
+                    </div>
+                    <div class="question">
+                        <h3>Question 2</h3>
+                        <p>Solve the N-Queens problem.</p>
+                    </div>
+                </section>
+            </div>
+
+        </section>
+    </div>
+
+    <!-- removing css  -->
+    <!-- <script>
+        function removeCSS() {
+            const cssLink = document.getElementById('theme-css');
+            if (cssLink) {
+                cssLink.parentNode.removeChild(cssLink);
+                console.log('CSS file removed');
+            } else {
+                console.log('CSS file not found');
+            }
+        }
+        removeCSS();
+    </script> -->
+</body>
+
+</html>
