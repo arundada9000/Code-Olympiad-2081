@@ -37,7 +37,9 @@ html {
   font-family: "Roboto Mono", monospace;
   color: #dcdcdc;
 }
-
+#event-details h1 {
+  font-size: 2.5rem;
+}
 section {
   margin-bottom: 40px;
 }
@@ -50,7 +52,6 @@ h2 {
 }
 
 .syllabus-container {
-  /* border: 1px solid #ddd; */
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -119,29 +120,106 @@ h2 {
   margin-bottom: 15px;
 }
 
+/* Form */
+#submission-form {
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+#submission-form h2 {
+  text-align: center;
+  color: #20b7ee;
+  margin-bottom: 20px;
+}
+
 .form-group {
   margin-bottom: 15px;
 }
 
 form input,
-.btn {
+form select {
   width: 100%;
   padding: 10px;
-  border: none;
-  margin-top: 10px;
+  margin-top: 5px;
   border-radius: 5px;
-}
-
-form input {
+  border: 1px solid #555;
   background: #2d2d2d;
   color: #dcdcdc;
 }
 
+form select[multiple] {
+  height: auto;
+}
+
+.member-input {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #333;
+  border-radius: 8px;
+  background: #252525;
+}
+
+.member-input h3 {
+  margin-top: 0;
+  color: #20b7ee;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 15px;
+}
+
 form .btn {
+  flex: 1;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+}
+
+form .btn.submit {
   background: #20b7ee;
   color: #1e1e1e;
-  cursor: pointer;
-  font-weight: bold;
+}
+
+form .btn.clear {
+  background: #f44336;
+  color: #fff;
+}
+
+form .btn:hover {
+  opacity: 0.9;
+}
+#custom-language-container {
+  margin-top: 15px;
+  display: none;
+}
+
+#custom-language {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #555;
+  background: #2d2d2d;
+  color: #dcdcdc;
+}
+
+@media (max-width: 600px) {
+  .button-group {
+    flex-direction: column;
+  }
+
+  form .btn {
+    width: 100%;
+  }
 }
 
 @keyframes slide-in {
@@ -236,12 +314,23 @@ form .btn {
   color: #aaa;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
+  .syllabus-container {
+    padding: 0;
+  }
+  .syllabus-section {
+    padding: 5px;
+  }
+  .syllabus-container h2 {
+    font-size: 1.4rem;
+  }
+
   .prize-cards {
     display: flex;
     width: 100%;
     justify-content: space-evenly;
   }
+
   .card {
     flex: 1;
     padding: 0;

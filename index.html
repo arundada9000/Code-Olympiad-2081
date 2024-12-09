@@ -146,7 +146,7 @@
         <div class="container">
             <!-- Event Details Section -->
             <section id="event-details">
-                <h2>Event Details</h2>
+                <h1>Event Details</h1>
                 <div class="syllabus-container">
                     <h2>📚 Code Olympiad Syllabus</h2>
                     <p>Prepare for the competition with a focused syllabus covering fundamental programming concepts,
@@ -194,13 +194,11 @@
                             challenges.</p>
                     </div>
                 </div>
+            </section>
 
-
-            </section id="date-and-time">
-            <h2>Date & Time</h2>
-            <p>Coming soon | 11:00 AM - 4:00 PM</p>
-            <section>
-
+            <section id="date-and-time">
+                <h2>Date & Time</h2>
+                <p>Coming soon | 11:00 AM - 4:00 PM</p>
             </section>
             <!-- Participant Information Section -->
             <section id="participants">
@@ -244,10 +242,15 @@
             <!-- Submission Form Section -->
             <section id="submission-form">
                 <h2>Register Now</h2>
-                <form>
+                <form id="team-registration-form">
+                    <!-- Team Information -->
                     <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" placeholder="Enter your name" required>
+                        <label for="team-name">Team Name</label>
+                        <input type="text" id="team-name" placeholder="Enter your Team's name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="team-captain">Team Captain's Name</label>
+                        <input type="text" id="team-captain" placeholder="Enter Team Captain's name" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
@@ -257,9 +260,47 @@
                         <label for="campus">Campus</label>
                         <input type="text" id="campus" placeholder="Enter your Campus name" required>
                     </div>
-                    <button type="submit" class="btn">Submit</button>
+                    <div class="form-group">
+                        <label for="team-phone">Team Phone Number</label>
+                        <input type="tel" id="team-phone" placeholder="Enter Nepali phone number"
+                            pattern="^(98|97)\d{8}$" required>
+                    </div>
+                    <!-- Team Members -->
+                    <div class="form-group">
+                        <label for="member-count">Number of Team Members (max 4)</label>
+                        <input type="number" id="member-count" min="1" max="4" placeholder="Enter number of members"
+                            required>
+                    </div>
+                    <div id="members-container"></div>
+                    <!-- Preferred Programming Languages -->
+                    <div class="form-group">
+                        <label for="languages">Preferred Programming Languages</label>
+                        <select id="languages" multiple required>
+                            <option value="C">C</option>
+                            <option value="C++">C++</option>
+                            <option value="Java">Java</option>
+                            <option value="Python">Python</option>
+                            <option value="JavaScript">JavaScript</option>
+                            <option value="PHP">PHP</option>
+                            <option value="Ruby">Ruby</option>
+                            <option value="Swift">Swift</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div id="custom-language-container" class="form-group" style="display: none;">
+                        <label for="custom-language">Specify Other Language</label>
+                        <input type="text" id="custom-language" placeholder="Enter your preferred language">
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="button-group">
+                        <button type="submit" class="btn submit">Submit</button>
+                        <button type="reset" class="btn clear">Clear</button>
+                    </div>
                 </form>
             </section>
+
+
         </div>
 
         <footer class="footer">
@@ -297,6 +338,69 @@
 
     </div>
 
+    <!-- Form -->
+    <script>
+        const languagesSelect = document.getElementById("languages");
+        const customLanguageContainer = document.getElementById("custom-language-container");
+        const customLanguageInput = document.getElementById("custom-language");
+
+        languagesSelect.addEventListener("change", function () {
+            // Check if "Other" is selected
+            const selectedOptions = Array.from(this.selectedOptions).map(option => option.value);
+            if (selectedOptions.includes("other")) {
+                customLanguageContainer.style.display = "block";
+                customLanguageInput.setAttribute("required", "true");
+            } else {
+                customLanguageContainer.style.display = "none";
+                customLanguageInput.removeAttribute("required");
+            }
+        });
+
+        document.getElementById("member-count").addEventListener("input", function () {
+            const memberCount = parseInt(this.value) || 0;
+            const membersContainer = document.getElementById("members-container");
+            membersContainer.innerHTML = ""; // Clear previous inputs
+            if (memberCount > 4) {
+                memberCount = 4;
+            }
+            if (memberCount < 1) {
+                memberCount = 1;
+            }
+            for (let i = 1; i <= memberCount; i++) {
+                const memberDiv = document.createElement("div");
+                memberDiv.classList.add("member-input");
+                memberDiv.innerHTML = `
+            <h3>Member ${i}</h3>
+            <div class="form-group">
+                <label for="member-${i}-name">Name</label>
+                <input type="text" id="member-${i}-name" placeholder="Enter member ${i}'s name" required>
+            </div>
+            <div class="form-group">
+                <label for="member-${i}-study">Current Study</label>
+                <select id="member-${i}-study" required>
+                    <option value="">Select...</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="1st Semester">1st Semester</option>
+                    <option value="2nd Semester">2nd Semester</option>
+                    <option value="3rd Semester">3rd Semester</option>
+                    <option value="4th Semester">4th Semester</option>
+                    <option value="5th Semester">5th Semester</option>
+                    <option value="6th Semester">6th Semester</option>
+                    <option value="7th Semester">7th Semester</option>
+                    <option value="8th Semester">8th Semester</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="member-${i}-phone">Phone Number (optional)</label>
+                <input type="tel" id="member-${i}-phone" placeholder="Enter phone number" pattern="^(98|97)\\d{8}$">
+            </div>
+        `;
+                membersContainer.appendChild(memberDiv);
+            }
+        });
+
+    </script>
     <!-- Hiding loader and showing site -->
     <script>
         const preloader = document.querySelector('.preloader-wrapper');
