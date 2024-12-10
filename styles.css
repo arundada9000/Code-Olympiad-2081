@@ -31,15 +31,90 @@ html {
 }
 
 .container {
-  max-width: 800px;
+  /* max-width: 800px; */
   margin: 0 auto;
   padding: 20px;
   font-family: "Roboto Mono", monospace;
   color: #dcdcdc;
+
+  display: flex;
+  justify-content: start;
+  gap: 20px;
 }
+
 #event-details h1 {
   font-size: 2.5rem;
 }
+
+/* Aside Navigation */
+.navigation-aside {
+  margin-top: 100px;
+  margin-bottom: 100px;
+  min-width: 250px;
+  height: fit-content;
+  max-height: calc(100vh - 20px); /* Adjust to avoid hiding footer */
+  position: sticky;
+  top: 100px;
+  background-color: #1e1e1e;
+  color: #dcdcdc;
+  border: 2px solid #20b7ee;
+  border-radius: 8px;
+  padding: 15px;
+  font-family: "Courier New", monospace;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  overflow-y: auto;
+}
+
+/* Styling for the navigation links */
+.navigation-aside h2 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #20b7ee;
+  text-align: center;
+  border-bottom: 1px solid #20b7ee;
+  padding-bottom: 10px;
+}
+
+.navigation-aside ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navigation-aside ul li {
+  margin: 10px 0;
+}
+
+.navigation-aside ul li a {
+  text-decoration: none;
+  color: #dcdcdc;
+  font-size: 1rem;
+  padding: 8px 12px;
+  display: block;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.navigation-aside ul li a:hover {
+  background-color: #20b7ee;
+  color: #1e1e1e;
+}
+
+/* Adjust for small screens */
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  .navigation-aside {
+    display: none;
+    margin: 0;
+    width: 100%;
+    position: relative;
+    max-height: none;
+  }
+}
+/* End */
+
 section {
   margin-bottom: 40px;
 }
@@ -60,7 +135,6 @@ h2 {
 }
 
 .syllabus-container h2 {
-  text-align: center;
   font-size: 2rem;
   color: #20b7ee;
   margin-bottom: 20px;
