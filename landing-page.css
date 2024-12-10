@@ -42,7 +42,6 @@
   padding: 10px;
 }
 
-/* VS Code Container */
 .vscode-container {
   background-color: #1e1e1e;
   color: #d4d4d4;
@@ -60,7 +59,6 @@
   margin: 0 auto;
 }
 
-/* Title Bar */
 .title-bar {
   background: #333;
   color: #fff;
@@ -95,7 +93,7 @@
 .close {
   background: #e74c3c;
 }
-/* Fullscreen class */
+
 .fullscreen {
   min-width: 98vw;
   margin: 2px;
@@ -105,14 +103,10 @@
   top: 0;
   left: 0;
   z-index: 2;
-  background-color: var(
-    --editor-bg,
-    #1e1e1e
-  ); /* Optional, make it visually consistent */
+  background-color: var(--editor-bg, #1e1e1e);
   box-shadow: none;
 }
 
-/* Hidden state for close button */
 .hidden {
   display: none;
 }
@@ -121,7 +115,6 @@
   display: flex;
 }
 
-/* Sidebar */
 .sidebar {
   width: 15%;
   min-width: 11ch;
@@ -141,13 +134,11 @@
   cursor: pointer;
 }
 
-/* Main Content */
 .code-main-content {
   flex: 1;
   position: relative;
 }
 
-/* Tabs */
 .tabs {
   background: #252526;
   color: #fff;
@@ -167,7 +158,6 @@
   background: #007acc;
 }
 
-/* Code Editor */
 .code-editor {
   flex: 1;
   padding: 10px;
@@ -177,7 +167,6 @@
   font-family: "Courier New", monospace;
 }
 
-/* Terminal Container */
 .terminal-container {
   width: 100%;
   display: flex;
@@ -186,7 +175,6 @@
   bottom: 0;
 }
 
-/* Terminal */
 .terminal {
   background: #252526;
   color: #00ff00;
@@ -209,7 +197,7 @@
   margin-right: 10px;
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
   .landing-page {
     flex-direction: column;
     height: 90%;

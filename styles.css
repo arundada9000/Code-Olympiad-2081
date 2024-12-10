@@ -128,7 +128,6 @@ html {
   box-shadow: 0 0 8px #20b7ee;
 }
 
-/* Glow effect on hover */
 .navigation-aside ul li a:hover::before {
   content: "<";
   margin-right: 5px;
@@ -277,7 +276,6 @@ h2 {
   margin-bottom: 15px;
 }
 
-/* Prize Amount */
 .prize-cards .card p {
   font-size: 1.2rem;
   font-weight: bold;
@@ -289,7 +287,6 @@ h2 {
   box-shadow: 0 4px 10px rgba(32, 183, 238, 0.4);
 }
 
-/* Responsive Adjustments */
 @media (max-width: 768px) {
   .prize-cards {
     flex-direction: column;
