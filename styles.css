@@ -248,10 +248,7 @@ form .btn:hover {
 }
 
 .multi-select-options.show {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  display: block;
 }
 
 .multi-select-options label {

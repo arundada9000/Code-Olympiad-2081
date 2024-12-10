@@ -242,7 +242,10 @@
             <!-- Submission Form Section -->
             <section id="submission-form">
                 <h2>Register Now</h2>
-                <form id="team-registration-form">
+                <form id="team-registration-form" action="https://api.web3forms.com/submit" method="post">
+                    <input type="hidden" name="access_key" value="683c630a-19ea-426c-a560-3148bd42d8dd">
+                    <input type="hidden" name="from_name" value="Code Olympiad Form Submission">
+
                     <!-- Team Information -->
                     <div class="form-group">
                         <label for="team-name">Team Name</label>
@@ -287,8 +290,8 @@
                                 <label><input type="checkbox" value="Python"> Python</label>
                                 <label><input type="checkbox" value="JavaScript"> JavaScript</label>
                                 <label><input type="checkbox" value="PHP"> PHP</label>
-                                <label><input type="checkbox" value="C#"> Ruby</label>
-                                <label><input type="checkbox" value="Dart"> Swift</label>
+                                <label><input type="checkbox" value="C#"> C#</label>
+                                <label><input type="checkbox" value="Dart"> Dart</label>
                                 <label><input type="checkbox" value="other"> Other</label>
                             </div>
                         </div>
@@ -298,15 +301,13 @@
                         <input type="text" id="custom-language" placeholder="Enter your preferred language">
                     </div>
 
-
                     <!-- Buttons -->
                     <div class="button-group">
-                        <button type="submit" class="btn submit">Submit</button>
+                        <button type="submit" class="btn submit" id="submit-btn">Submit</button>
                         <button type="reset" class="btn clear">Clear</button>
                     </div>
                 </form>
             </section>
-
 
         </div>
 
@@ -314,7 +315,8 @@
             <div class="footer-container">
                 <div class="footer-about">
                     <h2>About Us</h2>
-                    <p>We are dedicated to providing the best resources for developers. Follow us for more updates.</p>
+                    <p>We want to push Nepal into a more Technological Advanced Country. Lets build our country
+                        together.</p>
                 </div>
                 <div class="footer-links">
                     <h2>Quick Links</h2>
@@ -437,6 +439,46 @@
         `;
                 membersContainer.appendChild(memberDiv);
             }
+        });
+
+        const form = document.querySelector('form');
+        const submitButton = document.getElementById('submit-btn');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            submitButton.value = 'Submitting...';
+
+            const formData = new FormData(form);
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData,
+            })
+                .then(response => response.json()) // Parse response as JSON
+                .then(data => {
+                    if (data.success) {
+                        submitButton.value = 'Submitted';
+                        setTimeout(() => {
+                            submitButton.value = 'See you at BMC';
+                            submitButton.disabled = true; // Disable button
+                        }, 5000);
+                        form.reset();
+                    } else {
+                        submitButton.value = 'Error, Try Again';
+                        console.error('Error:', data.message);
+                        setTimeout(() => {
+                            submitButton.value = 'Submit';
+                        }, 5000);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error submitting form:', error);
+                    submitButton.value = 'Error, Try Again';
+                    setTimeout(() => {
+                        submitButton.value = 'Submit';
+                    }, 5000);
+                });
         });
 
     </script>
