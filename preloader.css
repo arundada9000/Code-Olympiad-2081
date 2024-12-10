@@ -170,11 +170,9 @@
 .text-preloader-wrapper {
   height: 20%;
   flex: 3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   margin: 0 auto;
+  transform: translateY(-20%);
 }
 
 .text-preloader {
@@ -193,7 +191,7 @@
 
 @media (max-width: 600px) {
   .text-preloader-text {
-    transform: scale(1.6);
+    transform: scale(1.6) translate(2%);
   }
 
   .preloader {
@@ -202,6 +200,6 @@
 
   .text-preloader-wrapper {
     flex: 4;
-    align-items: start;
+    transform: translateY(-40%);
   }
 }
