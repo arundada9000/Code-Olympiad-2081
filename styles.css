@@ -219,21 +219,97 @@ h2 {
   color: #20b7ee;
 }
 
+/* Prize Section Styling */
+#prizes {
+  text-align: center;
+  padding: 50px 20px;
+  background: linear-gradient(145deg, #1e1e1e, #252525);
+  color: #dcdcdc;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  margin: 40px 0;
+}
+
+/* Section Header */
+#prizes h2 {
+  font-size: 2rem;
+  border: none;
+  color: #20b7ee;
+  font-family: "Fira Code", monospace;
+  margin-bottom: 30px;
+  position: relative;
+  display: inline-block;
+}
+
+#prizes h2::after {
+  content: "";
+  width: 150%;
+  height: 2px;
+  background: #20b7ee;
+  position: absolute;
+  bottom: -5px;
+  left: 60%;
+  transform: translateX(-50%);
+}
+
+/* Prize Cards Container */
 .prize-cards {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-.card {
-  background: #1e1e1e;
+/* Individual Card Styling */
+.prize-cards .card {
+  background: linear-gradient(145deg, #252525, #1e1e1e);
+  color: #abb2bf;
+  width: 250px;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
   text-align: center;
-  width: 30%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #333;
 }
 
-.card h3 {
+.prize-cards .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 25px rgba(32, 183, 238, 0.5);
+  background: linear-gradient(145deg, #2d2d2d, #1e1e1e);
+}
+
+/* Card Heading */
+.prize-cards .card h3 {
+  font-size: 1.5rem;
+  font-family: "Fira Code", monospace;
   color: #20b7ee;
+  margin-bottom: 15px;
+}
+
+/* Prize Amount */
+.prize-cards .card p {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffffff;
+  background: #20b7ee;
+  padding: 10px 15px;
+  border-radius: 5px;
+  display: inline-block;
+  box-shadow: 0 4px 10px rgba(32, 183, 238, 0.4);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .prize-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .prize-cards .card {
+    width: 90%;
+    margin-bottom: 20px;
+  }
 }
 
 .question {
