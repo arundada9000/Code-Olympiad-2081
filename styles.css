@@ -16,17 +16,12 @@ html {
 
 .main-title {
   font-size: 3rem;
-  color: #64b5f6;
+  color: gray;
   animation: slide-in 1.5s ease-out;
 }
-
 .highlight {
   color: #ffcc00;
-}
-
-.tagline {
-  font-size: 1.5rem;
-  color: #a0a0a0;
+  font-weight: bold;
 }
 
 .container {
