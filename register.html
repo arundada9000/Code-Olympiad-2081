@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+
+<body>
+    <section id="submission-form">
+        <h2>Register Now</h2>
+
+        <form id="team-registration-form" action="https://api.web3forms.com/submit" method="post">
+            <input type="hidden" name="access_key" value="683c630a-19ea-426c-a560-3148bd42d8dd">
+            <input type="hidden" name="from_name" value="Code Olympiad Form Submission">
+
+            <!-- Team Information -->
+            <div class="form-group">
+                <label for="team-name">Team Name</label>
+                <input type="text" id="team-name" placeholder="Enter your Team's name" required>
+            </div>
+            <div class="form-group">
+                <label for="team-captain">Team Captain's Name</label>
+                <input type="text" id="team-captain" placeholder="Enter Team Captain's name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="campus">Campus</label>
+                <input type="text" id="campus" placeholder="Enter your Campus name" required>
+            </div>
+            <div class="form-group">
+                <label for="team-phone">Team Phone Number</label>
+                <input type="tel" id="team-phone" placeholder="Enter Nepali phone number" pattern="^(98|97)\d{8}$"
+                    required>
+            </div>
+            <!-- Team Members -->
+            <div class="form-group">
+                <label for="member-count">Number of Team Members (max 4)</label>
+                <input type="number" id="member-count" min="1" max="4" placeholder="Enter number of members" required>
+            </div>
+            <div id="members-container"></div>
+            <!-- Preferred Programming Languages -->
+            <div class="form-group">
+                <label for="languages">Preferred Programming Languages</label>
+                <div id="custom-multi-select" class="multi-select-container">
+                    <div class="multi-select-header">
+                        <span id="multi-select-placeholder">Select programming languages</span>
+                        <div class="multi-select-arrow">▼</div>
+                    </div>
+                    <div class="multi-select-options">
+                        <label><input type="checkbox" value="C"> C</label>
+                        <label><input type="checkbox" value="C++"> C++</label>
+                        <label><input type="checkbox" value="Java"> Java</label>
+                        <label><input type="checkbox" value="Python"> Python</label>
+                        <label><input type="checkbox" value="JavaScript"> JavaScript</label>
+                        <label><input type="checkbox" value="PHP"> PHP</label>
+                        <label><input type="checkbox" value="C#"> C#</label>
+                        <label><input type="checkbox" value="Dart"> Dart</label>
+                        <label><input type="checkbox" value="other"> Other</label>
+                    </div>
+                </div>
+            </div>
+            <div id="custom-language-container" class="form-group" style="display: none;">
+                <label for="custom-language">Specify Other Language</label>
+                <input type="text" id="custom-language" placeholder="Enter your preferred language">
+            </div>
+
+            <!-- Buttons -->
+            <div class="button-group">
+                <button type="submit" class="btn submit" id="submit-btn">Submit</button>
+                <button type="reset" class="btn clear">Clear</button>
+            </div>
+        </form>
+    </section>
+</body>
+
+</html>
