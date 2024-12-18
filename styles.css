@@ -1,3 +1,23 @@
+/* Style for webkit scroll bars */
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+::-webkit-scrollbar-track {
+  background: gray;
+  border-radius: 0px;
+}
+
+/* Scrollbar handle */
+::-webkit-scrollbar-thumb {
+  background: #007bff;
+  border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: black;
+}
 body,
 html {
   margin: 0;
@@ -115,7 +135,7 @@ html {
   margin: 10px 0;
 }
 
-.navigation-aside ul li a {
+.navigation-aside ul li {
   text-decoration: none;
   font-size: 1rem;
   padding: 8px 12px;
@@ -123,21 +143,22 @@ html {
   border-radius: 5px;
   transition: all 0.3s ease;
   color: #abb2bf;
+  cursor: pointer;
 }
 
-.navigation-aside ul li a:hover {
+.navigation-aside ul li:hover {
   background-color: #2d2d2d;
   color: #20b7ee;
   box-shadow: 0 0 8px #20b7ee;
 }
 
-.navigation-aside ul li a:hover::before {
+.navigation-aside ul li:hover::before {
   content: "<";
   margin-right: 5px;
   color: #d19a66;
 }
 
-.navigation-aside ul li a:hover::after {
+.navigation-aside ul li:hover::after {
   content: ">";
   margin-left: 5px;
   color: #d19a66;
@@ -587,5 +608,17 @@ form .btn:hover {
 
   .footer-container > div {
     margin-bottom: 20px;
+  }
+}
+
+.highlight {
+  animation: highlight-effect 1s ease-out;
+}
+
+@keyframes highlight-effect {
+  to {
+    border: 1px solid;
+    border-color: rgb(76, 254, 6);
+    background-color: #33f00420;
   }
 }

@@ -7,7 +7,7 @@
     <title>Code Olympiad 2081 | BMC IT Club Bhairahawa | Coding Competition</title>
     <link rel="shortcut icon" href="./assets/images/bmc-it-club-circle-logo.ico" type="image/x-icon">
     <meta name="keyword"
-        content="Code Olympiad 2081, BMC IT Club, coding competition Bhairahawa, coding skills championship, Arun Neupane, arundada9000" />
+        content="codeolympiad,Code Olympiad 2081, BMC IT Club, coding competition Bhairahawa, coding skills championship, Arun Neupane, arundada9000" />
 
     <meta name="description"
         content="Join the BMC IT Club's Code Olympiad 2081 in Bhairahawa. Test your coding skills, compete for amazing prizes, and enhance your expertise in a dynamic competition!" />
@@ -18,8 +18,8 @@
               "@type": "Event",
               "name": "Code Olympiad 2081",
               "description": "A coding competition hosted by BMC IT Club in Bhairahawa to level up your coding skills. Compete with top programmers and win exciting prizes!",
-              "startDate": "2081-02-15T19:00",
-              "endDate": "2081-02-15T16:00",
+              "startDate": "2081-10-02T11:00",
+              "endDate": "2081-10-02T17:00",
               "eventStatus": "https://schema.org/EventScheduled",
               "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
               "location": {
@@ -58,6 +58,7 @@
 </head>
 
 <body>
+
     <div class="preloader-wrapper">
         <div class="preloader">
             <svg width="80" height="40" xmlns="http://www.w3.org/2000/svg" class="ribbon-left">
@@ -204,13 +205,14 @@
                 <nav>
                     <h2>🚀 Quick Navigation</h2>
                     <ul>
-                        <li><a href="#syllabus">📝 Syllabus.html</a></li>
-                        <li><a href="#date-and-time">⏰ Date&Time.css</a></li>
-                        <li><a href="#participants">👥 Participants.js</a></li>
-                        <li><a href="#prizes">🏆 Prizes.c</a></li>
-                        <li><a href="#demo-questions">❓ DemoQuestions.cpp</a></li>
-                        <li><a href="#submission-form">🖋️ Register.cs</a></li>
-                        <li><a href="#query">💬 Query.php</a></li>
+                        <li class="nav-item" data-target="syllabus">📝 Syllabus.html</li>
+                        <li class="nav-item" data-target="date-and-time">⏰ Date&Time.css
+                        </li>
+                        <li class="nav-item" data-target="participants">👥 Participants.js</li>
+                        <li class="nav-item" data-target="prizes">🏆 Prizes.c</li>
+                        <li class="nav-item" data-target="demo-questions">❓ DemoQuestions.cpp</li>
+                        <li class="nav-item" data-target="submission-form">🖋️ Register.cs</li>
+                        <li class="nav-item" data-target="query">💬 Query.php</li>
                     </ul>
                 </nav>
             </aside>
@@ -317,7 +319,7 @@
                 <!-- Submission Form Section -->
                 <section id="submission-form">
                     <h2>Register Now</h2>
-                    
+
                     <form id="team-registration-form" action="https://api.web3forms.com/submit" method="post">
                         <input type="hidden" name="access_key" value="683c630a-19ea-426c-a560-3148bd42d8dd">
                         <input type="hidden" name="from_name" value="Code Olympiad Form Submission">
@@ -702,6 +704,45 @@
 
     </script>
 
+    <script>
+        // Observer for automatic scrolling of container
+        const container1 = document.querySelector('.container');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    container1.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+                }
+            });
+        }, {
+            root: null,
+            rootMargin: "0px 0px -150px 0px",
+            threshold: 0
+        });
+
+        observer.observe(container1);
+
+        // Navigation and highlighting
+        const navItems = document.querySelectorAll('.nav-item');
+
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const targetId = item.getAttribute('data-target');
+                const targetBox = document.getElementById(targetId);
+
+                document.querySelectorAll('.box').forEach(box => box.classList.remove('highlight'));
+
+                targetBox.classList.add('highlight');
+
+                targetBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                setTimeout(() => {
+                    targetBox.classList.remove('highlight');
+                }, 1000);
+            });
+        });
+    </script>
 </body>
 
 </html>
