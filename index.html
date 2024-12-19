@@ -378,141 +378,6 @@
 
     </div>
 
-    <!-- Form -->
-    <script>
-        const multiSelectContainer = document.querySelector(".multi-select-container");
-        const multiSelectHeader = document.querySelector(".multi-select-header");
-        const multiSelectOptions = document.querySelector(".multi-select-options");
-        const placeholder = document.getElementById("multi-select-placeholder");
-        const checkboxes = multiSelectOptions.querySelectorAll("input[type='checkbox']");
-        const customLanguageContainer = document.getElementById("custom-language-container");
-        const customLanguageInput = document.getElementById("custom-language");
-
-        let selectedLanguages = [];
-
-        // Toggle options dropdown
-        multiSelectHeader.addEventListener("click", () => {
-            multiSelectOptions.classList.toggle("show");
-        });
-
-        // Handle checkbox changes
-        checkboxes.forEach(checkbox => {
-            checkbox.addEventListener("change", function () {
-                const value = this.value;
-
-                if (this.checked) {
-                    selectedLanguages.push(value);
-                    if (value === "other") {
-                        customLanguageContainer.style.display = "block";
-                        customLanguageInput.setAttribute("required", "true");
-                    }
-                } else {
-                    selectedLanguages = selectedLanguages.filter(lang => lang !== value);
-                    if (value === "other") {
-                        customLanguageContainer.style.display = "none";
-                        customLanguageInput.removeAttribute("required");
-                    }
-                }
-
-                // Update placeholder text
-                placeholder.textContent = selectedLanguages.length
-                    ? selectedLanguages.join(", ")
-                    : "Select programming languages";
-            });
-        });
-
-        // Close dropdown when clicking outside
-        document.addEventListener("click", (event) => {
-            if (!multiSelectContainer.contains(event.target)) {
-                multiSelectOptions.classList.remove("show");
-            }
-        });
-
-        document.getElementById("member-count").addEventListener("input", function () {
-            const memberCount = parseInt(this.value) || 0;
-            const membersContainer = document.getElementById("members-container");
-            membersContainer.innerHTML = ""; // Clear previous inputs
-            if (memberCount > 4) {
-                memberCount = 4;
-            }
-            if (memberCount < 1) {
-                memberCount = 1;
-            }
-            for (let i = 1; i <= memberCount; i++) {
-                const memberDiv = document.createElement("div");
-                memberDiv.classList.add("member-input");
-                memberDiv.innerHTML = `
-            <h3>Member ${i}</h3>
-            <div class="form-group">
-                <label for="member-${i}-name">Name</label>
-                <input type="text" id="member-${i}-name" placeholder="Enter member ${i}'s name" required>
-            </div>
-            <div class="form-group">
-                <label for="member-${i}-study">Current Study</label>
-                <select id="member-${i}-study" required>
-                    <option value="">Select...</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                    <option value="1st Semester">1st Semester</option>
-                    <option value="2nd Semester">2nd Semester</option>
-                    <option value="3rd Semester">3rd Semester</option>
-                    <option value="4th Semester">4th Semester</option>
-                    <option value="5th Semester">5th Semester</option>
-                    <option value="6th Semester">6th Semester</option>
-                    <option value="7th Semester">7th Semester</option>
-                    <option value="8th Semester">8th Semester</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="member-${i}-phone">Phone Number (optional)</label>
-                <input type="tel" id="member-${i}-phone" placeholder="Enter phone number" pattern="^(98|97)\\d{8}$">
-            </div>
-        `;
-                membersContainer.appendChild(memberDiv);
-            }
-        });
-
-        const form = document.querySelector('form');
-        const submitButton = document.getElementById('submit-btn');
-
-        form.addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            submitButton.value = 'Submitting...';
-
-            const formData = new FormData(form);
-
-            fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                body: formData,
-            })
-                .then(response => response.json()) // Parse response as JSON
-                .then(data => {
-                    if (data.success) {
-                        submitButton.value = 'Submitted';
-                        setTimeout(() => {
-                            submitButton.value = 'See you at BMC';
-                            submitButton.disabled = true; // Disable button
-                        }, 5000);
-                        form.reset();
-                    } else {
-                        submitButton.value = 'Error, Try Again';
-                        console.error('Error:', data.message);
-                        setTimeout(() => {
-                            submitButton.value = 'Submit';
-                        }, 5000);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error submitting form:', error);
-                    submitButton.value = 'Error, Try Again';
-                    setTimeout(() => {
-                        submitButton.value = 'Submit';
-                    }, 5000);
-                });
-        });
-
-    </script>
 
     <!-- Hiding loader and showing site -->
     <script>
@@ -684,14 +549,14 @@
                 const targetId = item.getAttribute('data-target');
                 const targetBox = document.getElementById(targetId);
 
-                document.querySelectorAll('.box').forEach(box => box.classList.remove('highlight'));
+                document.querySelectorAll('.box').forEach(box => box.classList.remove('highlight-nav'));
 
-                targetBox.classList.add('highlight');
+                targetBox.classList.add('highlight-nav');
 
                 targetBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
                 setTimeout(() => {
-                    targetBox.classList.remove('highlight');
+                    targetBox.classList.remove('highlight-nav');
                 }, 1000);
             });
         });

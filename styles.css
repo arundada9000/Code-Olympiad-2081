@@ -82,7 +82,7 @@ html {
   height: fit-content;
   max-height: calc(100vh - 20px);
   position: sticky;
-  top: 100px;
+  top: 20px;
   overflow-y: auto;
   background: linear-gradient(145deg, #1e1e1e, #252525);
   border: 1px solid #333;
@@ -634,14 +634,6 @@ form .btn:hover {
   }
 }
 
-.highlight {
-  animation: highlight-effect 1s ease-out;
-}
-
-@keyframes highlight-effect {
-  to {
-    border: 1px solid;
-    border-color: rgb(76, 254, 6);
-    background-color: #33f00420;
-  }
+.highlight-nav {
+  border: 1px solid rgb(76, 254, 6);
 }
