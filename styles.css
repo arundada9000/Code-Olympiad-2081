@@ -69,7 +69,7 @@ html {
 
 .navigation-aside {
   margin-top: 100px;
-  margin-bottom: 100px;
+  margin-bottom: 0px;
   min-width: 285px;
   height: fit-content;
   max-height: calc(100vh - 20px);
@@ -472,7 +472,21 @@ form .btn:hover {
 .multi-select-options input {
   margin-right: 10px;
 }
-
+#query {
+  margin-bottom: 50px;
+}
+.query-div {
+  margin-top: 10px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 1.25rem;
+}
+#query a {
+  text-decoration: none;
+  color: #007bff;
+}
 @media (max-width: 600px) {
   .button-group {
     flex-direction: column;
@@ -500,7 +514,7 @@ form .btn:hover {
   color: #fff;
   padding: 20px 0;
   position: relative;
-  bottom: -90svh;
+  bottom: -100svh;
   font-family: "roboto", "Roboto Mono", monospace;
 }
 
