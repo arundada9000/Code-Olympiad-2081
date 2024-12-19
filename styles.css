@@ -55,7 +55,7 @@ html {
   margin: 0 auto;
   padding: 20px;
   background-color: rgb(20, 27, 31);
-  font-family: "Roboto Mono", monospace;
+  font-family: "roboto", "Roboto Mono", monospace;
   color: #dcdcdc;
 
   display: flex;
@@ -501,6 +501,7 @@ form .btn:hover {
   padding: 20px 0;
   position: relative;
   bottom: -90svh;
+  font-family: "roboto", "Roboto Mono", monospace;
 }
 
 .footer-container {
