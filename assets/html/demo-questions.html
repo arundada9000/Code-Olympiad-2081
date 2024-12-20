@@ -1,0 +1,2225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="../images/bmc-it-club-circle-logo.ico" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-html.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+    <!-- Prism JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- C language component -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+    <!-- Line Number -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css"
+        rel="stylesheet">
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 1rem;
+        }
+
+        body {
+            background-color: #1e1e1e;
+            color: #f1f1f1;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .demo-header {
+            width: 100%;
+            position: sticky;
+            top: 0;
+            background-color: #222;
+            color: #ffd700;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #ffd700;
+            z-index: 1;
+        }
+
+        .demo-header h1 {
+            margin: 0;
+        }
+
+        .demo-header .nav-link {
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            padding: 10px;
+            border: 2px solid #ffd700;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .demo-header .nav-link:hover {
+            background-color: #ffd700;
+            color: #1e1e1e;
+        }
+
+        .question-container {
+            background-color: #282c34;
+            margin: 20px 0;
+            border-radius: 10px;
+            padding: 15px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .question h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .toggle-code-btn {
+            background-color: #ffd700;
+            color: #222;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .toggle-code-btn:hover {
+            background-color: #fff;
+            color: #282c34;
+        }
+
+        .code-section {
+            overflow: hidden;
+            transition: max-height 0.5s ease, opacity 0.5s ease;
+            padding: 0 10px;
+            background-color: #1e1e1e;
+            border: 1px solid #444;
+            border-radius: 5px;
+            margin-top: 15px;
+            position: relative;
+            max-width: 100%;
+            min-width: 100%;
+        }
+
+        .code-hidden {
+            max-height: 0;
+            opacity: 0;
+        }
+
+        .code-section.show {
+            max-height: 300px;
+            opacity: 1;
+            padding: 10px;
+        }
+
+        .answer {
+            max-height: none;
+            margin-top: 10px;
+            font-size: 1.25rem;
+        }
+
+        .answer.show {
+            opacity: 1;
+            height: fit-content;
+        }
+
+        pre {
+            max-height: none;
+            margin: 0;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            overflow: auto;
+            color: #f1f1f1;
+
+            max-height: 300px;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .pre[class*="language-"] {
+            padding-left: 0;
+        }
+
+        .line-numbers-rows {
+            padding-left: 0;
+        }
+
+        .line-numbers-rows span {
+            padding-right: 5px;
+            width: 2ch;
+            min-width: 2ch;
+            max-width: 2ch;
+            margin: 0;
+        }
+
+        .code-section pre {
+            font-size: 1rem;
+        }
+
+        .copy-code-btn {
+            background-color: #ffd700;
+            color: #222;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: background 0.3s ease, color 0.3s ease;
+
+            position: absolute;
+            top: 10px;
+            right: 35px;
+        }
+
+        .copy-code-btn:hover {
+            background-color: #fff;
+            color: #282c34;
+        }
+
+        .output-prediction pre {
+            overflow: hidden;
+        }
+
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .scroll-animate.show-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .container {
+            width: 100%;
+            margin: 20px auto;
+        }
+
+        .options {
+            display: flex;
+            justify-content: space-around;
+            background-color: #333;
+            color: white;
+            border-radius: 10px 10px 0 0;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .option {
+            flex: 1;
+            padding: 15px 0;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+        }
+
+        .option:hover {
+            background-color: #555;
+        }
+
+        .active {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .content-container {
+            display: none;
+            transition: all 0.3s ease;
+        }
+
+        .content-container.active {
+            display: block;
+        }
+
+        .core-programming,
+        .output-prediction,
+        .design {
+            background-color: transparent;
+        }
+
+        .content-container {
+            opacity: 0;
+            transform: translateY(-10px);
+            visibility: hidden;
+        }
+
+        .content-container.active {
+            opacity: 1;
+            transform: translateY(0);
+            visibility: visible;
+        }
+
+        .output-prediction .question-container .question,
+        .design .question-container .question {
+            flex-direction: column;
+        }
+
+        .design .question-container img {
+            max-width: 100%;
+            min-width: 300px;
+            width: 700px;
+            height: auto;
+            margin: 20px auto;
+        }
+
+        .show-preview {
+            color: white;
+            background-color: #007bff;
+            padding: 5px 10px;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        .show-preview:hover {
+            background-color: #0056b3;
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 0 10px;
+            }
+
+            .demo-header {
+                padding: 15px 0;
+            }
+
+            .demo-header h1 {
+                font-size: 1.75rem;
+            }
+
+            .question {
+                flex-direction: column;
+            }
+
+            .toggle-code-btn {
+                margin-top: 10px;
+            }
+
+            .question h3 {
+                font-size: 1rem;
+            }
+
+            .toggle-code-btn {
+                padding: 8px 12px;
+            }
+
+            .copy-code-btn {
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="demo-header">
+        <h1 class="scroll-animate">Demo Questions</h1>
+        <nav>
+            <a href="../../index.html" class="nav-link scroll-animate">🏆 Olympiad</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="options">
+            <div class="option active" onclick="showContent('core-programming')">Core Programming</div>
+            <div class="option" onclick="showContent('output-prediction')">Output Prediction</div>
+            <div class="option" onclick="showContent('design')">Design</div>
+        </div>
+
+        <div class="content-container core-programming active">
+            <h2>Core Programming</h2>
+            <p>Here you can learn about core programming concepts such as algorithms, data structures, and more!</p>
+
+            <!-- Question Containers -->
+            <div class="question-container">
+                <div class="question">
+                    <h3 class="scroll-animate">Question 1: Write a function to find the factorial of a number.</h3>
+                    <button class="toggle-code-btn scroll-animate" onclick="toggleCode(this)">Show Code</button>
+                </div>
+                <div class="code-section code-hidden">
+                    <pre class="line-numbers">
+    <code class="language-c">
+    #include &lt;stdio.h&gt;
+    // Function to calculate factorial
+    unsigned long long factorial(int n) {
+        if (n &lt; 0) {
+            printf("Factorial is not defined for negative numbers.\\n");
+            return 0;
+        }
+        unsigned long long result = 1;
+        for (int i = 1; i &lt;= n; i++) {
+            result *= i;
+        }
+        return result;
+    }
+    
+    int main() {
+        int num;
+        printf("Enter a number to find its factorial: ");
+        scanf("%d", &num);
+    
+        unsigned long long fact = factorial(num);
+        if (fact != 0) {
+            printf("The factorial of %d is %llu\\n", num, fact);
+        }
+        return 0;
+    }
+    </code>
+            </pre>
+                    <button class="copy-code-btn" onclick="copyCode(this)">Copy Code</button>
+                </div>
+            </div>
+
+            <div class="question-container">
+                <div class="question">
+                    <h3 class="scroll-animate">Question 2: Write a function to check if a number is prime.</h3>
+                    <button class="toggle-code-btn scroll-animate" onclick="toggleCode(this)">Show Code</button>
+                </div>
+                <div class="code-section code-hidden">
+                    <pre class="line-numbers">
+    <code class="language-c">
+    #include &lt;stdio.h&gt;
+    
+    int isPrime(int n) {
+        if (n &lt; 2) {
+            return 0;
+        }
+        for (int i = 2; i * i &lt;= n; i++) {
+            if (n % i == 0) {
+                return 0;
+            }
+        }
+        return 1;
+    }
+    
+    int main() {
+        int num;
+        printf("Enter a number: ");
+        scanf("%d", &num);
+    
+        if (isPrime(num)) {
+            printf("%d is prime.\\n", num);
+        } else {
+            printf("%d is not prime.\\n", num);
+        }
+        return 0;
+    }
+    </code>
+            </pre>
+                    <button class="copy-code-btn" onclick="copyCode(this)">Copy Code</button>
+                </div>
+            </div>
+
+            <div class="question-container">
+                <div class="question">
+                    <h3 class="scroll-animate">Question 3: Write a function to reverse a string.</h3>
+                    <button class="toggle-code-btn scroll-animate" onclick="toggleCode(this)">Show Code</button>
+                </div>
+                <div class="code-section code-hidden">
+                    <pre class="line-numbers">
+    <code class="language-c">
+    #include &lt;stdio.h&gt;
+    #include &lt;string.h&gt;
+    
+    void reverseString(char str[]) {
+        int n = strlen(str);
+        for (int i = 0; i &lt; n / 2; i++) {
+            char temp = str[i];
+            str[i] = str[n - i - 1];
+            str[n - i - 1] = temp;
+        }
+    }
+    
+    int main() {
+        char str[100];
+        printf("Enter a string: ");
+        scanf("%s", str);
+    
+        reverseString(str);
+        printf("Reversed string: %s\\n", str);
+        return 0;
+    }
+    </code>
+            </pre>
+                    <button class="copy-code-btn" onclick="copyCode(this)">Copy Code</button>
+                </div>
+            </div>
+
+            <div class="question-container">
+                <div class="question">
+                    <h3 class="scroll-animate">Question 4: Write a function to find the maximum of two numbers.</h3>
+                    <button class="toggle-code-btn scroll-animate" onclick="toggleCode(this)">Show Code</button>
+                </div>
+                <div class="code-section code-hidden">
+                    <pre class="line-numbers">
+    <code class="language-c">
+    #include &lt;stdio.h&gt;
+    
+    int max(int a, int b) {
+        return (a &gt; b) ? a : b;
+    }
+    
+    int main() {
+        int num1, num2;
+        printf("Enter two numbers: ");
+        scanf("%d %d", &num1, &num2);
+    
+        printf("The maximum number is: %d\\n", max(num1, num2));
+        return 0;
+    }
+    </code>
+            </pre>
+                    <button class="copy-code-btn" onclick="copyCode(this)">Copy Code</button>
+                </div>
+            </div>
+
+            <div class="question-container">
+                <div class="question">
+                    <h3 class="scroll-animate">Question 5: Write a function to find the sum of an array of numbers.</h3>
+                    <button class="toggle-code-btn scroll-animate" onclick="toggleCode(this)">Show Code</button>
+                </div>
+                <div class="code-section code-hidden">
+                    <pre class="line-numbers">
+    <code class="language-c">
+    #include &lt;stdio.h&gt;
+    
+    int sumArray(int arr[], int size) {
+        int sum = 0;
+        for (int i = 0; i &lt; size; i++) {
+            sum += arr[i];
+        }
+        return sum;
+    }
+    
+    int main() {
+        int arr[] = {1, 2, 3, 4, 5};
+        int size = sizeof(arr) / sizeof(arr[0]);
+    
+        printf("Sum of array elements: %d\\n", sumArray(arr, size));
+        return 0;
+    }
+    </code>
+            </pre>
+                    <button class="copy-code-btn" onclick="copyCode(this)">Copy Code</button>
+                </div>
+            </div>
+
+            <div class="question-container">
+                <div class="question">
+                    <h3 class="scroll-animate">Question 6: Write a function to find the Fibonacci sequence up to a given
+                        number.
+                    </h3>
+                    <button class="toggle-code-btn scroll-animate" onclick="toggleCode(this)">Show Code</button>
+                </div>
+                <div class="code-section code-hidden">
+                    <pre class="line-numbers">
+    <code class="language-c">
+    #include &lt;stdio.h&gt;
+    
+    void fibonacci(int n) {
+        int a = 0, b = 1, next;
+        for (int i = 0; i &lt; n; i++) {
+            printf("%d ", a);
+            next = a + b;
+            a = b;
+            b = next;
+        }
+    }
+    
+    int main() {
+        int n;
+        printf("Enter a number: ");
+        scanf("%d", &n);
+    
+        fibonacci(n);
+        return 0;
+    }
+    </code>
+            </pre>
+                    <button class="copy-code-btn" onclick="copyCode(this)">Copy Code</button>
+                </div>
+            </div>
+
+            <div class="question-container">
+                <div class="question">
+                    <h3 class="scroll-animate">Question 7: Write a function to find the length of a string.</h3>
+                    <button class="toggle-code-btn scroll-animate" onclick="toggleCode(this)">Show Code</button>
+                </div>
+                <div class="code-section code-hidden">
+                    <pre class="line-numbers">
+    <code class="language-c">
+    #include &lt;stdio.h&gt;
+    #include &lt;string.h&gt;
+    
+    int stringLength(char str[]) {
+        return strlen(str);
+    }
+    
+    int main() {
+        char str[100];
+        printf("Enter a string: ");
+        scanf("%s", str);
+    
+        printf("Length of the string: %d\\n", stringLength(str));
+        return 0;
+    }
+    </code>
+            </pre>
+                    <button class="copy-code-btn" onclick="copyCode(this)">Copy Code</button>
+                </div>
+            </div>
+
+            <div class="question-container">
+                <div class="question">
+                    <h3 class="scroll-animate">Question 8: Write a function to count the number of vowels in a string.
+                    </h3>
+                    <button class="toggle-code-btn scroll-animate" onclick="toggleCode(this)">Show Code</button>
+                </div>
+                <div class="code-section code-hidden">
+                    <pre class="line-numbers">
+    <code class="language-c">
+    #include &lt;stdio.h&gt>
+    #include &lt;string.h&gt;
+    
+    int countVowels(char str[]) {
+        int count = 0;
+        for (int i = 0; i &lt; strlen(str); i++) {
+            if (str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u' || 
+                str[i] == 'A' || str[i] == 'E' || str[i] == 'I' || str[i] == 'O' || str[i] == 'U') {
+                count++;
+            }
+        }
+        return count;
+    }
+    
+    int main() {
+        char str[100];
+        printf("Enter a string: ");
+        scanf("%s", str);
+    
+        printf("Number of vowels: %d\\n", countVowels(str));
+        return 0;
+    }
+    </code>
+            </pre>
+                    <button class="copy-code-btn" onclick="copyCode(this)">Copy Code</button>
+                </div>
+            </div>
+
+            <div class="question-container">
+                <div class="question">
+                    <h3 class="scroll-animate">Question 9: Write a function to check if a string is a palindrome.</h3>
+                    <button class="toggle-code-btn scroll-animate" onclick="toggleCode(this)">Show Code</button>
+                </div>
+                <div class="code-section code-hidden">
+                    <pre class="line-numbers">
+    <code class="language-c">
+    #include &lt;stdio.h&gt;
+    #include &lt;string.h&gt;
+    
+    int isPalindrome(char str[]) {
+        int len = strlen(str);
+        for (int i = 0; i &lt; len / 2; i++) {
+            if (str[i] != str[len - i - 1]) {
+                return 0;
+            }
+        }
+        return 1;
+    }
+    
+    int main() {
+        char str[100];
+        printf("Enter a string: ");
+        scanf("%s", str);
+    
+        if (isPalindrome(str)) {
+            printf("The string is a palindrome.\\n");
+        } else {
+            printf("The string is not a palindrome.\\n");
+        }
+        return 0;
+    }
+    </code>
+            </pre>
+                    <button class="copy-code-btn" onclick="copyCode(this)">Copy Code</button>
+                </div>
+            </div>
+
+            <div class="question-container">
+                <div class="question">
+                    <h3 class="scroll-animate">Question 10: Write a function to calculate the power of a number.</h3>
+                    <button class="toggle-code-btn scroll-animate" onclick="toggleCode(this)">Show Code</button>
+                </div>
+                <div class="code-section code-hidden">
+                    <pre class="line-numbers">
+    <code class="language-c">
+    #include &lt;stdio.h&gt;
+    
+    double power(double base, int exponent) {
+        double result = 1;
+        for (int i = 0; i &lt; exponent; i++) {
+            result *= base;
+        }
+        return result;
+    }
+    
+    int main() {
+        double base;
+        int exponent;
+        printf("Enter base and exponent: ");
+        scanf("%lf %d", &base, &exponent);
+    
+        printf("Result: %lf\\n", power(base, exponent));
+        return 0;
+    }
+    </code>
+            </pre>
+                    <button class="copy-code-btn" onclick="copyCode(this)">Copy Code</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-container output-prediction">
+            <h2>Output Prediction</h2>
+            <p>In this section, we focus on predicting the output of various code examples in different languages.</p>
+
+            <div class="question-container ">
+                <div class="question">
+                    <h3 class="scroll-animate">Question 1: </h3>
+                    <div class="code-section">
+                        <pre>
+<code class="language-c">#include &lt;stdio.h&gt;
+int main() {
+    int num = 6;
+    if(num){
+        printf(num");
+    }
+    else{
+        printf("%d",num);
+    }
+    return 0;
+}
+        </code>
+                </pre>
+                        <button class="copy-code-btn" onclick="copyCode(this)">Copy Code</button>
+                    </div>
+                    <button class="toggle-code-btn scroll-animate" onclick="toggleCode(this)">Show Output</button>
+                </div>
+
+                <div class="answer code-hidden">
+                    <span class="path">PS C:\BMC IT Club\Code Olympiad 2081></span> <span
+                        class="output-answer">num</span>
+
+                </div>
+            </div>
+
+            <div class="question-container ">
+                <div class="question">
+                    <h3 class="scroll-animate">Question 2: </h3>
+                    <div class="code-section">
+                        <pre>
+<code class="language-c">#include &lt;stdio.h&gt;
+int main() {
+    int num = 5;
+    printf("%d", num++);
+    return 0;
+}</code>
+                </pre>
+                        <button class="copy-code-btn" onclick="copyCode(this)">Copy Code</button>
+                    </div>
+                    <button class="toggle-code-btn scroll-animate" onclick="toggleCode(this)">Show Output</button>
+                </div>
+
+                <div class="answer code-hidden">
+                    <span class="path">PS C:\BMC IT Club\Code Olympiad 2081></span> <span class="output-answer">5</span>
+
+                </div>
+            </div>
+
+            <div class="question-container ">
+                <div class="question">
+                    <h3 class="scroll-animate">Question 3: </h3>
+                    <div class="code-section">
+                        <pre>
+<code class="language-c">
+#include &lt;stdio.h&gt;
+int main() {
+    int x = 10;
+    if (x = 5) {
+        printf(&quot;True&quot;);
+    } else {
+        printf(&quot;False&quot;);
+    }
+    return 0;
+}</code>
+                </pre>
+                        <button class="copy-code-btn" onclick="copyCode(this)">Copy Code</button>
+                    </div>
+                    <button class="toggle-code-btn scroll-animate" onclick="toggleCode(this)">Show Output</button>
+                </div>
+
+                <div class="answer code-hidden">
+                    <span class="path">PS C:\BMC IT Club\Code Olympiad 2081></span> <span
+                        class="output-answer">True</span>
+
+                </div>
+            </div>
+
+            <div class="question-container ">
+                <div class="question">
+                    <h3 class="scroll-animate">Question 4: </h3>
+                    <div class="code-section">
+                        <pre>
+<code class="language-c">
+#include &lt;stdio.h&gt;
+int main() {
+    int x = 5;
+    int y = 10;
+    if (x == 5 &amp;&amp; y == 10) {
+        printf(&quot;Both are correct&quot;);
+    } else {
+        printf(&quot;One is incorrect&quot;);
+    }
+    return 0;
+}</code>
+                </pre>
+                        <button class="copy-code-btn" onclick="copyCode(this)">Copy Code</button>
+                    </div>
+                    <button class="toggle-code-btn scroll-animate" onclick="toggleCode(this)">Show Output</button>
+                </div>
+
+                <div class="answer code-hidden">
+                    <span class="path">PS C:\BMC IT Club\Code Olympiad 2081></span> <span class="output-answer">Both
+                        are
+                        correct</span>
+
+                </div>
+            </div>
+
+            <div class="question-container ">
+                <div class="question">
+                    <h3 class="scroll-animate">Question 5: </h3>
+                    <div class="code-section">
+                        <pre>
+<code class="language-c">
+#include &lt;stdio.h&gt;
+int main() {
+    char str[] = &quot;Hello&quot;;
+    printf(&quot;%c&quot;, str[1]);
+    return 0;
+}</code>
+                </pre>
+                        <button class="copy-code-btn" onclick="copyCode(this)">Copy Code</button>
+                    </div>
+                    <button class="toggle-code-btn scroll-animate" onclick="toggleCode(this)">Show Output</button>
+                </div>
+
+                <div class="answer code-hidden">
+                    <span class="path">PS C:\BMC IT Club\Code Olympiad 2081></span> <span class="output-answer">e</span>
+
+                </div>
+            </div>
+
+            <div class="question-container ">
+                <div class="question">
+                    <h3 class="scroll-animate">Question 6: </h3>
+                    <div class="code-section">
+                        <pre>
+<code class="language-c">
+#include &lt;stdio.h&gt;
+int main() {
+    int num = 0;
+    if (num) {
+        printf(&quot;True&quot;);
+    } else {
+        printf(&quot;False&quot;);
+    }
+    return 0;
+}</code>
+                </pre>
+                        <button class="copy-code-btn" onclick="copyCode(this)">Copy Code</button>
+                    </div>
+                    <button class="toggle-code-btn scroll-animate" onclick="toggleCode(this)">Show Output</button>
+                </div>
+
+                <div class="answer code-hidden">
+                    <span class="path">PS C:\BMC IT Club\Code Olympiad 2081></span> <span
+                        class="output-answer">False</span>
+
+                </div>
+            </div>
+
+            <div class="question-container ">
+                <div class="question">
+                    <h3 class="scroll-animate">Question 7: </h3>
+                    <div class="code-section">
+                        <pre>
+<code class="language-c">
+#include &lt;stdio.h&gt;
+int main() {
+    int x = 5;
+    printf(&quot;%d&quot;, ++x + x++); 
+    return 0;
+}</code>
+                </pre>
+                        <button class="copy-code-btn" onclick="copyCode(this)">Copy Code</button>
+                    </div>
+                    <button class="toggle-code-btn scroll-animate" onclick="toggleCode(this)">Show Output</button>
+                </div>
+
+                <div class="answer code-hidden">
+                    <span class="path">PS C:\BMC IT Club\Code Olympiad 2081></span> <span
+                        class="output-answer">11</span>
+
+                </div>
+            </div>
+
+            <div class="question-container ">
+                <div class="question">
+                    <h3 class="scroll-animate">Question 8: </h3>
+                    <div class="code-section">
+                        <pre>
+<code class="language-c">
+#include &lt;stdio.h&gt;
+int main() {
+    int a = 10;
+    int b = 20;
+    if (a++ == 10 &amp;&amp; ++b == 21) {
+        printf(&quot;Condition True&quot;);
+    } else {
+        printf(&quot;Condition False&quot;);
+    }
+    return 0;
+}</code>
+                </pre>
+                        <button class="copy-code-btn" onclick="copyCode(this)">Copy Code</button>
+                    </div>
+                    <button class="toggle-code-btn scroll-animate" onclick="toggleCode(this)">Show Output</button>
+                </div>
+
+                <div class="answer code-hidden">
+                    <span class="path">PS C:\BMC IT Club\Code Olympiad 2081></span> <span
+                        class="output-answer">Condition
+                        True</span>
+
+                </div>
+            </div>
+
+            <div class="question-container ">
+                <div class="question">
+                    <h3 class="scroll-animate">Question 9: </h3>
+                    <div class="code-section">
+                        <pre>
+<code class="language-c">
+#include &lt;stdio.h&gt;
+int main() {
+    int i = 10;
+    int sum = 0;
+    while (i-- > 0) {
+        sum += i;
+    }
+    printf(&quot;%d&quot;, sum);
+    return 0;
+}</code>
+                </pre>
+                        <button class="copy-code-btn" onclick="copyCode(this)">Copy Code</button>
+                    </div>
+                    <button class="toggle-code-btn scroll-animate" onclick="toggleCode(this)">Show Output</button>
+                </div>
+
+                <div class="answer code-hidden">
+                    <span class="path">PS C:\BMC IT Club\Code Olympiad 2081></span> <span
+                        class="output-answer">45</span>
+
+                </div>
+            </div>
+
+            <div class="question-container ">
+                <div class="question">
+                    <h3 class="scroll-animate">Question 10: </h3>
+                    <div class="code-section">
+                        <pre>
+<code class="language-c">
+#include &lt;stdio.h&gt;
+int main() {
+    int x = 5, y = 2;
+    x *= y++;
+    printf(&quot;%d&quot;, x);
+    return 0;
+}</code>
+                </pre>
+                        <button class="copy-code-btn" onclick="copyCode(this)">Copy Code</button>
+                    </div>
+                    <button class="toggle-code-btn scroll-animate" onclick="toggleCode(this)">Show Output</button>
+                </div>
+
+                <div class="answer code-hidden">
+                    <span class="path">PS C:\BMC IT Club\Code Olympiad 2081></span> <span
+                        class="output-answer">10</span>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="content-container design">
+            <h2>Design</h2>
+            <p>This section is all about designing user interfaces and enhancing visual experience using html and css.
+            </p>
+
+            <div class="question-container">
+                <div class="question">
+                    <h3 class="scroll-animate">Design 1: Form <a href="../Demo-html-css/form-design.html"
+                            target="_blank" rel="noopener" class="show-preview">Show Preview</a></h3>
+                    <img src="../Design/Form-min.png" alt="Form Design">
+                    <button class="toggle-code-btn scroll-animate" onclick="toggleCode(this)">Show Code</button>
+                </div>
+                <div class="code-section code-hidden">
+                    <pre class="line-numbers">
+<code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;title&gt;Sign Up / Registration Form &lt;/title&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot; /&gt;
+    &lt;style&gt;
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Roboto;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background: linear-gradient(120deg, #007bff, #d0314c);
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 29vw;
+            background: white;
+            border-radius: 10px;
+        }
+
+        .center h1 {
+            text-align: center;
+            padding: 0 0 20px 0;
+            border-bottom: 1px solid silver;
+        }
+
+        .center form {
+            padding: 0 40px;
+            box-sizing: border-box;
+        }
+
+        form .txt_field {
+            position: relative;
+            border-bottom: 2px solid #adadad;
+            margin: 30px 0;
+        }
+
+        .txt_field input {
+            width: 100%;
+            padding: 0 5px;
+            height: 40px;
+            font-size: 16px;
+            border: none;
+            background: none;
+            outline: none;
+        }
+
+        .txt_field label {
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            color: #adadad;
+            transform: translateY(-50%);
+            font-size: 16px;
+            pointer-events: none;
+        }
+
+        .txt_field span::before {
+            content: &#39;&#39;;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            width: 0px;
+            height: 2px;
+            background: #2691d9;
+            transition: .5s;
+        }
+
+        .txt_field input:focus~label,
+        .txt_field input:valid~label {
+            top: -5px;
+            color: #2691d9;
+        }
+
+        .txt_field input:focus~span::before,
+        .txt_field input:Valid~span::before {
+            width: 100%;
+        }
+
+        .pass {
+            margin: -5px 0 20px 5px;
+            color: #a6a6a6;
+            cursor: pointer;
+        }
+
+        .pass:hover {
+            text-decoration: underline;
+        }
+
+        input[type=&quot;Submit&quot;] {
+            width: 100%;
+            height: 50px;
+            border: 1px solid;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+
+        }
+
+        input[type=&quot;Submit&quot;]:hover {
+            background: #2691d9;
+            color: #e9f4fb;
+            transition: .5s;
+        }
+
+        .signup_link {
+            margin: 30px 0;
+            text-align: center;
+            font-size: 16px;
+            color: #666666;
+        }
+
+        .signup_link a {
+            color: #2691d9;
+            text-decoration: none;
+        }
+
+        .signup_link a:hover {
+            text-decoration: underline;
+        }
+
+        .HomeAbout {
+            width: 100vw;
+            height: 25vh;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;center&quot;&gt;
+            &lt;h1&gt;Register&lt;/h1&gt;
+            &lt;form method=&quot;POST&quot; action=&quot;&quot;&gt;
+                &lt;div class=&quot;txt_field&quot;&gt;
+                    &lt;input type=&quot;text&quot; name=&quot;name&quot; required&gt;
+                    &lt;span&gt;&lt;/span&gt;
+                    &lt;label&gt;Name&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;txt_field&quot;&gt;
+                    &lt;input type=&quot;email&quot; name=&quot;email&quot; required&gt;
+                    &lt;span&gt;&lt;/span&gt;
+                    &lt;label&gt;Email&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;txt_field&quot;&gt;
+                    &lt;input type=&quot;password&quot; name=&quot;password&quot; required&gt;
+                    &lt;span&gt;&lt;/span&gt;
+                    &lt;label&gt;Password&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;txt_field&quot;&gt;
+                    &lt;input type=&quot;password&quot; name=&quot;cpassword&quot; required&gt;
+                    &lt;span&gt;&lt;/span&gt;
+                    &lt;label&gt;Confirm Password&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;input name=&quot;submit&quot; type=&quot;Submit&quot; value=&quot;Sign Up&quot;&gt;
+                &lt;div class=&quot;signup_link&quot;&gt;
+                    Have an Account ? &lt;a href=&quot;#&quot;&gt;Login Here&lt;/a&gt;
+                &lt;/div&gt;
+            &lt;/form&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code>
+            </pre>
+                    <button class="copy-code-btn" onclick="copyCode(this)">Copy Code</button>
+
+                </div>
+            </div>
+            <div class="question-container">
+                <div class="question">
+                    <h3 class="scroll-animate">Design 2: Footer <a href="../Demo-html-css/footer-design.html"
+                            target="_blank" rel="noopener" class="show-preview">Show Preview</a></h3>
+                    <img src="../Design/Footer-min.png" alt="Footer Design">
+                    <button class="toggle-code-btn scroll-animate" onclick="toggleCode(this)">Show Code</button>
+                </div>
+                <div class="code-section code-hidden">
+                    <pre class="line-numbers">
+<code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;title&gt;Footer&lt;/title&gt;
+    &lt;script src="https://kit.fontawesome.com/66aa7c98b3.js" crossorigin="anonymous"&gt;&lt;/script&gt;
+    &lt;style&gt;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .footer {
+            background-color: black;
+            color: #fefefe;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer .heading {
+            color: #fefefe;
+            max-width: 1010px;
+            width: 90%;
+            text-transform: uppercase;
+            margin: 0 auto;
+            margin-bottom: 3rem;
+            font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+        }
+
+        .footer .content {
+            display: flex;
+            justify-content: space-evenly;
+            margin: 1.5rem;
+        }
+
+        .footer .content p {
+            margin-bottom: 1.3rem;
+        }
+
+        .footer .content a {
+            text-decoration: none;
+            color: #fefefe;
+        }
+
+        .footer .content a:hover {
+            border-bottom: 1px solid #971717;
+        }
+
+        .footer .content h4 {
+            margin-bottom: 1.3rem;
+            font-size: 19px;
+        }
+
+        footer {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        footer hr {
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 767px) {
+            .footer .content {
+                display: flex;
+                flex-direction: column;
+                font-size: 14px;
+            }
+
+            .footer {
+                position: unset;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .footer .content,
+            .footer {
+                font-size: 14px;
+            }
+        }
+
+        @media (orientation: landscape) and (max-height: 500px) {
+            .footer {
+                position: unset;
+            }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class="footer"&gt;
+        &lt;div class="heading"&gt;
+            &lt;h2&gt;Arun&lt;sup&gt;™&lt;/sup&gt;&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class="content"&gt;
+            &lt;div class="services"&gt;
+                &lt;h4&gt;Services&lt;/h4&gt;
+                &lt;p&gt;&lt;a href="#"&gt;App development&lt;/a&gt;&lt;/p&gt;
+                &lt;p&gt;&lt;a href="#"&gt;Web development&lt;/a&gt;&lt;/p&gt;
+                &lt;p&gt;&lt;a href="#"&gt;DevOps&lt;/a&gt;&lt;/p&gt;
+                &lt;p&gt;&lt;a href="#"&gt;Web designing&lt;/a&gt;&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="social-media"&gt;
+                &lt;h4&gt;Social&lt;/h4&gt;
+                &lt;p&gt;
+                    &lt;a href="#"&gt;&lt;i class="fab fa-linkedin"&gt;&lt;/i&gt; Linkedin&lt;/a&gt;
+                &lt;/p&gt;
+                &lt;p&gt;
+                    &lt;a href="#"&gt;&lt;i class="fab fa-twitter"&gt;&lt;/i&gt; Twitter&lt;/a&gt;
+                &lt;/p&gt;
+                &lt;p&gt;
+                    &lt;a href="https://github.com/arundada9000"&gt;&lt;i class="fab fa-github"&gt;&lt;/i&gt; Github&lt;/a&gt;
+                &lt;/p&gt;
+                &lt;p&gt;
+                    &lt;a href="https://www.facebook.com/arunneupane9000"&gt;&lt;i class="fab fa-facebook"&gt;&lt;/i&gt; Facebook&lt;/a&gt;
+                &lt;/p&gt;
+                &lt;p&gt;
+                    &lt;a href="https://www.instagram.com/arundada9000"&gt;&lt;i class="fab fa-instagram"&gt;&lt;/i&gt; Instagram&lt;/a&gt;
+                &lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="links"&gt;
+                &lt;h4&gt;Quick links&lt;/h4&gt;
+                &lt;p&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/p&gt;
+                &lt;p&gt;&lt;a href="#"&gt;About&lt;/a&gt;&lt;/p&gt;
+                &lt;p&gt;&lt;a href="#"&gt;Blogs&lt;/a&gt;&lt;/p&gt;
+                &lt;p&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="details"&gt;
+                &lt;h4 class="address"&gt;Address&lt;/h4&gt;
+                &lt;p&gt;
+                    Bhairahawa, Dadagau-8, Rupandehi, Nepal
+                &lt;/p&gt;
+                &lt;h4 class="mobile"&gt;Mobile&lt;/h4&gt;
+                &lt;p&gt;&lt;a href="#"&gt;+9779811420975&lt;/a&gt;&lt;/p&gt;
+                &lt;h4 class="mail"&gt;Email&lt;/h4&gt;
+                &lt;p&gt;&lt;a href="#"&gt;bmcitclub01@gmail.com&lt;/a&gt;&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;footer&gt;
+            &lt;hr /&gt;
+            © 2022 BMC IT Club.
+        &lt;/footer&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code>
+                            
+            </pre>
+                    <button class="copy-code-btn" onclick="copyCode(this)">Copy Code</button>
+                </div>
+            </div>
+            <div class="question-container">
+                <div class="question">
+                    <h3 class="scroll-animate">Design 3: Modal <a href="../Demo-html-css/modal-design.html"
+                            target="_blank" rel="noopener" class="show-preview">Show Preview</a></h3>
+                    <img src="../Design/Modal-min.png" alt="Modal Design">
+                    <button class="toggle-code-btn scroll-animate" onclick="toggleCode(this)">Show Code</button>
+                </div>
+                <div class="code-section code-hidden">
+                    <pre class="line-numbers">
+<code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;title&gt;Modal Popup Window&lt;/title&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width" /&gt;
+    &lt;style&gt;
+        html,
+        body {
+            height: 100%;
+        }
+
+        html {
+            font-size: 18px;
+            line-height: 1.4;
+        }
+
+        body {
+            font-family: "Segoe UI";
+            font-weight: 600;
+            background-image: linear-gradient(#e66465, #9198e5);
+            color: black;
+            overflow: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .modal-window {
+            position: fixed;
+            background-color: rgba(255, 255, 255, 0.25);
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s;
+        }
+
+        .modal-window:target {
+            visibility: visible;
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-window&gt;div {
+            border-radius: 1rem;
+        }
+
+        .modal-window div:not(:last-of-type) {
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            background-color: white;
+            padding: 1em 1.5em;
+            border-radius: 0.5rem;
+            text-decoration: none;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        *::-webkit-scrollbar {
+            background-color: transparent;
+            width: 12px;
+        }
+
+        *::-webkit-scrollbar-thumb {
+            border-radius: 99px;
+            background-color: #ddd;
+            border: 4px solid #fff;
+        }
+
+        .modal-container {
+            max-height: 90vh;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.25);
+        }
+
+        @media (max-width: 600px) {
+            .modal-container {
+                width: 90%;
+            }
+        }
+
+        .modal-container-header {
+            padding: 16px 32px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .modal-container-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            line-height: 1;
+            font-weight: 700;
+            font-size: 1.125;
+        }
+
+        .modal-container-body {
+            padding: 24px 32px 51px;
+            overflow-y: auto;
+        }
+
+        .modal-container-footer {
+            padding: 20px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            border-top: 1px solid #ddd;
+            gap: 12px;
+            position: relative;
+        }
+
+        .modal-container-footer:after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: -51px;
+            left: 24px;
+            right: 24px;
+            height: 50px;
+            flex-shrink: 0;
+            background-image: linear-gradient(to top, rgba(255, 255, 255, 0.75), transparent);
+            pointer-events: none;
+        }
+
+        .button {
+            padding: 12px 20px;
+            border-radius: 8px;
+            background-color: transparent;
+            border: 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.15s ease;
+        }
+
+        .button.is-ghost:hover,
+        .button.is-ghost:focus {
+            background-color: #dfdad7;
+        }
+
+        .button.is-primary {
+            background-color: #e66465;
+            color: #fff;
+        }
+
+        .button.is-primary:hover,
+        .button.is-primary:focus {
+            background-color: #db4848;
+        }
+
+        .icon-button {
+            padding: 0;
+            border: 0;
+            background-color: transparent;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.15s ease;
+        }
+
+        .icon-button svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .icon-button:hover,
+        .icon-button:focus {
+            background-color: #dfdad7;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="interior"&gt;
+            &lt;a class="btn" href="#open-modal"&gt;Terms and Conditions&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div id="open-modal" class="modal-window"&gt;
+        &lt;div&gt;
+            &lt;article class="modal-container"&gt;
+                &lt;header class="modal-container-header"&gt;
+                    &lt;h1 class="modal-container-title"&gt;
+                        Terms and Conditions
+                    &lt;/h1&gt;
+                    &lt;button class="icon-button" onclick="location.href='#';"&gt;
+                        &lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"&gt;
+                            &lt;path fill="none" d="M0 0h24v24H0z" /&gt;
+                            &lt;path fill="currentColor"
+                                d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z" /&gt;
+                        &lt;/svg&gt;
+                    &lt;/button&gt;
+                &lt;/header&gt;
+                &lt;section class="modal-container-body"&gt;
+                    &lt;h2&gt;Quarum ambarum rerum cum medicinam pollicetur, luxuriae licentiam pollicetur.&lt;/h2&gt;
+
+                    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Unum nescio, quo modo possit, si
+                        luxuriosus sit, finitas cupiditates habere. Hoc est non modo cor &lt;/p&gt;
+
+                    &lt;h3&gt;Ut proverbia non nulla veriora sint quam vestra dogmata.&lt;/h3&gt;
+
+                    &lt;p&gt;Quasi vero, inquit, perpetua oratio rhetorum solum, non etiam philosophorum sit. Tria genera
+                        cupiditatum, naturales et necessariae, naturales et non necessariae, nec naturales nec
+                        necessariae. Sin aliud quid voles, postea. Consequatur summas voluptates non modo parvo, sed per
+                        me nihilo, si potest; &lt;/p&gt;
+
+                    &lt;p&gt;Cur igitur easdem res, inquam, Peripateticis dicentibus verbum nullum est, quod non intellegatur?
+                        Primum in nostrane potestate est, quid meminerimus? Eam tum adesse, cum dolor omnis absit;
+                        Quodsi ipsam honestatem undique pertectam atque absolutam. Aliam vero vim voluptatis esse, &lt;/p&gt;
+
+                    &lt;h2&gt;An hoc usque quaque, aliter in vita?&lt;/h2&gt;
+                    &lt;ol&gt;
+                        &lt;li&gt;Etenim nec iustitia nec amicitia esse omnino poterunt, nisi ipsae per se expetuntur.&lt;/li&gt;
+                        &lt;li&gt;Pisone in eo gymnasio, quod Ptolomaeum vocatur, unaque nobiscum Q.&lt;/li&gt;
+                        &lt;li&gt;Certe nihil nisi quod possit ipsum propter se iure laudari.&lt;/li&gt;
+                        &lt;li&gt;Itaque e contrario moderati aequabilesque habitus, affectiones ususque corporis apti esse ad
+                            naturam videntur.&lt;/li&gt;
+                    &lt;/ol&gt;
+
+                    &lt;p&gt;Utilitatis causa amicitia est quaesita. Qui autem de summo bono dissentit de tota philosophiae
+                        ratione dissentit. Quamquam non negatis nos intellegere quid sit voluptas, sed quid ille dicat.
+                        Sed emolumenta communia esse dicuntur, recte autem facta et peccata non habentur communia. &lt;/p&gt;
+
+                    &lt;h3&gt;Claudii libidini, qui tum erat summo ne imperio, dederetur.&lt;/h3&gt;
+
+                    &lt;p&gt;Eorum enim est haec querela, qui sibi cari sunt seseque diligunt. Cum audissem Antiochum, Brute,
+                        ut solebam, cum M. An obliviscimur, quantopere in audiendo in legendoque moveamur, cum pie, cum
+                        amice, cum magno animo aliquid factum cognoscimus? Qui igitur convenit ab alia voluptate dicere
+                        naturam proficisci, in alia summum bonum ponere? Magni enim aestimabat pecuniam non modo non
+                        contra leges, sed etiam legibus partam. &lt;/p&gt;
+
+                    &lt;h2&gt;Sed nimis multa.&lt;/h2&gt;
+
+                    &lt;p&gt;Nec vero alia sunt quaerenda contra Carneadeam illam sententiam. Negat enim summo bono afferre
+                        incrementum diem. Causa autem fuit huc veniendi ut quosdam hinc libros promerem. &lt;/p&gt;
+
+                &lt;/section&gt;
+                &lt;footer class="modal-container-footer"&gt;
+                    &lt;button class="button is-ghost"&gt;Decline&lt;/button&gt;
+                    &lt;button class="button is-primary"&gt;Accept&lt;/button&gt;
+                &lt;/footer&gt;
+            &lt;/article&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code>                            
+            </pre>
+                    <button class="copy-code-btn" onclick="copyCode(this)">Copy Code</button>
+                </div>
+            </div>
+            <div class="question-container">
+                <div class="question">
+                    <h3 class="scroll-animate">Design 4: Landing Page <a
+                            href="../Demo-html-css/landing-page-design.html" target="_blank" rel="noopener"
+                            class="show-preview">Show Preview</a></h3>
+                    <img src="../Design/Starbucks-min.png" alt="Landing page Design">
+                    <button class="toggle-code-btn scroll-animate" onclick="toggleCode(this)">Show Code</button>
+                </div>
+                <div class="code-section code-hidden">
+                    <pre class="line-numbers">
+<code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;style&gt;
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Nunito+Sans:ital,wght@0,400;0,700;0,800;1,300;1,700&family=Poppins:wght@400;500;600;700;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        section {
+            position: relative;
+            width: 100%;
+            min-width: 100vh;
+            padding: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fff;
+        }
+
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            position: relative;
+            max-width: 80px;
+        }
+
+        header ul {
+            position: relative;
+            display: flex;
+        }
+
+        header ul li {
+            list-style: none;
+        }
+
+        header ul li a {
+            display: inline-block;
+            color: #333;
+            font-weight: 800;
+            margin-left: 40px;
+            text-decoration: none;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .container .text-box {
+            position: relative;
+            max-width: 600px;
+        }
+
+        .container .text-box h2 {
+            color: #333;
+            font-size: 4em;
+            font-weight: 500px;
+        }
+
+        .container .text-box h2 span {
+            color: #017143;
+            font-size: 1.2em;
+            font-weight: 900;
+        }
+
+        .container .text-box p {
+            color: #333;
+        }
+
+        .container .text-box a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 8px 20px;
+            background: #017143;
+            color: #fff;
+            border-radius: 40px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        .container .img-box {
+            width: 600px;
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 50px;
+            margin-top: 50px;
+        }
+
+        .container .img-box img {
+            max-width: 340px;
+        }
+
+        .thumb {
+            position: absolute;
+            left: 50%;
+            bottom: 20px;
+            transform: translateX(-50%);
+            display: flex;
+        }
+
+        .thumb li {
+            list-style: none;
+            display: inline-block;
+            margin: 0 20px;
+            padding: ;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+
+        .thumb li:hover {
+            transform: translateY(-15px);
+        }
+
+        .thumb li img {
+            max-width: 600px;
+        }
+
+        .social {
+            position: absolute;
+            top: 50%;
+            right: 30px;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .social li {
+            list-style: none;
+        }
+
+        .social li a {
+            display: inline-block;
+            margin: 5px 0;
+            transform: scale(0.6);
+            filter: invert(1);
+        }
+
+        .circle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #017143;
+            clip-path: circle(600px at right 800px);
+        }
+    &lt;/style&gt;
+    &lt;title&gt;Starbucks Coffee Website Landing Page&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;section&gt;
+        &lt;div class="circle"&gt;&lt;/div&gt;
+        &lt;header&gt;
+            &lt;a href="#"&gt;&lt;img src="./images/starbucks-logo.png" class="logo"&gt;&lt;/a&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Menu&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;What's New&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/header&gt;
+        &lt;div class="container"&gt;
+            &lt;div class="text-box"&gt;
+                &lt;h2&gt;Its not just a Coffee &lt;br&gt;Its &lt;span&gt;Starbucks&lt;/span&gt;&lt;/h2&gt;
+                &lt;p&gt;Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor modi consequatur nulla, fugit odit
+                    rerum quaerat illo at! Nihil velit tempore debitis. Doloribus quasi perspiciatis fuga nulla
+                    aspernatur necessitatibus adipisci.&lt;/p&gt;
+                &lt;a href="#"&gt;learn More&lt;/a&gt;
+            &lt;/div&gt;
+            &lt;div class="img-box"&gt;
+                &lt;img src="./images/img1.png" class="starbucks" alt=""&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;ul class="thumb"&gt;
+            &lt;li&gt;&lt;img src="./images/thumb1.png"
+                    onclick="imgSlider('https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/img1.png');changeCircleColor('#017143')"&gt;
+            &lt;/li&gt;
+            &lt;li&gt;&lt;img src="./images/thumb2.png"
+                    onclick="imgSlider('https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/img2.png');changeCircleColor('#0eb7495')"&gt;
+            &lt;/li&gt;
+            &lt;li&gt;&lt;img src="./images/thumb3.png"
+                    onclick="imgSlider('https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/img3.png');changeCircleColor('#d752b1')"&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;ul class="social"&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;img src="./images/facebook.png"&gt;&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;img src="./images/instagram.png"&gt;&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;img src="./images/twitter.png"&gt;&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/section&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code>
+            </pre>
+                    <button class="copy-code-btn" onclick="copyCode(this)">Copy Code</button>
+                </div>
+            </div>
+            <div class="question-container">
+                <div class="question">
+                    <h3 class="scroll-animate">Design 5: <a href="../Demo-html-css/blog-card.html" target="_blank"
+                            rel="noopener" class="show-preview">Show Preview</a></h3>
+                    <img src="../Design/Blog-min.png" alt="Blog Design">
+                    <button class="toggle-code-btn scroll-animate" onclick="toggleCode(this)">Show Code</button>
+                </div>
+                <div class="code-section code-hidden">
+                    <pre class="line-numbers">
+<code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+  &lt;title&gt;Responsive Blog Card&lt;/title&gt;
+  &lt;meta charset="UTF-8" /&gt;
+  &lt;meta name="viewport" content="width=device-width" /&gt;
+  &lt;style&gt;
+    @import url('https://fonts.googleapis.com/css?family=Heebo:400,700|Open+Sans:400,700');
+
+    :root {
+      --color: #3c3163;
+      --transition-time: 0.5s;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Open Sans';
+      background: #fafafa;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .cards-wrapper {
+      display: grid;
+      justify-content: center;
+      align-items: center;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 4rem;
+      padding: 4rem;
+      margin: 0 auto;
+      width: max-content;
+    }
+
+    .card {
+      font-family: 'Heebo';
+      --bg-filter-opacity: 0.5;
+      background-image: linear-gradient(rgba(0, 0, 0, var(--bg-filter-opacity)), rgba(0, 0, 0, var(--bg-filter-opacity))), var(--bg-img);
+      height: 20em;
+      width: 15em;
+      font-size: 1.5em;
+      color: white;
+      border-radius: 1em;
+      padding: 1em;
+      /*margin: 2em;*/
+      display: flex;
+      align-items: flex-end;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 0 5em -1em black;
+      transition: all, var(--transition-time);
+      position: relative;
+      overflow: hidden;
+      border: 10px solid #ccc;
+      text-decoration: none;
+    }
+
+    .card:hover {
+      transform: rotate(0);
+    }
+
+    .card h1 {
+      margin: 0;
+      font-size: 1.5em;
+      line-height: 1.2em;
+    }
+
+    .card p {
+      font-size: 0.75em;
+      font-family: 'Open Sans';
+      margin-top: 0.5em;
+      line-height: 2em;
+    }
+
+    .card .tags {
+      display: flex;
+    }
+
+    .card .tags .tag {
+      font-size: 0.75em;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 0.3rem;
+      padding: 0 0.5em;
+      margin-right: 0.5em;
+      line-height: 1.5em;
+      transition: all, var(--transition-time);
+    }
+
+    .card:hover .tags .tag {
+      background: var(--color);
+      color: white;
+    }
+
+    .card .date {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 0.75em;
+      padding: 1em;
+      line-height: 1em;
+      opacity: .8;
+    }
+
+    .card:before,
+    .card:after {
+      content: '';
+      transform: scale(0);
+      transform-origin: top left;
+      border-radius: 50%;
+      position: absolute;
+      left: -50%;
+      top: -50%;
+      z-index: -5;
+      transition: all, var(--transition-time);
+      transition-timing-function: ease-in-out;
+    }
+
+    .card:before {
+      background: #ddd;
+      width: 250%;
+      height: 250%;
+    }
+
+    .card:after {
+      background: white;
+      width: 200%;
+      height: 200%;
+    }
+
+    .card:hover {
+      color: var(--color);
+    }
+
+    .card:hover:before,
+    .card:hover:after {
+      transform: scale(1);
+    }
+
+    .card-grid-space .num {
+      font-size: 3em;
+      margin-bottom: 1.2rem;
+      margin-left: 1rem;
+    }
+
+    .info {
+      font-size: 1.2em;
+      display: flex;
+      padding: 1em 3em;
+      height: 3em;
+    }
+
+    .info img {
+      height: 3em;
+      margin-right: 0.5em;
+    }
+
+    .info h1 {
+      font-size: 1em;
+      font-weight: normal;
+    }
+
+    /* MEDIA QUERIES */
+    @media screen and (max-width: 1285px) {
+      .cards-wrapper {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media screen and (max-width: 900px) {
+      .cards-wrapper {
+        grid-template-columns: 1fr;
+      }
+
+      .info {
+        justify-content: center;
+      }
+
+      .card-grid-space .num {
+        margin-left: 0;
+        text-align: center;
+      }
+    }
+
+    @media screen and (max-width: 500px) {
+      .cards-wrapper {
+        padding: 4rem 2rem;
+      }
+
+      .card {
+        max-width: calc(100vw - 4rem);
+      }
+    }
+
+    @media screen and (max-width: 450px) {
+      .info {
+        display: block;
+        text-align: center;
+      }
+
+      .info h1 {
+        margin: 0;
+      }
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;section class="cards-wrapper"&gt;
+    &lt;div class="card-grid-space"&gt;
+      &lt;div class="num"&gt;01&lt;/div&gt;
+      &lt;a class="card" style="--bg-img: url('./images/squid-game-loader.png')"&gt;
+        &lt;div&gt;
+          &lt;h1&gt;Squid Game Loaders&lt;/h1&gt;
+          &lt;p&gt;Loaders are one of the classic components used to create an attractive website…&lt;/p&gt;
+          &lt;div class="date"&gt;22 July 2022&lt;/div&gt;
+          &lt;div class="tags"&gt;
+            &lt;div class="tag"&gt;CSS&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="card-grid-space"&gt;
+      &lt;div class="num"&gt;02&lt;/div&gt;
+      &lt;a class="card" style="--bg-img: url('./images/glowing.png')"&gt;
+        &lt;div&gt;
+          &lt;h1&gt;Glowing Pulse Search Bar&lt;/h1&gt;
+          &lt;p&gt;When it comes to website elements that are beautiful and must-haves…&lt;/p&gt;
+          &lt;div class="date"&gt;13 July 2022&lt;/div&gt;
+          &lt;div class="tags"&gt;
+            &lt;div class="tag"&gt;CSS&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="card-grid-space"&gt;
+      &lt;div class="num"&gt;03&lt;/div&gt;
+      &lt;a class="card" style="--bg-img: url('./images/digitalclock.png')"&gt;
+        &lt;div&gt;
+          &lt;h1&gt;Digital Clock&lt;/h1&gt;
+          &lt;p&gt;A digital clock means it shows time in number format…&lt;/p&gt;
+          &lt;div class="date"&gt;12 July 2022&lt;/div&gt;
+          &lt;div class="tags"&gt;
+            &lt;div class="tag"&gt;CSS&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code>
+                        </pre>
+                    <button class="copy-code-btn" onclick="copyCode(this)">Copy Code</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        function showContent(contentType) {
+            // Hide all containers
+            const containers = document.querySelectorAll('.content-container');
+            containers.forEach(container => {
+                container.classList.remove('active');
+            });
+
+            // Remove active class from all options
+            const options = document.querySelectorAll('.option');
+            options.forEach(option => {
+                option.classList.remove('active');
+            });
+
+            // Show the selected container
+            document.querySelector(`.${contentType}`).classList.add('active');
+
+            // Set active option
+            const activeOption = Array.from(options).find(option => option.textContent.toLowerCase().replace(' ', '-') === contentType);
+            activeOption.classList.add('active');
+        }
+    </script>
+
+    <script>
+        // Toggle the code section visibility with smooth effect
+        function toggleCode(button) {
+            const codeSection = button.parentElement.nextElementSibling;
+            if (codeSection.classList.contains("show")) {
+                codeSection.classList.remove("show");
+                button.textContent = "Show Code";
+            } else {
+                codeSection.classList.add("show");
+                button.textContent = "Hide Code";
+            }
+        }
+
+        // Copy code to clipboard
+        function copyCode(button) {
+            const codeSection = button.previousElementSibling;
+            const codeText = codeSection.textContent.trim();
+            navigator.clipboard.writeText(codeText).then(() => {
+                alert("Code copied to clipboard!");
+            }).catch(() => {
+                alert("Failed to copy code!");
+            });
+        }
+
+        // scroll-animate
+        const animatedElements = document.querySelectorAll(".scroll-animate");
+
+        const observer2 = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("show-content");
+                    }
+                });
+            },
+            {
+                threshold: 0.5,
+            }
+        );
+
+        animatedElements.forEach((element) => observer2.observe(element));
+    </script>
+
+</body>
+
+</html>
