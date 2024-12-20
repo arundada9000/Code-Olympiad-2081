@@ -242,7 +242,27 @@ h2 {
 .syllabus-container strong {
   color: #20b7ee;
 }
+#remaining-days {
+  width: 100%;
+  text-align: center;
+  margin: 10px auto;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #58a6ff;
+  background: #0d1117;
+  padding: 15px;
+  border: 2px solid #238636;
+  border-radius: 10px;
+  display: inline-block;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
 
+#remaining-days:hover {
+  transform: scale(1.1);
+  background-color: #238636;
+  color: white;
+}
 #prizes {
   text-align: center;
   padding: 50px 20px;
@@ -329,6 +349,9 @@ h2 {
     width: 90%;
     margin-bottom: 20px;
   }
+  #remaining-days {
+    font-size: 1.5rem;
+  }
 }
 
 .question {
@@ -338,7 +361,6 @@ h2 {
 /* Form */
 #submission-form {
   background: #1e1e1e;
-  border: 1px solid #333;
   border-radius: 10px;
   padding: 20px;
   max-width: 800px;
@@ -483,18 +505,105 @@ form .btn:hover {
 #query {
   margin-bottom: 50px;
 }
-.query-div {
-  margin-top: 10px;
+.contact-section {
+  max-width: 900px;
+  width: 100%;
+  margin: 50px auto;
+  padding: 30px;
+  background: #161b22;
+  border-radius: 15px;
+  box-shadow: 0 0 8px rgba(0, 255, 85, 0.4);
+}
+
+.contact-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #238636;
+  margin-bottom: 10px;
+}
+
+.contact-description {
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 30px;
+  color: #c9d1d9;
+}
+
+.contact-cards {
   display: flex;
-  gap: 20px;
-  align-items: center;
   justify-content: space-around;
-  font-size: 1.25rem;
+  gap: 20px;
 }
-#query a {
+
+.contact-card {
+  background: #1f262d;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 255, 85, 0.2);
+  width: 45%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 25px rgba(0, 255, 85, 0.5);
+}
+
+.card-header {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.card-name {
+  font-size: 1.5rem;
+  color: #238636;
+}
+
+.card-post {
+  font-size: 1rem;
+  color: #6f8c87;
+}
+
+.card-body {
+  text-align: center;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.social-icon {
+  font-size: 1rem;
+  color: #c9d1d9;
   text-decoration: none;
-  color: #007bff;
+  transition: color 0.3s ease;
 }
+
+.social-icon:hover {
+  color: #238636;
+}
+.card-number {
+  margin-bottom: 15px;
+}
+.card-number .social-icon {
+  font-size: 1.2rem;
+}
+@media (max-width: 768px) {
+  .contact-cards {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .contact-card {
+    width: 100%;
+  }
+  .contact-title {
+    font-size: 1.5rem;
+  }
+}
+/* Contact end */
 @media (max-width: 600px) {
   .button-group {
     flex-direction: column;

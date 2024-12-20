@@ -52,9 +52,9 @@
             </script>
 
 
-    <link rel="stylesheet" href="./preloader.css">
-    <link rel="stylesheet" href="./landing-page.css">
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./assets/css/preloader.css">
+    <link rel="stylesheet" href="./assets/css/landing-page.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 
 <body>
@@ -279,14 +279,16 @@
                 </section>
 
                 <section id="date-and-time">
-                    <h2 class="scroll-animate">Date & Time</h2>
-                    <p class="scroll-animate">January 16 |Magh 3 | 11:00 AM - 4:00 PM</p>
+                    <h2 class="scroll-animate">Date | Time | Place</h2>
+                    <p class="scroll-animate"> Magh 3 (January 16) | 11:00 AM - 4:00 PM</p>
+                    <p class="scroll-animate">Place : Bhairahawa Multiple Campus</p>
+                    <p class="scroll-animate" id="remaining-days"></p>
                 </section>
                 <!-- Participant Information Section -->
                 <section id="participants">
                     <h2 class="scroll-animate">Participants</h2>
                     <p class="scroll-animate">Maximum Participants Per Team : <strong>4</strong></p>
-                    <p class="scroll-animate">Registration Deadline: <strong>Coming Soon</strong></p>
+                    <p class="scroll-animate">Entry fee per team : Rs.1000</p>
                 </section>
 
                 <!-- Prizes Section -->
@@ -325,16 +327,63 @@
                 <!-- Submission Form Section -->
                 <section id="submission-form" class="scroll-animate">
                     <h2 class="scroll-animate">Register Now</h2>
+                    <p class="scroll-animate">Entry fee per team : Rs.1000</p>
+                    <p class="scroll-animate">Registration Deadline: <strong>Coming Soon</strong></p>
                     <p class="scroll-animate">Registration will be open soon. Stay tuned for more updates.</p>
-
                 </section>
 
                 <section id="query">
-                    <h2 class="scroll-animate">Queries</h2>
-                    <p class="scroll-animate">If you have any doubt or query you can contact us : </p>
-                    <div class="query-div">
-                        <p class="scroll-animate">Sudhir Aryal <br> <a href="tel:+9779848244615">9848244615</a> </p>
-                        <p class="scroll-animate">Arun Neupane <br> <a href="tel:+9779811420975">9811420975</a> </p>
+                    <div class="contact-section">
+                        <h2 class="contact-title scroll-animate">For Any Queries, Contact Us</h2>
+                        <p class="contact-description scroll-animate">You can reach out to our team members for
+                            assistance. Here are
+                            the contact
+                            details:</p>
+
+                        <div class="contact-cards">
+                            <!-- Contact Card 1 -->
+                            <div class="contact-card">
+                                <div class="card-header">
+                                    <h3 class="card-name scroll-animate">Sudhir Aryal</h3>
+                                    <p class="card-post scroll-animate">Secretory</p>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-number scroll-animate"> <a href="tel:+9779848244615"
+                                            class="social-icon scroll-animate">📱
+                                            9848244615</a>
+                                    </p>
+                                    <div class="social-links">
+                                        <a href="https://www.facebook.com/sudhir.aryal.969"
+                                            class="social-icon scroll-animate" target="_blank" rel="noopener">🟦
+                                            Facebook</a>
+                                        <a href="https://www.instagram.com/aryalsudhir353/"
+                                            class="social-icon scroll-animate" target="_blank" rel="noopener">📸
+                                            Instagram</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Contact Card 2 -->
+                            <div class="contact-card">
+                                <div class="card-header">
+                                    <h3 class="card-name scroll-animate">Arun Neupane</h3>
+                                    <p class="card-post scroll-animate">Lead Programmer</p>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-number scroll-animate"><a href="tel:+9779811420975"
+                                            class="social-icon scroll-animate">📱
+                                            9811420975</a></p>
+                                    <div class="social-links">
+                                        <a href="https://www.facebook.com/arunneupane9000"
+                                            class="social-icon scroll-animate" target="_blank" rel="noopener">🟦
+                                            Facebook</a>
+                                        <a href="https://www.instagram.com/arundada9000/"
+                                            class="social-icon scroll-animate" target="_blank" rel="noopener">📸
+                                            Instagram</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </section>
             </main>
@@ -350,9 +399,9 @@
                         together.</p>
                 </div>
                 <div class="footer-links">
-                    <h2 class="scroll-animate">Quick Links</h2>
+                    <h2 class="scroll-animate">BMC IT Club</h2>
                     <ul>
-                        <li class="scroll-animate"><a href="#syllabus">Syllabus</a></li>
+                        <li class="scroll-animate"><a href="./assets/html/members.html">Our Team</a></li>
                         <li class="scroll-animate"><a href="#date-and-time">Date & Time</a></li>
                         <li class="scroll-animate"><a href="#participants">Participants</a></li>
                         <li class="scroll-animate"><a href="#submission-form">Register</a></li>
@@ -372,7 +421,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p class="scroll-animate">© 2024 BMC It Club. All Rights Reserved.</p>
+                <p class="scroll-animate">© 2024 BMC IT Club. All Rights Reserved.</p>
             </div>
         </footer>
 
@@ -394,6 +443,7 @@
 
     </script>
 
+    <!-- Landing page -->
     <script>
         const codeElement = document.getElementById('code');
         const terminalOutput = document.getElementById('terminal-output');
@@ -522,6 +572,7 @@
 
     </script>
 
+    <!-- Intersection Observer -->
     <script>
         // Observer for automatic scrolling of container
         const container1 = document.querySelector('.container');
@@ -553,8 +604,13 @@
 
                 targetBox.classList.add('highlight-nav');
 
-                targetBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                if (targetId === "syllabus") {
+                    targetBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                else {
+                    targetBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
+                }
                 setTimeout(() => {
                     targetBox.classList.remove('highlight-nav');
                 }, 1000);
@@ -582,6 +638,27 @@
 
         animatedElements.forEach((element) => observer2.observe(element));
         // this much for observer
+    </script>
+
+    <!-- Remaining Days -->
+    <script>
+        function calculateRemainingDays() {
+            const today = new Date();
+            const currentYear = today.getFullYear();
+            const targetDate = new Date(currentYear, 0, 16);
+
+            if (today > targetDate) {
+                const nextYear = currentYear + 1;
+                targetDate.setFullYear(nextYear);
+            }
+
+            const remainingTime = targetDate - today;
+            const remainingDays = Math.ceil(remainingTime / (1000 * 60 * 60 * 24));
+
+            document.getElementById('remaining-days').textContent = `${remainingDays} days Remaining`;
+        }
+
+        calculateRemainingDays();
     </script>
 </body>
 

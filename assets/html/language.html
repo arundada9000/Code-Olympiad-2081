@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Language Switcher</title>
+    <style>
+        body {
+            font-family: 'Fira Code', monospace;
+            background: #0d1117;
+            color: #c9d1d9;
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .language-switcher {
+            position: fixed;
+            /* Keep it fixed in place */
+            top: 20px;
+            /* Adjust vertical position (distance from top) */
+            left: 20px;
+            /* Adjust horizontal position (distance from left) */
+            display: inline-block;
+            background: #161b22;
+            padding: 12px 20px;
+            border: 2px solid #238636;
+            border-radius: 12px;
+            box-shadow: 0 0 20px #238636;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease-in-out;
+            z-index: 999;
+            /* Ensure it's on top of other content */
+        }
+
+        .language-switcher:hover {
+            box-shadow: 0 0 30px #2ea043;
+        }
+
+        .language-switcher span {
+            font-size: 1rem;
+            color: #c9d1d9;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 110%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #161b22;
+            border: 2px solid #238636;
+            border-radius: 12px;
+            display: none;
+            flex-direction: column;
+            width: 200px;
+            box-shadow: 0 0 20px #238636;
+            z-index: 10;
+        }
+
+        .dropdown.active {
+            display: flex;
+        }
+
+        .dropdown button {
+            background: none;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #c9d1d9;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown button:hover {
+            background: #238636;
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="language-switcher" id="languageSwitcher">
+        <span id="currentLanguage">English</span>
+        <div class="dropdown" id="dropdown">
+            <button data-lang="nep">नेपाली (Nepali)</button>
+            <button data-lang="genz">Gen Z Vibes</button>
+        </div>
+    </div>
+
+    <script>
+        const languageSwitcher = document.getElementById('languageSwitcher');
+        const currentLanguage = document.getElementById('currentLanguage');
+        const dropdown = document.getElementById('dropdown');
+
+        // Available language options
+        const languageOptions = {
+            en: 'English',
+            nep: 'नेपाली (Nepali)',
+            genz: 'Gen Z Vibes',
+        };
+
+        // Initial selected language
+        let selectedLanguage = 'en';
+
+        // Toggle dropdown visibility
+        languageSwitcher.addEventListener('click', () => {
+            dropdown.classList.toggle('active');
+        });
+
+        // Update the language and close dropdown
+        dropdown.addEventListener('click', (e) => {
+            if (e.target.tagName === 'BUTTON') {
+                const newLang = e.target.getAttribute('data-lang');
+                currentLanguage.textContent = languageOptions[newLang];
+
+                // Update remaining languages
+                updateDropdownOptions(newLang);
+
+                // Close dropdown
+                dropdown.classList.remove('active');
+
+                // Set the selected language
+                selectedLanguage = newLang;
+            }
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!languageSwitcher.contains(e.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+
+        // Function to update dropdown options dynamically
+        function updateDropdownOptions(selected) {
+            dropdown.innerHTML = '';
+            Object.keys(languageOptions).forEach((key) => {
+                if (key !== selected) {
+                    const button = document.createElement('button');
+                    button.setAttribute('data-lang', key);
+                    button.textContent = languageOptions[key];
+                    dropdown.appendChild(button);
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
