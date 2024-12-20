@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BMC IT Club Members</title>
+    <link rel="shortcut icon" href="../images/bmc-it-club-circle-logo.ico" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/92d5c1fc10.js" crossorigin="anonymous"></script>
     <style>
         * {
             margin: 0;
@@ -18,6 +20,10 @@
             color: #333;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         a {
             text-decoration: none;
             font-size: 1.2rem;
@@ -29,12 +35,89 @@
             text-decoration: underline;
         }
 
-        header {
-            background-color: #007bff;
-            color: white;
-            padding: 20px;
-            text-align: center;
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(90deg, #20b7ee, #222);
+            color: #fff;
+            padding: 1rem 2rem;
+            font-family: Arial, sans-serif;
         }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-logo img {
+            height: 50px;
+            width: 50px;
+            margin-right: 10px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+        }
+
+        .header-logo h1 {
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        .header-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header-nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .header-nav a:hover {
+            color: #ffd700;
+        }
+
+        .header-cta .cta-button {
+            background: #ffd700;
+            color: #222;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .header-cta .cta-button:hover {
+            background: #fff;
+            color: #20b7ee;
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-nav ul {
+                gap: 2rem;
+                margin: 20px auto;
+            }
+
+            .header-logo img {
+                height: 40px;
+                width: 40px;
+            }
+
+            .header-logo h1 {
+                font-size: 1.5rem;
+            }
+        }
+
 
         .contact-info {
             margin-top: 10px;
@@ -69,205 +152,749 @@
             gap: 20px;
         }
 
-
-        .member-card {
-            border: 1px solid #ddd;
-            padding: 15px;
+        .card {
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            width: 270px;
             text-align: center;
-            border-radius: 8px;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-            background-color: white;
-            width: 250px;
-            transition: transform 0.2s;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .member-card img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 200px;
             object-fit: cover;
+        }
+
+        .top-image {
+            object-position: top left;
+        }
+
+        .center-image {
+            object-position: 0% 40%;
+        }
+
+        .bottom-image {
+            object-position: bottom;
+        }
+
+        .bhendi-image {
+            object-position: 50% 30%;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card-name {
+            font-size: 1.5rem;
+            color: #007bff;
+            margin-bottom: 5px;
+        }
+
+        .card-post {
+            font-size: 1rem;
+            color: #555;
             margin-bottom: 10px;
-            cursor: pointer;
-            transition: all 0.25s ease-in;
         }
 
-        .member-card img:hover {
-            transform: scale(1.1);
-
+        .card-phone {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
         }
 
-        .member-card:hover {
-            transform: scale(1.05);
+        .card-socials {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
         }
 
-        footer {
-            background-color: #007bff;
-            color: white;
-            text-align: center;
+        .social-icon {
+            text-decoration: none;
+            font-size: 1.2rem;
             padding: 10px;
-            position: relative;
-            bottom: 0;
-            width: 100
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .social-icon.fb {
+            background: #4267B2;
+        }
+
+        .social-icon.fb:hover {
+            background: #365899;
+        }
+
+        .social-icon.insta {
+            background: linear-gradient(45deg, #fd1d1d, #fcb045);
+        }
+
+        .social-icon.insta:hover {
+            background: linear-gradient(45deg, #fcb045, #fd1d1d);
+        }
+
+        .social-icon.github {
+            background: #333;
+        }
+
+        .social-icon.github:hover {
+            background: #555;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.2);
+        }
+
+        .footer-container {
+            background: #222;
+            color: #fff;
+            padding: 2rem;
+            font-family: Arial, sans-serif;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            text-align: left;
+        }
+
+        .footer-about {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .footer-about h2 {
+            color: #20b7ee;
+            margin-bottom: 1rem;
+        }
+
+        .footer-about p {
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .footer-contact {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .footer-contact h2 {
+            color: #20b7ee;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-item i {
+            margin-right: 0.5rem;
+        }
+
+        .contact-item a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Credits Section */
+        .footer-credits {
+            flex-basis: 100%;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .footer-credits p {
+            margin: 0;
+        }
+
+
+        @media (max-width:500px) {
+            .member-row {
+                width: 100%;
+            }
+
+            .card {
+                width: 90%;
+            }
+        }
+
+        .zoom-in {
+            transform: scale(0);
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .zoom-in-animate {
+            transform: scale(1);
+        }
+
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .scroll-animate.show-content {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 
 <body>
     <header>
-        <h1>Welcome to BMC IT Club</h1>
-        <p>We are students of Bhairahawa Multiple Campus gathered to form a group that is dedicated to exploring,
-            learning, and
-            innovating in the
-            world of Information Technology. Our club provides a platform for students to connect, collaborate, and grow
-            their skills through workshops, projects, and events.</p>
-        <div class="contact-info">
-            <p>Contact Us :</p>
-            <div class="contact-details">
-                Facebook : <a href="https://www.facebook.com/profile.php?id=100094504922018" rel="noopener"
-                    target="_blank">BMC IT Club</a>
+        <div class="header-container">
+
+            <div class="header-logo">
+                <img class="scroll-animate" src="../images/bmc-it-club-circle-logo.png" alt="BMC IT Club Logo" />
+                <h1 class="scroll-animate">BMC IT Club</h1>
             </div>
-            <div class="contact-details">
-                Mail :
-                <a href="mailto:bmcitclub01@gmail.com">bmcitclub01@gmail.com</a>
+
+            <nav class="header-nav">
+                <ul>
+                    <li class="scroll-animate"><a href="#about">About Us</a></li>
+                    <li class="scroll-animate"><a href="../../index.html">Olympiad</a></li>
+                    <li class="scroll-animate"><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-cta">
+                <a href="https://www.facebook.com/profile.php?id=100094504922018" class="cta-button scroll-animate">Join
+                    Us</a>
             </div>
         </div>
     </header>
+
 
     <main>
         <h1>Meet our Esteemed Members</h1>
         <div class="tree-container">
             <div class="member-row">
-                <div class="member-card">
-                    <img src="./assets/member-images/dopla.jpg" alt="President">
-                    <h3>Shishir Gaire</h3>
-                    <p>President</p>
-                    <p><a href="tel:+9779843879136">+977 9843879136</a></p>
-                    <a href="https://www.facebook.com/shishir.gaire.16">Facebook</a>
+                <div class="card zoom-in">
+                    <div class="card-image">
+                        <img src="../member-images/Shishir Gaire-min.jpeg" alt="Shishir Gaire">
+                    </div>
+                    <div class="card-content">
+                        <h2 class="card-name">Shishir Gaire</h2>
+                        <p class="card-post">President</p>
+                        <p class="card-phone"><a href="tel:+9779843879136">📞 9843879136</a></p>
+                        <div class="card-socials">
+                            <a href="https://www.facebook.com/shishir.gaire.16" target="_blank" class="social-icon fb"
+                                rel="noopener" title="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://instagram.com" target="_blank" class="social-icon insta" rel="noopener"
+                                title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://github.com" target="_blank" class="social-icon github" rel="noopener"
+                                title="Github">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
+
             <div class="member-row">
-                <div class="member-card">
-                    <img src="./assets/member-images/dopla.jpg" alt="VP 1">
-                    <h3>Nirmal Dhakal</h3>
-                    <p>Vice-President</p>
-                    <p><a href="tel:+9779748845865">+977 9748845865</a></p>
-                    <a href="https://www.facebook.com/nirmaldhakal2059">Facebook</a>
+                <div class="card zoom-in">
+                    <div class="card-image">
+                        <img class="center-image" src="../member-images/Nirmal Dhakal-min.jpg" alt="Nirmal Dhakal">
+                    </div>
+                    <div class="card-content">
+                        <h2 class="card-name">Nirmal Dhakal</h2>
+                        <p class="card-post">Vice-President</p>
+                        <p class="card-phone"><a href="tel:+9779748845865">📞 9748845865</a></p>
+                        <div class="card-socials">
+                            <a href="https://www.facebook.com/nirmaldhakal2059" target="_blank" class="social-icon fb"
+                                rel="noopener" title="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://instagram.com" target="_blank" class="social-icon insta" rel="noopener"
+                                title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://github.com" target="_blank" class="social-icon github" rel="noopener"
+                                title="Github">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="member-card">
-                    <img src="./assets/member-images/dopla.jpg" alt="VP 2">
-                    <h3>Shristi Aryal</h3>
-                    <p>Vice President</p>
-                    <p><a href="tel:+97798XXXXXXXX">+977 9866357953</a></p>
-                    <a href="https://www.facebook.com/shristi.aryal.9235">Facebook</a>
-                </div>
-            </div>
-            <div class="member-row">
-                <div class="member-card">
-                    <img src="./assets/member-images/dopla.jpg" alt="Secretary">
-                    <h3>Sudhir Aryal</h3>
-                    <p>Secretary</p>
-                    <p><a href="tel:+9779848244615">+977 9848244615</a></p>
-                    <a href="https://www.facebook.com/sudhir.aryal.969">Facebook</a>
-                </div>
-                <div class="member-card">
-                    <img src="./assets/member-images/dopla.jpg" alt="Joint Secretary">
-                    <h3>Arun Neupane</h3>
-                    <p>Joint Secretary</p>
-                    <p><a href="tel:+9779811420975">+977 9811420975</a></p>
-                    <a href="https://www.facebook.com/arunneupane9000">Facebook</a>
-                </div>
-                <div class="member-card">
-                    <img src="./assets/member-images/dopla.jpg" alt="Treasurer">
-                    <h3>Yubraj Dhakal Upamanyu</h3>
-                    <p>Treasurer</p>
-                    <p><a href="tel:+9779806931512">+977 9806931512</a></p>
-                    <a href="https://www.facebook.com/profile.php?id=100091594880714">Facebook</a>
-                </div>
-            </div>
-            <div class="member-row">
-                <div class="member-card">
-                    <img src="./assets/member-images/dopla.jpg" alt="Joint Treasurer">
-                    <h3>Sushant Pokharel</h3>
-                    <p>Joint Treasurer</p>
-                    <p><a href="tel:+9779869582621">+977 9869582621</a></p>
-                    <a href="https://www.facebook.com/sushant.pokhrel.547">Facebook</a>
-                </div>
-                <div class="member-card">
-                    <img src="./assets/member-images/dopla.jpg" alt="Tech Lead">
-                    <h3>Nischal Karki</h3>
-                    <p>Tech Lead</p>
-                    <p><a href="tel:+9779866146427">+977 9866146427</a></p>
-                    <a href="https://www.facebook.com/chhettri.nischal66?mibextid=ZbWKwL">Facebook</a>
-                </div>
-                <div class="member-card">
-                    <img src="./assets/member-images/dopla.jpg" alt="Vice Tech Lead 1">
-                    <h3>Shiva Dahal</h3>
-                    <p>Vice Tech Lead</p>
-                    <p><a href="tel:+9779866140064">+977 9866140064</a></p>
-                    <a href="https://www.facebook.com/sk.sking.5">Facebook</a>
-                </div>
-                <div class="member-card">
-                    <img src="./assets/member-images/dopla.jpg" alt="Vice Tech Lead 2">
-                    <h3>Saroj Neupane</h3>
-                    <p>Vice Tech Lead</p>
-                    <p><a href="tel:+9779748801120">+977 9748801120</a></p>
-                    <a href="https://www.facebook.com/safal.neupane.906">Facebook</a>
-                </div>
-            </div>
-            <div class="member-row">
-                <div class="member-card"> <img src="./assets/member-images/dopla.jpg" alt="Executive 1">
-                    <h3>Amrit Kafle</h3>
-                    <p>Executive Member</p>
-                    <p>+977 98XXXXXXXX</p>
-                    <a href="https://www.facebook.com/amrit.kafle.7">Facebook</a>
-                </div>
-                <div class="member-card"> <img src="./assets/member-images/dopla.jpg" alt="Executive 2">
-                    <h3>Apekshya Panthi</h3>
-                    <p>Executive Member</p>
-                    <p>+977 98XXXXXXXX</p>
-                    <a href="https://www.facebook.com/profile.php?id=100064279193097">Facebook</a>
-                </div>
-                <div class="member-card"> <img src="./assets/member-images/dopla.jpg" alt="Executive 3">
-                    <h3>Bijay Chaudhary</h3>
-                    <p>Executive Member</p>
-                    <p><a href="tel:+9779821057199">+977 9821057199</a></p>
-                    <a href="https://www.facebook.com/search/top?q=bijay%20chaudhary">Facebook</a>
-                </div>
-                <div class="member-card"> <img src="./assets/member-images/dopla.jpg" alt="Executive 4">
-                    <h3>Krishna Nishad</h3>
-                    <p>Executive Member</p>
-                    <p><a href="tel:+9779864951223">+977 9864951223</a></p><a
-                        href="https://www.facebook.com/profile.php?id=100087927022562&mibextid=ZbWKwL">Facebook</a>
+
+                <div class="card zoom-in">
+                    <div class="card-image">
+                        <img src="../member-images/Shristi Aryal-min.jpg" alt="Shristi Aryal">
+                    </div>
+                    <div class="card-content">
+                        <h2 class="card-name">Shristi Aryal</h2>
+                        <p class="card-post">Vice President</p>
+                        <p class="card-phone"><a href="tel:+9779866357953">📞 9866357953</a></p>
+                        <div class="card-socials">
+                            <a href="https://www.facebook.com/shristi.aryal.9235" target="_blank" class="social-icon fb"
+                                rel="noopener" title="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://instagram.com" target="_blank" class="social-icon insta" rel="noopener"
+                                title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://github.com" target="_blank" class="social-icon github" rel="noopener"
+                                title="Github">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
             </div>
+
             <div class="member-row">
-                <div class="member-card"> <img src="./assets/member-images/dopla.jpg" alt="Executive 5">
-                    <h3>Manisha Adhikari</h3>
-                    <p>Executive Member</p>
-                    <p><a href="tel:+9779867724829">+977 9867724829</a></p><a
-                        href="https://www.facebook.com/profile.php?id=100078503838791">Facebook</a>
+                <div class="card zoom-in">
+                    <div class="card-image">
+                        <img src="../member-images/Sudhir Aryal-min.jpg" alt="Sudhir Aryal">
+                    </div>
+                    <div class="card-content">
+                        <h2 class="card-name">Sudhir Aryal</h2>
+                        <p class="card-post">Secretary</p>
+                        <p class="card-phone"><a href="tel:+9779848244615">📞 9848244615</a></p>
+                        <div class="card-socials">
+                            <a href="https://www.facebook.com/sudhir.aryal.969" target="_blank" class="social-icon fb"
+                                rel="noopener" title="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://instagram.com" target="_blank" class="social-icon insta" rel="noopener"
+                                title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://github.com" target="_blank" class="social-icon github" rel="noopener"
+                                title="Github">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="member-card"> <img src="./assets/member-images/dopla.jpg" alt="Executive 6">
-                    <h3>Muskan Aggrawal</h3>
-                    <p>Executive Member</p>
-                    <p><a href="tel:+9779807588345">+977 9807588345</a></p>
-                    <a href="https://www.facebook.com/profile.php?id=100035402331655">Facebook</a>
+
+                <div class="card zoom-in">
+                    <div class="card-image">
+                        <img src="../member-images/ArunDada-min.jpeg" alt="Arun Neupane">
+                    </div>
+                    <div class="card-content">
+                        <h2 class="card-name">Arun Neupane</h2>
+                        <p class="card-post">Joint Secretary</p>
+                        <p class="card-phone"><a href="tel:+9779811420975">📞 9811420975</a></p>
+                        <div class="card-socials">
+                            <a href="https://www.facebook.com/arunneupane9000/" target="_blank" class="social-icon fb"
+                                rel="noopener" title="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://www.instagram.com/arundada9000" target="_blank" class="social-icon insta"
+                                rel="noopener" title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://www.github.com/arundada9000/" target="_blank" class="social-icon github"
+                                rel="noopener" title="Github">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="member-card"> <img src="./assets/member-images/dopla.jpg" alt="Executive 7">
-                    <h3>Prashant Paudel</h3>
-                    <p>Executive Member</p>
-                    <p><a href="tel:+9779845333537">+977 9845333537</a></p><a
-                        href="https://www.facebook.com/prashant.xettri.142?mibextid=ZbWKwL">Facebook</a>
+
+                <div class="card zoom-in">
+                    <div class="card-image">
+                        <img src="../member-images/Yubraj Dhakal-min.JPG" alt="Yubraj Dhakal Upamanyu">
+                    </div>
+                    <div class="card-content">
+                        <h2 class="card-name">Yubraj Dhakal Upamanyu</h2>
+                        <p class="card-post">Treasurer</p>
+                        <p class="card-phone"><a href="tel:+9779806931512">📞 9806931512</a></p>
+                        <div class="card-socials">
+                            <a href="https://www.facebook.com/profile.php?id=100091594880714" target="_blank"
+                                class="social-icon fb" rel="noopener" title="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://instagram.com" target="_blank" class="social-icon insta" rel="noopener"
+                                title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://github.com" target="_blank" class="social-icon github" rel="noopener"
+                                title="Github">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="member-row">
+                <div class="card zoom-in">
+                    <div class="card-image">
+                        <img src="../member-images/Sushant Pokhrel-min.jpg" alt="Sushant Pokharel">
+                    </div>
+                    <div class="card-content">
+                        <h2 class="card-name">Sushant Pokharel</h2>
+                        <p class="card-post">Joint Treasurer</p>
+                        <p class="card-phone"><a href="tel:+9779869582621">📞 9869582621</a></p>
+                        <div class="card-socials">
+                            <a href="https://www.facebook.com/sushant.pokhrel.547" target="_blank"
+                                class="social-icon fb" rel="noopener" title="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://instagram.com" target="_blank" class="social-icon insta" rel="noopener"
+                                title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://github.com" target="_blank" class="social-icon github" rel="noopener"
+                                title="Github">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card zoom-in">
+                    <div class="card-image">
+                        <img src="../member-images/Shishir Karki-min.JPG" alt="Nischal Karki">
+                    </div>
+                    <div class="card-content">
+                        <h2 class="card-name">Nischal Karki</h2>
+                        <p class="card-post">Tech Lead</p>
+                        <p class="card-phone"><a href="tel:+9779866146427">📞 9866146427</a></p>
+                        <div class="card-socials">
+                            <a href="https://www.facebook.com/chhettri.nischal66?mibextid=ZbWKwL" target="_blank"
+                                class="social-icon fb" rel="noopener" title="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://instagram.com" target="_blank" class="social-icon insta" rel="noopener"
+                                title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://github.com" target="_blank" class="social-icon github" rel="noopener"
+                                title="Github">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card zoom-in">
+                    <div class="card-image">
+                        <img class="top-image" src="../member-images/Shiva Dahal-min.jpg" alt="Shiva Dahal">
+                    </div>
+                    <div class="card-content">
+                        <h2 class="card-name">Shiva Dahal</h2>
+                        <p class="card-post">Vice Tech Lead</p>
+                        <p class="card-phone"><a href="tel:+9779866140064">📞 9866140064</a></p>
+                        <div class="card-socials">
+                            <a href="https://www.facebook.com/sk.sking.5" target="_blank" class="social-icon fb"
+                                rel="noopener" title="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://instagram.com" target="_blank" class="social-icon insta" rel="noopener"
+                                title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://github.com" target="_blank" class="social-icon github" rel="noopener"
+                                title="Github">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card zoom-in">
+                    <div class="card-image">
+                        <img src="../member-images/D3mon-min.png" alt="Saroj Neupane">
+                    </div>
+                    <div class="card-content">
+                        <h2 class="card-name">Saroj Neupane</h2>
+                        <p class="card-post">Vice Tech Lead</p>
+                        <p class="card-phone"><a href="tel:+9779748801120">📞 9748801120</a></p>
+                        <div class="card-socials">
+                            <a href="https://www.facebook.com/safal.neupane.906" target="_blank" class="social-icon fb"
+                                rel="noopener" title="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://instagram.com" target="_blank" class="social-icon insta" rel="noopener"
+                                title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://github.com" target="_blank" class="social-icon github" rel="noopener"
+                                title="Github">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="member-row">
+
+                <div class="card zoom-in">
+                    <div class="card-image">
+                        <img src="../member-images/Amrit kafle-min.jpg" alt="Amrit Kafle">
+                    </div>
+                    <div class="card-content">
+                        <h2 class="card-name">Amrit Kafle</h2>
+                        <p class="card-post">Executive Member</p>
+                        <p class="card-phone">📞 +977 98XXXXXXXX</p>
+                        <div class="card-socials">
+                            <a href="https://www.facebook.com/amrit.kafle.7" target="_blank" class="social-icon fb"
+                                rel="noopener" title="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://instagram.com" target="_blank" class="social-icon insta" rel="noopener"
+                                title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://github.com" target="_blank" class="social-icon github" rel="noopener"
+                                title="Github">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card zoom-in">
+                    <div class="card-image">
+                        <img src="../member-images/Apekshya Panthee-min.jpg" alt="Apekshya Panthi">
+                    </div>
+                    <div class="card-content">
+                        <h2 class="card-name">Apekshya Panthi</h2>
+                        <p class="card-post">Executive Member</p>
+                        <p class="card-phone">📞 98XXXXXXXX</p>
+                        <div class="card-socials">
+                            <a href="https://www.facebook.com/profile.php?id=100064279193097" target="_blank"
+                                class="social-icon fb" rel="noopener" title="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://instagram.com" target="_blank" class="social-icon insta" rel="noopener"
+                                title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://github.com" target="_blank" class="social-icon github" rel="noopener"
+                                title="Github">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card zoom-in">
+                    <div class="card-image">
+                        <img src="../member-images/Bijay Chaudhary-min.jpg" alt="Bijay Chaudhary">
+                    </div>
+                    <div class="card-content">
+                        <h2 class="card-name">Bijay Chaudhary</h2>
+                        <p class="card-post">Executive Member</p>
+                        <p class="card-phone"><a href="tel:+9779821057199">📞 9821057199</a></p>
+                        <div class="card-socials">
+                            <a href="https://www.facebook.com/search/top?q=bijay%20chaudhary" target="_blank"
+                                class="social-icon fb" rel="noopener" title="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://instagram.com" target="_blank" class="social-icon insta" rel="noopener"
+                                title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://github.com" target="_blank" class="social-icon github" rel="noopener"
+                                title="Github">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card zoom-in">
+                    <div class="card-image">
+                        <img src="../member-images/Krishna N-min.jpg" alt="Krishna Nishad">
+                    </div>
+                    <div class="card-content">
+                        <h2 class="card-name">Krishna Nishad</h2>
+                        <p class="card-post">Executive Member</p>
+                        <p class="card-phone"><a href="tel:+9779864951223">📞 9864951223</a></p>
+                        <div class="card-socials">
+                            <a href="https://www.facebook.com/profile.php?id=100087927022562&mibextid=ZbWKwL"
+                                target="_blank" class="social-icon fb" rel="noopener" title="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://instagram.com" target="_blank" class="social-icon insta" rel="noopener"
+                                title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://github.com" target="_blank" class="social-icon github" rel="noopener"
+                                title="Github">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="member-row">
+
+                <div class="card zoom-in">
+                    <div class="card-image">
+                        <img src="../member-images/Manisha Adhikari-min.jpg" alt="Manisha Adhikari">
+                    </div>
+                    <div class="card-content">
+                        <h2 class="card-name">Manisha Adhikari</h2>
+                        <p class="card-post">Executive Member</p>
+                        <p class="card-phone"><a href="tel:+9779867724829">📞 9867724829</a></p>
+                        <div class="card-socials">
+                            <a href="https://www.facebook.com/profile.php?id=100078503838791" target="_blank"
+                                class="social-icon fb" rel="noopener" title="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://instagram.com" target="_blank" class="social-icon insta" rel="noopener"
+                                title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://github.com" target="_blank" class="social-icon github" rel="noopener"
+                                title="Github">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card zoom-in">
+                    <div class="card-image">
+                        <img class="bottom-image" src="../member-images/Muskan Agrawal-min.jpg" alt="Muskan Aggrawal">
+                    </div>
+                    <div class="card-content">
+                        <h2 class="card-name">Muskan Aggrawal</h2>
+                        <p class="card-post">Executive Member</p>
+                        <p class="card-phone"><a href="tel:+9779807588345">📞 9807588345</a></p>
+                        <div class="card-socials">
+                            <a href="https://www.facebook.com/profile.php?id=100035402331655" target="_blank"
+                                class="social-icon fb" rel="noopener" title="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://instagram.com" target="_blank" class="social-icon insta" rel="noopener"
+                                title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://github.com" target="_blank" class="social-icon github" rel="noopener"
+                                title="Github">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card zoom-in">
+                    <div class="card-image">
+                        <img class="bhendi-image" src="../member-images/Prashant Paudel-min.jpeg" alt="Prashant Paudel">
+                    </div>
+                    <div class="card-content">
+                        <h2 class="card-name">Prashant Paudel</h2>
+                        <p class="card-post">Executive Member</p>
+                        <p class="card-phone"><a href="tel:+9779845333537">📞 9845333537</a></p>
+                        <div class="card-socials">
+                            <a href="https://www.facebook.com/prashant.xettri.142?mibextid=ZbWKwL" target="_blank"
+                                class="social-icon fb" rel="noopener" title="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://instagram.com" target="_blank" class="social-icon insta" rel="noopener"
+                                title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://github.com" target="_blank" class="social-icon github" rel="noopener"
+                                title="Github">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
 
     <footer>
-        <p>&copy; 2023 BMC IT Club. Sending love from Bhairahawa.</p>
+        <div class="footer-container">
+            <div class="footer-about" id="about">
+                <h2 class="scroll-animate">About Us</h2>
+                <p class="scroll-animate">
+                    We are students of Bhairahawa Multiple Campus, dedicated to exploring, learning, and innovating in
+                    the
+                    world of Information Technology. Our club provides a platform for students to connect, collaborate,
+                    and grow their skills
+                    through workshops, projects, and events.
+                </p>
+            </div>
+
+            <div class="footer-contact" id="contact">
+                <h2 class="scroll-animate">Contact Us</h2>
+                <div class="contact-item">
+                    <i class="fab fa-facebook-f scroll-animate"></i>
+                    <a href="https://www.facebook.com/profile.php?id=100094504922018" rel="noopener" target="_blank"
+                        class="scroll-animate">BMC
+                        IT Club</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope scroll-animate"></i>
+                    <a href="mailto:bmcitclub01@gmail.com" class="scroll-animate">bmcitclub01@gmail.com</a>
+                </div>
+            </div>
+
+            <div class="footer-credits">
+                <p class="scroll-animate">&copy; 2024 <strong>BMC IT Club</strong>. Sending 💙 from Bhairahawa. </p>
+            </div>
+        </div>
     </footer>
 
+    <script>
+        // Animation on scroll
+        const animatedElements = document.querySelectorAll(".zoom-in");
+
+        const observer2 = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("zoom-in-animate");
+                    }
+                });
+            },
+            {
+                threshold: 0.1,
+            }
+        );
+
+        animatedElements.forEach((element) => observer2.observe(element));
+
+        const animatedElements2 = document.querySelectorAll(".scroll-animate");
+
+        const observer22 = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("show-content");
+                    }
+                });
+            },
+            {
+                threshold: 0.5,
+            }
+        );
+
+        animatedElements2.forEach((element) => observer22.observe(element));
+    </script>
 </body>
 
 </html>
