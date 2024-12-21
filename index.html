@@ -123,13 +123,18 @@
         <div class="landing-page-container">
 
             <div class="landing-page">
-
                 <!-- Left Section -->
                 <header class="header-section left">
                     <h1 class="main-title highlight">Step up for</h1>
                     <h1 class="main-title highlight1">Code Olympiad 2081</h1>
-                    <p class="tagline">Compete , Conquer , Code
+                    <p class="tagline"> <span class="compete">Compete </span> <span class="conquer">| Conquer | </span>
+                        <span class="code">Code</span>
                     </p>
+                    <p class="linus">Talk is cheap, Show me the <strong>Code</strong>. -<strong>Linus Torvalds</strong>
+                    </p>
+                    <div class="club-logo">
+                        <img class="ribbon" src="./assets/images/transparent1.png" alt="BMC IT Club">
+                    </div>
                 </header>
 
                 <!-- Right Section -->
@@ -187,6 +192,15 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="fight-club-container">
+                        <h1><a href="./assets/html/fight-club.html" target="_blank" rel="noopener"
+                                title="You Do Not talk about the Fight Club">BMC IT Club</a></h1>
+                        <h2>The first rule of BMC IT Club is: you talk about BMC IT Club.</h2>
+                        <p class="rule">"It's only after we've lost everything that we're free to do anything."</p>
+                        <audio loop hidden src="./assets/music/The Pixies - Where Is My Mind (Fight Club song).mp3"
+                            type="audio/mpeg" id="fight-club-audio"></audio>
                     </div>
                 </div>
             </div>
@@ -266,14 +280,13 @@
                         </div>
 
                         <div class="syllabus-section bonus-section">
-                            <h3 class="scroll-animate">✨ Bonus Topics (Optional)</h3>
+                            <h3 class="scroll-animate">✨ Discrete Math</h3>
                             <ul>
-                                <li class="scroll-animate">Advanced Recursion (e.g., Backtracking)</li>
-                                <li class="scroll-animate">CSS Keyframe Animations</li>
+                                <li class="scroll-animate">Number Theory, Graph Theory, MST</li>
+                                <li class="scroll-animate">Binary Tree, Avial Tree</li>
                             </ul>
-                            <p class="scroll-animate"><strong>Note:</strong> Bonus topics are for advanced participants
-                                seeking additional
-                                challenges.</p>
+                            <p class="scroll-animate"><strong>Note:</strong> Don't be afraid of the syllabus, build a
+                                team and challenge yourself for a thrilling coding competition.</p>
                         </div>
                     </div>
                 </section>
@@ -570,8 +583,24 @@
 
         closeButton.addEventListener('click', () => {
             vscodeContainer.classList.add('hidden');
+            vscodeContainer.classList.remove('fullscreen');
+            document.querySelector(".fight-club-container").style.display = "flex";
+            document.getElementById("fight-club-audio").play();
         });
 
+        const words = [
+            document.querySelector(".compete"),
+            document.querySelector(".code"),
+            document.querySelector(".conquer"),
+        ];
+
+        setTimeout(() => {
+            words.forEach((word, index) => {
+                setTimeout(() => {
+                    word.classList.add("show");
+                }, index * 2000);
+            });
+        }, 6000);
     </script>
 
     <!-- Intersection Observer -->
