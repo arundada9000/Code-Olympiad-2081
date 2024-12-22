@@ -238,7 +238,9 @@ h2 {
 .syllabus-container p {
   margin: 10px 0;
 }
-
+.syllabus-section ul li {
+  margin: 5px 0;
+}
 .syllabus-container strong {
   color: #20b7ee;
 }
