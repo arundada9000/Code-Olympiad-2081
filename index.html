@@ -195,6 +195,7 @@
                     </div>
 
                     <div class="fight-club-container">
+                        <div class="close-fight-club"><img src="./assets/icons/close-icon.png" alt="Close Icon"></div>
                         <h1><a href="./assets/html/fight-club.html" target="_blank" rel="noopener"
                                 title="You Do Not talk about the Fight Club">BMC IT Club</a></h1>
                         <h2>The first rule of BMC IT Club is: you talk about BMC IT Club.</h2>
@@ -601,6 +602,12 @@
                 }, index * 2000);
             });
         }, 6000);
+
+        document.querySelector(".close-fight-club").addEventListener('click', () => {
+            vscodeContainer.classList.remove('hidden');
+            document.querySelector(".fight-club-container").style.display = "none";
+            document.getElementById("fight-club-audio").pause();
+        });
     </script>
 
     <!-- Intersection Observer -->
