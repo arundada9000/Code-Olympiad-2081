@@ -207,11 +207,13 @@
 }
 
 .fullscreen {
+  width: 99vw;
+  height: 99vh;
   min-width: 99vw;
   margin: 2px;
   margin-right: 5px;
   height: 99vh;
-  max-height: 100vh;
+  max-height: 100svh;
   position: fixed;
   top: 0;
   left: 0;
@@ -346,13 +348,12 @@
   color: #999;
   border: none;
 }
-.close-fight-club {
+.fight-club-controls {
   position: absolute;
-  top: 0;
-  right: 0;
-}
-.close-fight-club img {
-  cursor: pointer;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 5px;
 }
 @keyframes fadeIn {
   from {

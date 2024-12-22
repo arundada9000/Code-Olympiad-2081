@@ -194,8 +194,12 @@
                         </div>
                     </div>
 
-                    <div class="fight-club-container">
-                        <div class="close-fight-club"><img src="./assets/icons/close-icon.png" alt="Close Icon"></div>
+                    <div class="fight-club-container ">
+                        <div class="fight-club-controls">
+                            <span class="minimize-fight-club control minimize"></span>
+                            <span class="maximize-fight-club control maximize"></span>
+                            <span class="close-fight-club control close"></span>
+                        </div>
                         <h1><a href="./assets/html/fight-club.html" target="_blank" rel="noopener"
                                 title="You Do Not talk about the Fight Club">BMC IT Club</a></h1>
                         <h2>The first rule of BMC IT Club is: you talk about BMC IT Club.</h2>
@@ -603,10 +607,22 @@
             });
         }, 6000);
 
+        const fightClubContainer = document.querySelector(".fight-club-container");
         document.querySelector(".close-fight-club").addEventListener('click', () => {
             vscodeContainer.classList.remove('hidden');
-            document.querySelector(".fight-club-container").style.display = "none";
+            fightClubContainer.style.display = "none";
             document.getElementById("fight-club-audio").pause();
+        });
+        document.querySelector(".maximize-fight-club.control.maximize").addEventListener('click', () => {
+            if (!fightClubContainer.classList.contains('fullscreen')) {
+                fightClubContainer.classList.add('fullscreen');
+            }
+        });
+        document.querySelector(".minimize-fight-club.control.minimize").addEventListener('click', () => {
+            if (fightClubContainer.classList.contains('fullscreen')) {
+                fightClubContainer.classList.remove('fullscreen');
+            }
+
         });
     </script>
 
