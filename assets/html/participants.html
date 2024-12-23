@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Participants</title>
+    <link rel="shortcut icon" href="../images/bmc-it-club-circle-logo.ico" type="image/x-icon">
+    <meta name="keyword"
+        content="CodeOlympiad participants, codeolympiad,Code Olympiad 2081, BMC IT Club, coding competition Bhairahawa, coding skills championship, Arun Neupane, arundada9000" />
+
+    <meta name="description"
+        content="Join the BMC IT Club's Code Olympiad 2081 in Bhairahawa. Test your coding skills, compete for amazing prizes, and enhance your expertise in a dynamic competition!" />
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Fira Code', monospace;
+            background: #0d1117;
+            color: #c9d1d9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+
+        /* Header Styling */
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            color: #58a6ff;
+            font-size: 2.5rem;
+        }
+
+        .header p {
+            font-size: 1rem;
+            color: #8b949e;
+        }
+
+        #remainingDays {
+            font-size: 1.2rem;
+            color: #58a6ff;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Main Container */
+        .container {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* Participant Card */
+        .participant-card {
+            background: #161b22;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s, background 0.3s;
+            animation: cardLoad 0.6s ease-in-out;
+        }
+
+        .participant-card:hover {
+            background: #21262d;
+            transform: translateY(-5px);
+        }
+
+        .participant-card h2 {
+            color: #58a6ff;
+            margin-bottom: 0.5rem;
+        }
+
+        .participant-card p {
+            font-size: 1rem;
+            margin: 0.2rem 0;
+        }
+
+        .participant-card ul {
+            margin-top: 0.5rem;
+            padding-left: 1rem;
+        }
+
+        .participant-card ul li {
+            list-style: circle;
+            color: #d2d2d2;
+        }
+
+        /* Buttons */
+        .buttons {
+            margin: 2rem 0;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .register {
+            background-color: #238636;
+            color: #ffffff;
+        }
+
+        .register:hover {
+            background-color: #2ea043;
+            transform: scale(1.1);
+        }
+
+        .back {
+            background-color: #8b949e;
+            color: #ffffff;
+        }
+
+        .back:hover {
+            background-color: #a6b1be;
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+            color: #8b949e;
+            border-top: 1px solid #21262d;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes cardLoad {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.75rem;
+            }
+
+            .header p {
+                font-size: 1rem;
+            }
+
+            .participant-card {
+                padding: 1rem;
+            }
+
+            .buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <h1>Code Olympiad 2081 Participants</h1>
+        <p>A showcase of coding teams ready to conquer the competition!</p>
+        <p class="remaining-days" id="remainingDays">Calculating days to register...</p>
+        <p>Registration is not open yet, this is just a dummy data for layout check.</p>
+        <p>You can see participated teams here once registration starts.</p>
+    </header>
+
+    <main class="container">
+        <!-- Participant List -->
+        <div class="participant-card">
+            <h2>Team BMC IT CLub</h2>
+            <p><strong>Leader:</strong> Arun Neupane</p>
+            <p><strong>Campus:</strong> Bhairahawa Multiple Campus</p>
+            <ul>
+                <li>Goku</li>
+                <li>Meliodas</li>
+                <li>Geto</li>
+            </ul>
+        </div>
+
+        <div class="participant-card">
+            <h2>Akatsuki</h2>
+            <p><strong>Leader:</strong>Arun Neupane</p>
+            <p><strong>Campus:</strong>Bhairahawa Multiple Campus</p>
+            <ul>
+                <li>Ryan Gosling</li>
+                <li>Christian Bale</li>
+                <li>Lana Del Rey</li>
+            </ul>
+        </div>
+    </main>
+
+    <div class="buttons">
+        <a href="register.html" class="btn register">Register Now 🚀</a>
+        <a href="../../index.html" class="btn back">Go Back 🔙</a>
+    </div>
+
+    <footer class="footer">
+        <p>“Programs must be written for people to read, and only incidentally for machines to execute.” — Harold
+            Abelson</p>
+        <p>BMC IT Club | Inspiring Coders of Tomorrow</p>
+    </footer>
+
+    <script>
+        // Countdown for registration deadline
+        const remainingDaysElement = document.getElementById("remainingDays");
+
+        function calculateRemainingDays() {
+            const currentDate = new Date();
+            const targetDate = new Date("2025-01-13");
+            const difference = targetDate - currentDate;
+
+            if (difference > 0) {
+                const daysLeft = Math.floor(difference / (1000 * 60 * 60 * 24));
+                remainingDaysElement.textContent = `${daysLeft} days left to register!`;
+            } else {
+                remainingDaysElement.textContent = "Registration closed!";
+            }
+        }
+
+        calculateRemainingDays();
+
+    </script>
+</body>
+
+</html>
