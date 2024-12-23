@@ -206,22 +206,6 @@
   background: #e74c3c;
 }
 
-.fullscreen {
-  width: 99vw;
-  height: 99vh;
-  min-width: 99vw;
-  margin: 2px;
-  margin-right: 5px;
-  height: 99vh;
-  max-height: 100svh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 2;
-  background-color: var(--editor-bg, #1e1e1e);
-  box-shadow: none;
-}
-
 .hidden {
   display: none;
 }
@@ -354,6 +338,21 @@
   right: 10px;
   display: flex;
   gap: 5px;
+}
+.fullscreen {
+  width: 99vw;
+  height: 99vh;
+  min-width: 99vw;
+  margin: 2px;
+  margin-right: 5px;
+  height: 99vh;
+  max-height: 100svh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: var(--editor-bg, #1e1e1e);
+  box-shadow: none;
 }
 @keyframes fadeIn {
   from {
