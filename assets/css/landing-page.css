@@ -34,27 +34,40 @@
   font-weight: 900;
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
-.compete.show,
-.conquer.show,
-.code.show {
-  opacity: 1;
-  transform: scale(1);
-}
 .compete {
   color: #e94560;
   text-shadow: 0 0 10px #e94560, 0 0 20px #ff4757;
+  animation: ShowWords 1.5s forwards;
+  animation-delay: 5s;
 }
 
 .conquer {
   color: #0f3460;
   text-shadow: 0 0 10px #0f3460, 0 0 20px #3a60b1;
+  animation: ShowWords 1.5s forwards;
+  animation-delay: 8s;
 }
 
 .code {
   color: #068c5f;
   text-shadow: 0 0 10px #00ffaa, 0 0 20px #12ad7f;
+  animation: ShowWords 1.5s forwards;
+  animation-delay: 6.5s;
 }
-
+@keyframes ShowWords {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 .compete:hover,
 .conquer:hover,
 .code:hover {
