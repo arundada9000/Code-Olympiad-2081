@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 .preloader-wrapper {
   height: 100vh;
   width: 100vw;
@@ -10,8 +11,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow: none;
   z-index: 1;
+  animation: fadeOut 0.15s forwards;
+  animation-delay: 5s;
+  pointer-events: none;
 }
 
 .circle-outer {
@@ -130,26 +134,6 @@
   font-weight: bold;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .animated-image {
   animation: fadeIn 1s ease-in forwards, spin 2s linear 1s forwards;
   animation-delay: 2s, 2s;
@@ -158,9 +142,17 @@
 }
 
 .main-content {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
+  animation: fadeIns 1s forwards;
+  animation-delay: 5s;
 }
-
+@keyframes fadeIns {
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
 @keyframes brushEffect {
   to {
     stroke-dashoffset: 0;
@@ -201,5 +193,30 @@
   .text-preloader-wrapper {
     flex: 4;
     transform: translateY(-40%);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes fadeOut {
+  to {
+    display: none;
   }
 }

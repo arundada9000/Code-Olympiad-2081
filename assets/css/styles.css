@@ -18,10 +18,7 @@
 ::-webkit-scrollbar-thumb:hover {
   background: black;
 }
-body,
-html {
-  margin: 0;
-  padding: 0;
+body {
   font-family: "Courier New", Courier, monospace;
   color: #d4d4d4;
 }
@@ -245,7 +242,6 @@ h2 {
   color: #20b7ee;
 }
 #remaining-days {
-  width: 100%;
   text-align: center;
   margin: 10px auto;
   font-size: 2rem;
@@ -253,16 +249,15 @@ h2 {
   color: #58a6ff;
   background: #0d1117;
   padding: 15px;
-  border: 2px solid #238636;
+  border: 2px solid #007bff;
   border-radius: 10px;
-  display: inline-block;
   cursor: pointer;
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 #remaining-days:hover {
   transform: scale(1.1);
-  background-color: #238636;
+  background-color: #0049af;
   color: white;
 }
 #prizes {
@@ -524,13 +519,13 @@ form .btn:hover {
   padding: 30px;
   background: #161b22;
   border-radius: 15px;
-  box-shadow: 0 0 8px rgba(0, 255, 85, 0.4);
+  box-shadow: 0 0 8px #0049af;
 }
 
 .contact-title {
   text-align: center;
   font-size: 2rem;
-  color: #238636;
+  color: #20b7ee;
   margin-bottom: 10px;
 }
 
@@ -551,14 +546,14 @@ form .btn:hover {
   background: #1f262d;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 255, 85, 0.2);
+  box-shadow: 0 0 15px #58a6ff;
   width: 45%;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .contact-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 0 25px rgba(0, 255, 85, 0.5);
+  box-shadow: 0 0 25px #007bff;
 }
 
 .card-header {
@@ -568,7 +563,7 @@ form .btn:hover {
 
 .card-name {
   font-size: 1.5rem;
-  color: #238636;
+  color: #007bff;
 }
 
 .card-post {
@@ -594,7 +589,7 @@ form .btn:hover {
 }
 
 .social-icon:hover {
-  color: #238636;
+  color: #0049af;
 }
 .card-number {
   margin-bottom: 15px;
@@ -707,10 +702,11 @@ form .btn:hover {
 .footer-social .social-icons img {
   width: 30px;
   height: 30px;
+  transition: transform 0.25s ease-in-out, filter 0.25s ease-in-out;
 }
 .footer-social .social-icons img:hover {
-  transform: scale(1.25) translateY(-10px) rotateZ(1080deg);
-  transition: transform 0.35s ease-in-out;
+  transform: scale(1.25) translateY(-5px);
+  filter: hue-rotate(180deg);
 }
 
 .footer-bottom {
