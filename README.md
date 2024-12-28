@@ -46,7 +46,7 @@ If you'd like to contribute to **Code Olympiad 2081**, follow these steps:
 For any questions, issues, or suggestions, feel free to open an issue or reach out to me directly.
 
 - Email: [arunneupane0000@gmail.com](mailto:arunneupane0000@gmail.com)
-- Facebook: [@arundada9000](https://facebook.com/arunneupane9000)
+- Facebook: [@arunneupane9000](https://facebook.com/arunneupane9000)
 - Instagram: [@arundada9000](https://instagram.com/arundada9000)
 
 ---
