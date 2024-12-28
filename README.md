@@ -1,6 +1,6 @@
 # Code Olympiad
 
-Welcome to **Code Olympiad 2081**, an exciting platform for hosting coding competitions for the **BMC IT Club**. This repository contains the source code for the **Code Olympiad 2081** website, which facilitates organizing and participating in competitive programming challenges.
+Welcome to **Code Olympiad 2081**, an exciting platform for hosting coding competition for the **BMC IT Club**. This repository contains the source code for the **Code Olympiad 2081** website, which facilitates organizing and participating in competitive programming challenge **Code Olympiad** . Event is going to be held at Magh 3 with a winning cash prize of **16000** , **8000**, **4000** .
 
 ---
 
@@ -8,7 +8,7 @@ Welcome to **Code Olympiad 2081**, an exciting platform for hosting coding compe
 
 - **Event Details:** Participants can see coding event's details, demo questions, syllabus and other participants.
 - **Participant Registration:** Competitors can register, view available events, and track their progress.
-- **Real-time Leaderboards:** Participants can view live participants during and after the registration.
+- **Real-time Participation:** Participants can view live participants during and after the registration.
 - **Demo Questions:** Demo questions are available for practice.
 - **Timer:** Countdown timer for program starting date.
 
@@ -51,5 +51,5 @@ For any questions, issues, or suggestions, feel free to open an issue or reach o
 
 ---
 
-_Thanks for checking out **Code Olympiad**!_ 🎉
+_Thanks for checking out **Code Olympiad 2081**!_ 🎉
 _I hope we will meet at the competition, me as a host and you as a participant._ ❤️
