@@ -11,16 +11,239 @@
 
     <meta name="description"
         content="Join the BMC IT Club's Code Olympiad 2081 in Bhairahawa. Test your coding skills, compete for amazing prizes, and enhance your expertise in a dynamic competition!" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/register.css">
 </head>
 
 <body>
-    <h1>Registration is not open yet, stay tuned for more.</h1>
-    <a href="../../index.html">Home</a> <br>
-    <hr>
-    <a href="./demo-questions.html">Demo Questions</a> <br>
-    <hr>
-    <a href="./participants.html">Participated Teams</a> <br>
-    <hr>
+    <header class="header">
+        <h1 class="title">Code Olympiad Registration</h1>
+        <p class="subtitle">Join the ultimate coding showdown and showcase your skills!</p>
+    </header>
+
+    <main class="form-container">
+        <form id="team-registration-form" action="https://api.web3forms.com/submit" method="post">
+            <fieldset>
+                <input type="hidden" name="access_key" value="683c630a-19ea-426c-a560-3148bd42d8dd">
+                <input type="hidden" name="from_name" value="Code Olympiad Form Submission">
+
+                <!-- Team Information -->
+                <legend class="legend">Participant Information</legend>
+
+                <div class="form-group">
+                    <label for="team-name">Team Name</label>
+                    <input type="text" name="Team-Name" id="team-name" placeholder="Enter your Team's name" required>
+                </div>
+                <div class="form-group">
+                    <label for="team-captain">Team Captain's Name</label>
+                    <input type="text" name="Team-Captain" id="team-captain" placeholder="Enter Team Captain's name"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="Email" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="campus">Campus</label>
+                    <input type="text" name="Campus" id="campus" placeholder="Enter your Campus name" required>
+                </div>
+                <div class="form-group">
+                    <label for="team-phone">Team Phone Number</label>
+                    <input type="tel" name="Phone-Number" id="team-phone" placeholder="Enter your phone number"
+                        pattern="^(98|97)\d{8}$" required>
+                </div>
+                <!-- Team Members -->
+                <div class="form-group">
+                    <label for="member-count">Number of Team Members (max 4)</label>
+                    <input type="number" name="Team-Member-Count" id="member-count" min="1" max="4"
+                        placeholder="Enter number of members" required>
+                </div>
+                <div id="members-container"></div>
+                <!-- Preferred Programming Languages -->
+                <div class="form-group">
+                    <label for="languages">Preferred Programming Languages</label>
+                    <div id="custom-multi-select" class="multi-select-container">
+                        <div class="multi-select-header">
+                            <span id="multi-select-placeholder">Select programming languages</span>
+                            <div class="multi-select-arrow">▼</div>
+                        </div>
+                        <div class="multi-select-options">
+                            <label><input name="Languages" type="checkbox" value="C"> C</label>
+                            <label><input name="Languages" type="checkbox" value="C++"> C++</label>
+                            <label><input name="Languages" type="checkbox" value="Java"> Java</label>
+                            <label><input name="Languages" type="checkbox" value="Python"> Python</label>
+                            <label><input name="Languages" type="checkbox" value="JavaScript"> JavaScript</label>
+                            <label><input name="Languages" type="checkbox" value="PHP"> PHP</label>
+                            <label><input name="Languages" type="checkbox" value="C#"> C#</label>
+                            <label><input name="Languages" type="checkbox" value="Dart"> Dart</label>
+                            <label><input name="Languages" type="checkbox" value="other"> Other</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="custom-language-container" class="form-group" style="display: none;">
+                    <label for="custom-language">Specify Other Language</label>
+                    <input name="Custom-Language" type="text" id="custom-language"
+                        placeholder="Enter your preferred language">
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category" name="category" required>
+                        <option value="">Select a category</option>
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                </div>
+
+                <!-- Buttons -->
+                <div class="button-group">
+                    <button type="submit" class="btn submit" id="submit-btn">Submit</button>
+                    <button type="reset" class="btn clear">Clear</button>
+                </div>
+            </fieldset>
+        </form>
+    </main>
+
+    <footer class="footer">
+        <p>Designed with ❤️ for the Code Olympiad</p>
+    </footer>
+
+    <script>
+        const multiSelectContainer = document.querySelector(".multi-select-container");
+        const multiSelectHeader = document.querySelector(".multi-select-header");
+        const multiSelectOptions = document.querySelector(".multi-select-options");
+        const placeholder = document.getElementById("multi-select-placeholder");
+        const checkboxes = multiSelectOptions.querySelectorAll("input[type='checkbox']");
+        const customLanguageContainer = document.getElementById("custom-language-container");
+        const customLanguageInput = document.getElementById("custom-language");
+
+        let selectedLanguages = [];
+
+        // Toggle options dropdown
+        multiSelectHeader.addEventListener("click", () => {
+            multiSelectOptions.classList.toggle("show");
+        });
+
+        // Handle checkbox changes
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener("change", function () {
+                const value = this.value;
+
+                if (this.checked) {
+                    selectedLanguages.push(value);
+                    if (value === "other") {
+                        customLanguageContainer.style.display = "block";
+                        customLanguageInput.setAttribute("required", "true");
+                    }
+                } else {
+                    selectedLanguages = selectedLanguages.filter(lang => lang !== value);
+                    if (value === "other") {
+                        customLanguageContainer.style.display = "none";
+                        customLanguageInput.removeAttribute("required");
+                    }
+                }
+
+                // Update placeholder text
+                placeholder.textContent = selectedLanguages.length
+                    ? selectedLanguages.join(", ")
+                    : "Select programming languages";
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener("click", (event) => {
+            if (!multiSelectContainer.contains(event.target)) {
+                multiSelectOptions.classList.remove("show");
+            }
+        });
+
+        document.getElementById("member-count").addEventListener("input", function () {
+            let memberCount = parseInt(this.value) || 0;
+            const membersContainer = document.getElementById("members-container");
+            membersContainer.innerHTML = ""; // Clear previous inputs
+            if (memberCount > 4) {
+                memberCount = 4;
+            }
+            if (memberCount < 1) {
+                memberCount = 1;
+            }
+            for (let i = 1; i <= memberCount; i++) {
+                const memberDiv = document.createElement("div");
+                memberDiv.classList.add("member-input");
+                memberDiv.innerHTML = `
+            <h3>Member ${i}</h3>
+            <div class="form-group">
+                <label for="member-${i}-name">Name</label>
+                <input name="Member-${i}-Name" type="text" id="member-${i}-name" placeholder="Enter member ${i}'s name" required>
+            </div>
+            <div class="form-group">
+                <label for="member-${i}-study">Current Study</label>
+                <select name="Member-${i}-Study" id="member-${i}-study" required>
+                    <option value="">Select...</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="1st Semester">1st Semester</option>
+                    <option value="2nd Semester">2nd Semester</option>
+                    <option value="3rd Semester">3rd Semester</option>
+                    <option value="4th Semester">4th Semester</option>
+                    <option value="5th Semester">5th Semester</option>
+                    <option value="6th Semester">6th Semester</option>
+                    <option value="7th Semester">7th Semester</option>
+                    <option value="8th Semester">8th Semester</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="member-${i}-phone">Phone Number (optional)</label>
+                <input name="Member-${i}-Phone" type="tel" id="member-${i}-phone" placeholder="Enter phone number" pattern="^(98|97)\\d{8}$">
+            </div>
+        `;
+                membersContainer.appendChild(memberDiv);
+            }
+        });
+
+        const form = document.querySelector('form');
+        const submitButton = document.getElementById('submit-btn');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            submitButton.value = 'Submitting...';
+
+            const formData = new FormData(form);
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData,
+            })
+                .then(response => response.json()) // Parse response as JSON
+                .then(data => {
+                    if (data.success) {
+                        submitButton.value = 'Submitted';
+                        setTimeout(() => {
+                            submitButton.value = 'See you at BMC';
+                            submitButton.disabled = true; // Disable button
+                        }, 5000);
+                        form.reset();
+                    } else {
+                        submitButton.value = 'Error, Try Again';
+                        console.error('Error:', data.message);
+                        setTimeout(() => {
+                            submitButton.value = 'Submit';
+                        }, 5000);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error submitting form:', error);
+                    submitButton.value = 'Error, Try Again';
+                    setTimeout(() => {
+                        submitButton.value = 'Submit';
+                    }, 5000);
+                });
+        });
+
+    </script>
 </body>
 
 </html>

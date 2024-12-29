@@ -554,11 +554,6 @@
                 return 'syntax_error " not allowed';
             }
 
-            if (/dainesh/i.test(input)) {
-                playSong("./assets/music/sakhiyaan song.m4a");
-                return "dainesh vai alag hi level ka banda tha";
-            }
-
             if (/pooja/i.test(input)) {
                 playSong('./assets/music/you are all i want.m4a');
                 return "I love you";
@@ -569,11 +564,14 @@
                 return "I love you sooo much";
             }
 
+            if (/dainesh/i.test(input)) {
+                playSong("./assets/music/sakhiyaan song.m4a");
+                return "dainesh vai alag hi level ka banda tha";
+            }
+            
             const keywordReplacements = {
                 arun: 'Programmer',
-                dinesh: 'Scammer',
                 bijay: 'Ram',
-                sunil: 'DHEDUWA'
             };
 
             const regex = new RegExp(Object.keys(keywordReplacements).join('|'), 'gi');
