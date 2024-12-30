@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remaining Days</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #1a1a1a, #3333cc);
+            font-family: 'Poppins', sans-serif;
+            color: #fff;
+        }
+
+        .countdown-wrapper {
+            display: flex;
+            gap: 20px;
+            text-align: center;
+        }
+
+        .time-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            width: 100px;
+            transform: scale(1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .time-block:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+
+        .number {
+            font-size: 3rem;
+            font-weight: bold;
+            animation: pulse 1s infinite;
+        }
+
+        .label {
+            font-size: 1rem;
+            font-weight: 300;
+            margin-top: 5px;
+            text-transform: uppercase;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                color: #fff;
+            }
+
+            50% {
+                transform: scale(1.1);
+                color: #ffcc00;
+            }
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .time-block {
+                width: 80px;
+                padding: 15px;
+            }
+
+            .number {
+                font-size: 2.5rem;
+            }
+
+            .label {
+                font-size: 0.9rem;
+            }
+
+            .countdown-wrapper {
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .time-block {
+                width: 70px;
+                padding: 10px;
+            }
+
+            .number {
+                font-size: 2rem;
+            }
+
+            .label {
+                font-size: 0.8rem;
+            }
+
+            .countdown-wrapper {
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="countdown-wrapper">
+        <div class="time-block">
+            <span class="number" id="days">00</span>
+            <span class="label">Days</span>
+        </div>
+        <div class="time-block">
+            <span class="number" id="hours">00</span>
+            <span class="label">Hours</span>
+        </div>
+        <div class="time-block">
+            <span class="number" id="minutes">00</span>
+            <span class="label">Minutes</span>
+        </div>
+        <div class="time-block">
+            <span class="number" id="seconds">00</span>
+            <span class="label">Seconds</span>
+        </div>
+    </div>
+    <script>
+        const targetDate = new Date("2025-01-16T11:00:00").getTime(); // Set your target date here
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const timeLeft = targetDate - now;
+
+            if (timeLeft < 0) {
+                document.querySelector(".countdown-wrapper").innerHTML = "<h1>Time's Up!</h1>";
+                return;
+            }
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById("days").textContent = days.toString().padStart(2, "0");
+            document.getElementById("hours").textContent = hours.toString().padStart(2, "0");
+            document.getElementById("minutes").textContent = minutes.toString().padStart(2, "0");
+            document.getElementById("seconds").textContent = seconds.toString().padStart(2, "0");
+        }
+
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+    </script>
+</body>
+
+</html>

@@ -241,24 +241,107 @@ h2 {
 .syllabus-container strong {
   color: #20b7ee;
 }
-#remaining-days {
-  text-align: center;
-  margin: 10px auto;
-  font-size: 2rem;
-  font-weight: 600;
-  color: #58a6ff;
-  background: #0d1117;
-  padding: 15px;
-  border: 2px solid #007bff;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+
+/* Remaining Days */
+.countdown-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0;
+  background: linear-gradient(135deg, #1a1a1a, #3333cc);
+  font-family: "Poppins", sans-serif;
+  color: #fff;
 }
 
-#remaining-days:hover {
+.countdown-wrapper {
+  display: flex;
+  gap: 20px;
+  text-align: center;
+}
+
+.time-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  border-radius: 10px;
+  width: 100px;
+  transform: scale(1);
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.time-block:hover {
   transform: scale(1.1);
-  background-color: #0049af;
-  color: white;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.number {
+  font-size: 2rem;
+  font-weight: bold;
+  pointer-events: none;
+  animation: pulse 1s infinite;
+}
+
+.label {
+  font-size: 1rem;
+  font-weight: 300;
+  margin-top: 5px;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    color: #fff;
+  }
+
+  50% {
+    transform: scale(1.1);
+    color: #ffcc00;
+  }
+}
+
+@media (max-width: 768px) {
+  .time-block {
+    width: 80px;
+    padding: 15px;
+  }
+
+  .number {
+    font-size: 2.5rem;
+  }
+
+  .label {
+    font-size: 0.9rem;
+  }
+
+  .countdown-wrapper {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .time-block {
+    width: 70px;
+    padding: 10px;
+  }
+
+  .number {
+    font-size: 2rem;
+  }
+
+  .label {
+    font-size: 0.8rem;
+  }
+
+  .countdown-wrapper {
+    gap: 10px;
+  }
 }
 #prizes {
   text-align: center;

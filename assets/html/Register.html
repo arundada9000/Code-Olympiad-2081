@@ -18,6 +18,7 @@
 <body>
     <header class="header">
         <h1 class="title">Code Olympiad Registration</h1>
+        <p>Think it, Code it, Qwn it – Register now!</p>
         <p class="subtitle">Join the ultimate coding showdown and showcase your skills!</p>
     </header>
 
@@ -61,27 +62,21 @@
                 <div id="members-container"></div>
                 <!-- Preferred Programming Languages -->
                 <div class="form-group">
-                    <label for="languages">Preferred Programming Languages</label>
-                    <div id="custom-multi-select" class="multi-select-container">
-                        <div class="multi-select-header">
-                            <span id="multi-select-placeholder">Select programming languages</span>
-                            <div class="multi-select-arrow">▼</div>
-                        </div>
-                        <div class="multi-select-options">
-                            <label><input name="Languages" type="checkbox" value="C"> C</label>
-                            <label><input name="Languages" type="checkbox" value="C++"> C++</label>
-                            <label><input name="Languages" type="checkbox" value="Java"> Java</label>
-                            <label><input name="Languages" type="checkbox" value="Python"> Python</label>
-                            <label><input name="Languages" type="checkbox" value="JavaScript"> JavaScript</label>
-                            <label><input name="Languages" type="checkbox" value="PHP"> PHP</label>
-                            <label><input name="Languages" type="checkbox" value="C#"> C#</label>
-                            <label><input name="Languages" type="checkbox" value="Dart"> Dart</label>
-                            <label><input name="Languages" type="checkbox" value="other"> Other</label>
-                        </div>
-                    </div>
+                    <label for="preferred-language">Preferred Programming Languages</label>
+                    <select name="preferred-language" id="preferred-language" required>
+                        <option value="">Select a language</option>
+                        <option value="c">C</option>
+                        <option value="c++">C++</option>
+                        <option value="c#">C#</option>
+                        <option value="java">Java</option>
+                        <option value="python">python</option>
+                        <option value="ruby">Ruby</option>
+                        <option value="rust">Rust</option>
+                        <option value="other">Other</option>
+                    </select>
                 </div>
 
-                <div id="custom-language-container" class="form-group" style="display: none;">
+                <div id="custom-language-container" class="form-group">
                     <label for="custom-language">Specify Other Language</label>
                     <input name="Custom-Language" type="text" id="custom-language"
                         placeholder="Enter your preferred language">
@@ -107,55 +102,24 @@
     </main>
 
     <footer class="footer">
+        <p>Your journey to coding greatness starts here.</p>
         <p>Designed with ❤️ for the Code Olympiad</p>
     </footer>
 
     <script>
-        const multiSelectContainer = document.querySelector(".multi-select-container");
-        const multiSelectHeader = document.querySelector(".multi-select-header");
-        const multiSelectOptions = document.querySelector(".multi-select-options");
-        const placeholder = document.getElementById("multi-select-placeholder");
-        const checkboxes = multiSelectOptions.querySelectorAll("input[type='checkbox']");
+        const preferredLanguage = document.getElementById("preferred-language");
         const customLanguageContainer = document.getElementById("custom-language-container");
         const customLanguageInput = document.getElementById("custom-language");
 
-        let selectedLanguages = [];
-
-        // Toggle options dropdown
-        multiSelectHeader.addEventListener("click", () => {
-            multiSelectOptions.classList.toggle("show");
-        });
-
-        // Handle checkbox changes
-        checkboxes.forEach(checkbox => {
-            checkbox.addEventListener("change", function () {
-                const value = this.value;
-
-                if (this.checked) {
-                    selectedLanguages.push(value);
-                    if (value === "other") {
-                        customLanguageContainer.style.display = "block";
-                        customLanguageInput.setAttribute("required", "true");
-                    }
-                } else {
-                    selectedLanguages = selectedLanguages.filter(lang => lang !== value);
-                    if (value === "other") {
-                        customLanguageContainer.style.display = "none";
-                        customLanguageInput.removeAttribute("required");
-                    }
-                }
-
-                // Update placeholder text
-                placeholder.textContent = selectedLanguages.length
-                    ? selectedLanguages.join(", ")
-                    : "Select programming languages";
-            });
-        });
-
-        // Close dropdown when clicking outside
-        document.addEventListener("click", (event) => {
-            if (!multiSelectContainer.contains(event.target)) {
-                multiSelectOptions.classList.remove("show");
+        preferredLanguage.addEventListener("change", () => {
+            const selectedLanguage = preferredLanguage.value;
+            if (selectedLanguage === "other") {
+                customLanguageContainer.style.display = "block";
+                customLanguageInput.setAttribute("required", "true");
+            }
+            else {
+                customLanguageContainer.style.display = "none";
+                customLanguageInput.removeAttribute("required", "true");
             }
         });
 
