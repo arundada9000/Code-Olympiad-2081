@@ -134,6 +134,10 @@ function processString(input) {
     return "dainesh vai alag hi level ka banda tha";
   }
 
+  if (/pawan/i.test(input)) {
+    pawan();
+  }
+
   const keywordReplacements = {
     arun: "Programmer",
     bijay: "Ram",
@@ -147,13 +151,11 @@ function processString(input) {
   });
 
   return input.replace(/\n/g, "<br>");
-
-  function playSong(path) {
-    const audio = new Audio(path);
-    audio.play();
-  }
 }
-
+function playSong(path) {
+  const audio = new Audio(path);
+  audio.play();
+}
 // Handle custom printf editing
 terminalOutput.addEventListener("click", () => {
   const userText = prompt("Enter your custom text for printf:");
@@ -355,3 +357,67 @@ function updateCountdown() {
 // Update countdown every second
 setInterval(updateCountdown, 1000);
 updateCountdown();
+
+function pawan() {
+  playSong("./assets/music/snowstorm.m4a");
+
+  const dynamicDiv = document.createElement("div");
+  dynamicDiv.id = "dynamic-div";
+  dynamicDiv.style.position = "fixed";
+  dynamicDiv.style.top = "0";
+  dynamicDiv.style.left = "0";
+  dynamicDiv.style.width = "100vw";
+  dynamicDiv.style.height = "100vh";
+  dynamicDiv.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+  dynamicDiv.style.zIndex = "9999";
+  dynamicDiv.style.color = "#fff";
+  dynamicDiv.style.fontFamily = "Arial, sans-serif";
+  document.body.appendChild(dynamicDiv);
+
+  // Add the photo
+  const image = document.createElement("img");
+  image.src = "./assets/images/chill guy with scarf.png";
+  image.style.position = "absolute";
+  image.style.bottom = "-100px";
+  image.style.left = "50%";
+  image.style.transform = "translateX(-50%)";
+  image.style.transition = "transform 2s ease-in-out, bottom 2s ease-in-out";
+  image.style.maxWidth = "80%";
+  image.style.height = "auto";
+  dynamicDiv.appendChild(image);
+
+  setTimeout(() => {
+    image.style.transform = "translate(-50%, 50%)";
+    image.style.bottom = "50%";
+  }, 100);
+
+  const texts = [
+    { text: "I freeze, but I never fold.", position: "5%" },
+    { text: "Cold outside, but I'm colder.", position: "20%" },
+    { text: "Zero degrees, but my vibes are 100", position: "85%" },
+  ];
+
+  texts.forEach((item, index) => {
+    const textElement = document.createElement("p");
+    textElement.innerText = item.text;
+    textElement.style.position = "absolute";
+    textElement.style.top = item.position;
+    textElement.style.left = "50%";
+    textElement.style.transform = "translateX(-50%)";
+    textElement.style.width = "80%";
+    textElement.style.textAlign = "center";
+    textElement.style.opacity = "0";
+    textElement.style.transition = "opacity 1s ease-in-out";
+    textElement.style.fontSize = "1.5rem";
+    textElement.style.lineHeight = "1.5";
+    dynamicDiv.appendChild(textElement);
+
+    setTimeout(() => {
+      textElement.style.opacity = "1";
+    }, 2000 * (index + 1));
+  });
+
+  setTimeout(() => {
+    dynamicDiv.remove();
+  }, 10000);
+}
