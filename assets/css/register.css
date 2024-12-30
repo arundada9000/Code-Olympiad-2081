@@ -69,7 +69,8 @@ fieldset {
   margin-bottom: 10px;
 }
 .form-group {
-  margin-bottom: 15px;
+  margin: 25px 0;
+  position: relative;
 }
 
 input,
@@ -107,9 +108,31 @@ form select[multiple] {
   color: #20b7ee;
 }
 label {
-  display: block;
-  font-weight: 700;
-  margin-bottom: 5px;
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+input:focus + label,
+input:not(:placeholder-shown) + label {
+  top: -10px;
+  font-size: 0.85rem;
+  color: #03a9f4;
+}
+.styled-select:focus + .floating-label {
+  top: -10px;
+  font-size: 0.85rem;
+  color: #03a9f4;
+}
+
+.styled-select.filled + .floating-label {
+  top: -10px;
+  font-size: 0.85rem;
+  color: #03a9f4;
 }
 .button-group {
   display: flex;
@@ -145,7 +168,7 @@ form .btn:hover {
 }
 /* Footer */
 .footer {
-  margin-top: auto;
+  margin: 20px 0;
   padding: 10px 0;
   text-align: center;
   font-size: 0.9em;

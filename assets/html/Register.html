@@ -32,39 +32,38 @@
                 <legend class="legend">Participant Information</legend>
 
                 <div class="form-group">
+                    <input type="text" name="Team-Name" id="team-name" placeholder=" " required>
                     <label for="team-name">Team Name</label>
-                    <input type="text" name="Team-Name" id="team-name" placeholder="Enter your Team's name" required>
+
                 </div>
                 <div class="form-group">
+                    <input type="text" name="Team-Captain" id="team-captain" placeholder=" " required>
                     <label for="team-captain">Team Captain's Name</label>
-                    <input type="text" name="Team-Captain" id="team-captain" placeholder="Enter Team Captain's name"
-                        required>
                 </div>
                 <div class="form-group">
+                    <input type="email" name="Email" id="email" placeholder=" " required>
                     <label for="email">Email</label>
-                    <input type="email" name="Email" id="email" placeholder="Enter your email" required>
                 </div>
                 <div class="form-group">
+                    <input type="text" name="Campus" id="campus" placeholder=" " required>
                     <label for="campus">Campus</label>
-                    <input type="text" name="Campus" id="campus" placeholder="Enter your Campus name" required>
                 </div>
                 <div class="form-group">
+                    <input type="tel" name="Phone-Number" id="team-phone" placeholder=" " pattern="^(98|97)\d{8}$"
+                        required>
                     <label for="team-phone">Team Phone Number</label>
-                    <input type="tel" name="Phone-Number" id="team-phone" placeholder="Enter your phone number"
-                        pattern="^(98|97)\d{8}$" required>
                 </div>
                 <!-- Team Members -->
                 <div class="form-group">
+                    <input type="number" name="Team-Member-Count" id="member-count" min="1" max="4" placeholder=" "
+                        required>
                     <label for="member-count">Number of Team Members (max 4)</label>
-                    <input type="number" name="Team-Member-Count" id="member-count" min="1" max="4"
-                        placeholder="Enter number of members" required>
                 </div>
                 <div id="members-container"></div>
                 <!-- Preferred Programming Languages -->
                 <div class="form-group">
-                    <label for="preferred-language">Preferred Programming Languages</label>
-                    <select name="preferred-language" id="preferred-language" required>
-                        <option value="">Select a language</option>
+                    <select name="preferred-language" id="preferred-language" class="styled-select" required>
+                        <option value="" disabled selected hidden></option>
                         <option value="c">C</option>
                         <option value="c++">C++</option>
                         <option value="c#">C#</option>
@@ -74,22 +73,23 @@
                         <option value="rust">Rust</option>
                         <option value="other">Other</option>
                     </select>
+                    <label for="preferred-language" class="floating-label">Preferred Programming Languages</label>
+
                 </div>
 
                 <div id="custom-language-container" class="form-group">
+                    <input name="Custom-Language" type="text" id="custom-language" placeholder=" ">
                     <label for="custom-language">Specify Other Language</label>
-                    <input name="Custom-Language" type="text" id="custom-language"
-                        placeholder="Enter your preferred language">
                 </div>
 
                 <div class="form-group">
-                    <label for="category">Category</label>
-                    <select id="category" name="category" required>
-                        <option value="">Select a category</option>
+                    <select id="category" name="category" class="styled-select" required>
+                        <option value="" disabled selected hidden></option>
                         <option value="beginner">Beginner</option>
                         <option value="intermediate">Intermediate</option>
                         <option value="advanced">Advanced</option>
                     </select>
+                    <label for="category" class="floating-label">Category</label>
                 </div>
 
                 <!-- Buttons -->
@@ -107,6 +107,18 @@
     </footer>
 
     <script>
+        // Select styling
+        document.querySelectorAll('.styled-select').forEach((select) => {
+            select.addEventListener('change', () => {
+                if (select.value) {
+                    select.classList.add('filled');
+                } else {
+                    select.classList.remove('filled');
+                }
+            });
+        });
+
+
         const preferredLanguage = document.getElementById("preferred-language");
         const customLanguageContainer = document.getElementById("custom-language-container");
         const customLanguageInput = document.getElementById("custom-language");
@@ -126,7 +138,7 @@
         document.getElementById("member-count").addEventListener("input", function () {
             let memberCount = parseInt(this.value) || 0;
             const membersContainer = document.getElementById("members-container");
-            membersContainer.innerHTML = ""; // Clear previous inputs
+            membersContainer.innerHTML = "";
             if (memberCount > 4) {
                 memberCount = 4;
             }
@@ -139,13 +151,12 @@
                 memberDiv.innerHTML = `
             <h3>Member ${i}</h3>
             <div class="form-group">
+                <input name="Member-${i}-Name" type="text" id="member-${i}-name" placeholder=" " required>
                 <label for="member-${i}-name">Name</label>
-                <input name="Member-${i}-Name" type="text" id="member-${i}-name" placeholder="Enter member ${i}'s name" required>
             </div>
             <div class="form-group">
-                <label for="member-${i}-study">Current Study</label>
-                <select name="Member-${i}-Study" id="member-${i}-study" required>
-                    <option value="">Select...</option>
+                <select name="Member-${i}-Study" id="member-${i}-study" class="styled-select" required>
+                    <option value="" disabled selected hidden></option>
                     <option value="11">11</option>
                     <option value="12">12</option>
                     <option value="1st Semester">1st Semester</option>
@@ -157,10 +168,11 @@
                     <option value="7th Semester">7th Semester</option>
                     <option value="8th Semester">8th Semester</option>
                 </select>
+                <label for="member-${i}-study" class="floating-label">Current Study</label>
             </div>
             <div class="form-group">
+                <input name="Member-${i}-Phone" type="tel" id="member-${i}-phone" placeholder=" " pattern="^(98|97)\\d{8}$">
                 <label for="member-${i}-phone">Phone Number (optional)</label>
-                <input name="Member-${i}-Phone" type="tel" id="member-${i}-phone" placeholder="Enter phone number" pattern="^(98|97)\\d{8}$">
             </div>
         `;
                 membersContainer.appendChild(memberDiv);
@@ -173,7 +185,7 @@
         form.addEventListener('submit', function (event) {
             event.preventDefault();
 
-            submitButton.value = 'Submitting...';
+            submitButton.textContent = 'Submitting...';
 
             const formData = new FormData(form);
 
@@ -186,15 +198,15 @@
                     if (data.success) {
                         submitButton.value = 'Submitted';
                         setTimeout(() => {
-                            submitButton.value = 'See you at BMC';
+                            submitButton.textContent = 'See you at BMC';
                             submitButton.disabled = true; // Disable button
                         }, 5000);
                         form.reset();
                     } else {
-                        submitButton.value = 'Error, Try Again';
+                        submitButton.textContent = 'Error, Try Again';
                         console.error('Error:', data.message);
                         setTimeout(() => {
-                            submitButton.value = 'Submit';
+                            submitButton.textContent = 'Submit';
                         }, 5000);
                     }
                 })
@@ -202,7 +214,7 @@
                     console.error('Error submitting form:', error);
                     submitButton.value = 'Error, Try Again';
                     setTimeout(() => {
-                        submitButton.value = 'Submit';
+                        submitButton.textContent = 'Submit';
                     }, 5000);
                 });
         });
