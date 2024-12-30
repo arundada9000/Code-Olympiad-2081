@@ -100,7 +100,35 @@ function processString(input) {
     playSong("./assets/music/you are all i want.m4a");
     return "I love you sooo much";
   }
+  if (/suguru/i.test(input) || /geto/i.test(input)) {
+    playSong("./assets/music/shashidey.m4a");
+  }
+  if (/yowaimo/i.test(input) || /gojo/i.test(input) || /satouru/i.test(input)) {
+    playSong("./assets/music/yowaimo.m4a");
+  }
+  if (
+    /yareyaredes/i.test(input) ||
+    /aizen/i.test(input) ||
+    /sosuke/i.test(input)
+  ) {
+    playSong("./assets/music/yareyaredes.m4a");
+  }
 
+  if (/adolf/i.test(input) || /hitler/i.test(input)) {
+    playSong("./assets/music/speech.m4a");
+  }
+  if (
+    /cristiano/i.test(input) ||
+    /ronaldo/i.test(input) ||
+    /cr7/i.test(input) ||
+    /siu/i.test(input)
+  ) {
+    playSong("./assets/music/siu.m4a");
+  }
+
+  if (/honored/i.test(input)) {
+    playSong("./assets/music/honored-one.m4a");
+  }
   if (/dainesh/i.test(input)) {
     playSong("./assets/music/sakhiyaan song.m4a");
     return "dainesh vai alag hi level ka banda tha";
