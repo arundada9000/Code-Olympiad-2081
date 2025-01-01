@@ -167,6 +167,9 @@ form .btn:hover {
 #custom-campus-container {
   display: none;
 }
+.payment-gateways {
+  display: none;
+}
 .esewa,
 .bank {
   display: none;

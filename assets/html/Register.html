@@ -93,7 +93,7 @@
                 </div>
 
                 <div class="form-group">
-                    <select id="category" name="category" class="styled-select" required>
+                    <select id="category" name="category" class="styled-select">
                         <option value="" disabled selected hidden></option>
                         <option value="beginner">Beginner</option>
                         <option value="intermediate">Intermediate</option>
@@ -102,44 +102,48 @@
                     <label for="category" class="floating-label">Category</label>
                 </div>
 
-                <div class="form-group">
-                    <select id="payment-method" name="Payment-Method" class="styled-select" required>
-                        <option value="" disabled selected hidden></option>
-                        <option value="esewa">Esewa</option>
-                        <option value="bank">Bank Transfer</option>
-                    </select>
-                    <label for="payment-method" class="floating-label">Payment Method</label>
-                </div>
-                <div class="payment-img">
-                    <div class="photo-container esewa">
-                        <img src="../payment/bijay-esewa.jpg" alt="Bijay Esewa" class="photo-thumbnail"
-                            id="photo-thumbnail">
-
-                        <div class="download-button-container">
-                            <a href="../payment/bijay-esewa.jpg" download="Esewa-code-olympiad.jpg"
-                                class="download-btn">Download
-                                Photo</a>
-                        </div>
-
-                        <div class="photo-fullscreen" id="photo-fullscreen">
-                            <img src="../payment/bijay-esewa.jpg" alt="Esewa fullscreen view" class="fullscreen-img">
-                            <span class="close-btn" id="close-btn">&times;</span>
-                        </div>
+                <div class="payment-gateways">
+                    <div class="form-group">
+                        <select id="payment-method" name="Payment-Method" class="styled-select" required>
+                            <option value="" disabled selected hidden></option>
+                            <option value="esewa">Esewa</option>
+                            <option value="bank">Bank Transfer</option>
+                        </select>
+                        <label for="payment-method" class="floating-label">Payment Method</label>
                     </div>
 
-                    <div class="photo-container bank">
-                        <img src="../payment/arun-bank.jpg" alt="Arun Bank" class="photo-thumbnail"
-                            id="photo-thumbnail">
+                    <div class="payment-img">
+                        <div class="photo-container esewa">
+                            <img src="../payment/bijay-esewa.jpg" alt="Bijay Esewa" class="photo-thumbnail"
+                                id="photo-thumbnail">
 
-                        <div class="download-button-container">
-                            <a href="../payment/arun-bank.jpg" download="Bank-code-olympiad.jpg"
-                                class="download-btn">Download
-                                Photo</a>
+                            <div class="download-button-container">
+                                <a href="../payment/bijay-esewa.jpg" download="Esewa-code-olympiad.jpg"
+                                    class="download-btn">Download
+                                    Photo</a>
+                            </div>
+
+                            <div class="photo-fullscreen" id="photo-fullscreen">
+                                <img src="../payment/bijay-esewa.jpg" alt="Esewa fullscreen view"
+                                    class="fullscreen-img">
+                                <span class="close-btn" id="close-btn">&times;</span>
+                            </div>
                         </div>
 
-                        <div class="photo-fullscreen" id="photo-fullscreen">
-                            <img src="../payment/arun-bank.jpg" alt="Bank fullscreen view" class="fullscreen-img">
-                            <span class="close-btn" id="close-btn">&times;</span>
+                        <div class="photo-container bank">
+                            <img src="../payment/arun-bank.jpg" alt="Arun Bank" class="photo-thumbnail"
+                                id="photo-thumbnail">
+
+                            <div class="download-button-container">
+                                <a href="../payment/arun-bank.jpg" download="Bank-code-olympiad.jpg"
+                                    class="download-btn">Download
+                                    Photo</a>
+                            </div>
+
+                            <div class="photo-fullscreen" id="photo-fullscreen">
+                                <img src="../payment/arun-bank.jpg" alt="Bank fullscreen view" class="fullscreen-img">
+                                <span class="close-btn" id="close-btn">&times;</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -178,11 +182,14 @@
             if (selectedLanguage === "other") {
                 customCampusContainer.style.display = "block";
                 customCampusInput.setAttribute("required", "true");
+                paymentGateway(true);
             }
             else {
                 customCampusContainer.style.display = "none";
                 customCampusInput.removeAttribute("required", "true");
+                paymentGateway(false);
             }
+
         });
 
 
@@ -217,6 +224,15 @@
                 document.querySelector(".esewa").style.display = "none";
             }
         });
+        function paymentGateway(other) {
+            if (other) {
+                document.querySelector(".payment-gateways").style.display = "block";
+                paymentMethod.setAttribute("required", "true");
+            }
+            else {
+                document.querySelector(".payment-gateways").style.display = "none";
+            }
+        }
         // Select elements
         const photoThumbnail = document.getElementById("photo-thumbnail");
         const photoFullscreen = document.getElementById("photo-fullscreen");
@@ -277,7 +293,7 @@
             </div>
             <div class="form-group">
                 <input name="Member-${i}-Phone" type="tel" id="member-${i}-phone" placeholder=" " pattern="^(98|97)\\d{8}$">
-                <label for="member-${i}-phone">Phone Number (optional)</label>
+                <label for="member-${i}-phone">Phone Number</label>
             </div>
         `;
                 membersContainer.appendChild(memberDiv);

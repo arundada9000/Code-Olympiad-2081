@@ -437,6 +437,16 @@ h2 {
 .question {
   margin-bottom: 15px;
 }
+.register {
+  padding: 10px;
+  background-color: #58a6ff;
+  color: #fff;
+  margin: 10px auto;
+  display: inline-block;
+  border-radius: 10px;
+  animation: pulse 1s infinite;
+
+}
 
 #demo-questions a {
   width: 100%;
