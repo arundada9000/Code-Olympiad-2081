@@ -277,6 +277,11 @@
   color: #d4d4d4;
   overflow-y: auto;
   font-family: "Courier New", monospace;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease-in-out;
+}
+.code-editor:hover {
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.6);
 }
 
 .terminal-container {
