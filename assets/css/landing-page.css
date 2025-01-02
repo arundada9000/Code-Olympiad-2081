@@ -283,6 +283,50 @@
 .code-editor:hover {
   box-shadow: 0 4px 15px rgba(0, 123, 255, 0.6);
 }
+/* Click Hint Styling */
+.click-hint {
+  position: absolute;
+  top: 20px;
+  left: 10%;
+  transform: translateX(-50%);
+  background-color: #007bff;
+  color: #ffffff;
+  padding: 8px 12px;
+  border: 2px solid red;
+  border-radius: 5px;
+  font-size: 14px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+  z-index: 1000;
+  animation: pulse 1.5s infinite, fadeIn 0.5s 13s ease-in-out forwards;
+  display: block;
+  opacity: 0;
+  visibility: visible;
+}
+
+/* Arrow Pointing to the Code Editor */
+.hint-arrow {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #007bff;
+}
+
+/* Pulse Animation for the Hint */
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
 
 .terminal-container {
   width: 100%;

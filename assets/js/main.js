@@ -11,7 +11,20 @@ const codeElement = document.getElementById("code");
 const terminalOutput = document.getElementById("terminal-output");
 const mainTab = document.getElementById("main-tab");
 const readmeTab = document.getElementById("readme-tab");
+const clickHint = document.getElementById("click-hint");
 
+// Display the hint when the page loads
+clickHint.style.display = "block";
+
+// Remove the hint on code element click
+codeElement.addEventListener("click", () => {
+  clickHint.style.display = "none";
+});
+
+// Auto-hide the hint after 5 seconds
+setTimeout(() => {
+  clickHint.style.display = "none";
+}, 16000);
 const codeLines1 = [
   "#include <stdio.h>",
   "",
@@ -90,6 +103,69 @@ function processString(input) {
   if (/[^\\]"/.test(input)) {
     return 'syntax_error " not allowed';
   }
+  const curseWords = {
+    fuck: "fudge",
+    motherfucker: "mother-lover",
+    shit: "poop",
+    bitch: "friend",
+    bastard: "rascal",
+    asshole: "meanie",
+    damn: "darn",
+    dick: "silly",
+    pussy: "kitten",
+    cunt: "flower",
+    crap: "junk",
+    hell: "heck",
+    slut: "star",
+    faggot: "buddy",
+    whore: "hard worker",
+    prick: "prankster",
+    wanker: "goofball",
+    twat: "muffin",
+    bollocks: "nonsense",
+    arse: "rear",
+    bugger: "trickster",
+    douche: "nice guy",
+    jackass: "joker",
+    knob: "screw",
+    tosser: "juggler",
+    moron: "genius",
+    idiot: "thinker",
+    retard: "slowpoke",
+    jerk: "gentleman",
+    dumbass: "bright spark",
+    shithead: "smart cookie",
+    scumbag: "bag of joy",
+    dipshit: "clever cookie",
+    fucker: "funny one",
+    goddamn: "golly gee",
+    suck: "rock",
+    loser: "winner",
+    pig: "puppy",
+    cow: "kitten",
+    dog: "pal",
+    // Nepali words
+    muji: "genius",
+    chikni: "shiny",
+    machikni: "great friend",
+    gaand: "haat",
+    raadi: "saadi",
+    laado: "chado",
+    randi: "queen",
+    sala: "bro",
+    sali: "sis",
+    keti: "lady",
+    kukur: "loyal companion",
+    gadha: "smart fellow",
+    gadho: "intelligent buddy",
+  };
+
+  // Replace curse words
+  const curseRegex = new RegExp(Object.keys(curseWords).join("|"), "gi");
+  input = input.replace(curseRegex, (match) => {
+    const key = match.toLowerCase();
+    return curseWords[key];
+  });
 
   if (/pooja/i.test(input)) {
     playSong("./assets/music/you are all i want.m4a");
@@ -141,6 +217,8 @@ function processString(input) {
   const keywordReplacements = {
     arun: "Programmer",
     bijay: "Ram",
+    sagar: "Sagar Dai",
+    aneet: "Bheja",
   };
 
   const regex = new RegExp(Object.keys(keywordReplacements).join("|"), "gi");
