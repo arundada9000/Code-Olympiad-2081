@@ -174,6 +174,10 @@ function processString(input) {
     window.location = "./assets/html/participants.html";
     return "cd Participants.html";
   }
+  if (input.toLowerCase() === "intro") {
+    window.location = "./assets/videos/intro.mp4";
+    return "Playing Intro Video";
+  }
   if (/pooja/i.test(input)) {
     playSong("./assets/music/you are all i want.m4a");
     return "I love you";
