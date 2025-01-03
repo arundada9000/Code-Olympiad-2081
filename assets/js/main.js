@@ -168,9 +168,11 @@ function processString(input) {
   });
   if (input.toLowerCase() === "register") {
     window.location = "./assets/html/Register.html";
+    return "cd Register.html";
   }
   if (input.toLowerCase() === "participants") {
     window.location = "./assets/html/participants.html";
+    return "cd Participants.html";
   }
   if (/pooja/i.test(input)) {
     playSong("./assets/music/you are all i want.m4a");
@@ -446,7 +448,7 @@ function initializeCountdown(containerId, targetDate) {
 }
 
 // Initialize multiple countdowns
-initializeCountdown("countdown1", "2025-01-16T11:00:00");
+initializeCountdown("countdown1", "2025-01-16T10:00:00");
 initializeCountdown("countdown2", "2025-01-13T23:59:59");
 
 function pawan() {
