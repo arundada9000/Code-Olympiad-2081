@@ -47,12 +47,6 @@
             color: #8b949e;
         }
 
-        #remainingDays {
-            font-size: 1.2rem;
-            color: #58a6ff;
-            animation: fadeIn 1s ease-in-out;
-        }
-
         /* Main Container */
         .container {
             width: 100%;
@@ -192,25 +186,21 @@
     <header class="header">
         <h1>Code Olympiad 2081 Participants</h1>
         <p>A showcase of coding teams ready to conquer the competition!</p>
-        <p class="remaining-days" id="remainingDays">Calculating days to register...</p>
-        <p>Registration is not open yet, this is just a dummy data for layout check.</p>
-        <p>You can see participated teams here once registration starts.</p>
+        <p>Participants so faaar.</p>
     </header>
 
     <main class="container">
         <!-- Participant List -->
         <div class="participant-card">
-            <h2>Team BMC IT CLub</h2>
-            <p><strong>Leader:</strong> Arun Neupane</p>
-            <p><strong>Campus:</strong> Bhairahawa Multiple Campus</p>
+            <h2>BMC-alone</h2>
+            <p><strong>Leader:</strong> Sushil Bhattarai</p>
+            <p><strong>Campus:</strong> Butwal Multiple Campus</p>
             <ul>
-                <li>Goku</li>
-                <li>Meliodas</li>
-                <li>Geto</li>
+                <li>Sushil Bhattarai</li>
             </ul>
         </div>
 
-        <div class="participant-card">
+        <!-- <div class="participant-card">
             <h2>Akatsuki</h2>
             <p><strong>Leader:</strong>Arun Neupane</p>
             <p><strong>Campus:</strong>Bhairahawa Multiple Campus</p>
@@ -219,7 +209,7 @@
                 <li>Christian Bale</li>
                 <li>Lana Del Rey</li>
             </ul>
-        </div>
+        </div> -->
     </main>
 
     <div class="buttons">
@@ -232,27 +222,6 @@
             Abelson</p>
         <p>BMC IT Club | Inspiring Coders of Tomorrow</p>
     </footer>
-
-    <script>
-        // Countdown for registration deadline
-        const remainingDaysElement = document.getElementById("remainingDays");
-
-        function calculateRemainingDays() {
-            const currentDate = new Date();
-            const targetDate = new Date("2025-01-13");
-            const difference = targetDate - currentDate;
-
-            if (difference > 0) {
-                const daysLeft = Math.floor(difference / (1000 * 60 * 60 * 24));
-                remainingDaysElement.textContent = `${daysLeft} days left to register!`;
-            } else {
-                remainingDaysElement.textContent = "Registration closed!";
-            }
-        }
-
-        calculateRemainingDays();
-
-    </script>
 </body>
 
 </html>

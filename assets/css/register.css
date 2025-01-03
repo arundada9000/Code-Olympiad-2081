@@ -37,7 +37,11 @@ header {
   text-align: center;
   margin-top: 20px;
 }
-
+#remainingDays {
+  font-size: 1.2rem;
+  color: #58a6ff;
+  animation: fadeIn 1s ease-in-out;
+}
 .title {
   font-size: 2.5em;
   font-weight: 700;

@@ -166,7 +166,12 @@ function processString(input) {
     const key = match.toLowerCase();
     return curseWords[key];
   });
-
+  if (input.toLowerCase() === "register") {
+    window.location = "./assets/html/Register.html";
+  }
+  if (input.toLowerCase() === "participants") {
+    window.location = "./assets/html/participants.html";
+  }
   if (/pooja/i.test(input)) {
     playSong("./assets/music/you are all i want.m4a");
     return "I love you";
@@ -399,42 +404,50 @@ animatedElements.forEach((element) => observer2.observe(element));
 // this much for observer
 
 // Remaining Days
-const targetDate = new Date("2025-01-16T11:00:00").getTime(); // Set your target date here
+// Function to initialize a countdown
+function initializeCountdown(containerId, targetDate) {
+  const targetTime = new Date(targetDate).getTime();
 
-function updateCountdown() {
-  const now = new Date().getTime();
-  const timeLeft = targetDate - now;
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const timeLeft = targetTime - now;
 
-  if (timeLeft < 0) {
-    document.querySelector(".countdown-wrapper").innerHTML =
-      "<h1>Time's Up!</h1>";
-    return;
+    if (timeLeft < 0) {
+      document.querySelector(`#${containerId}`).innerHTML =
+        "<h1>Time's Up!</h1>";
+      clearInterval(timer); // Stop the interval when the countdown ends
+      return;
+    }
+
+    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+      (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+    const container = document.getElementById(containerId);
+    container.querySelector("#days").textContent = days
+      .toString()
+      .padStart(2, "0");
+    container.querySelector("#hours").textContent = hours
+      .toString()
+      .padStart(2, "0");
+    container.querySelector("#minutes").textContent = minutes
+      .toString()
+      .padStart(2, "0");
+    container.querySelector("#seconds").textContent = seconds
+      .toString()
+      .padStart(2, "0");
   }
 
-  const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-  const hours = Math.floor(
-    (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-  );
-  const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-  document.getElementById("days").textContent = days
-    .toString()
-    .padStart(2, "0");
-  document.getElementById("hours").textContent = hours
-    .toString()
-    .padStart(2, "0");
-  document.getElementById("minutes").textContent = minutes
-    .toString()
-    .padStart(2, "0");
-  document.getElementById("seconds").textContent = seconds
-    .toString()
-    .padStart(2, "0");
+  const timer = setInterval(updateCountdown, 1000);
+  updateCountdown(); // Initialize immediately
 }
 
-// Update countdown every second
-setInterval(updateCountdown, 1000);
-updateCountdown();
+// Initialize multiple countdowns
+initializeCountdown("countdown1", "2025-01-16T11:00:00");
+initializeCountdown("countdown2", "2025-01-13T23:59:59");
 
 function pawan() {
   playSong("./assets/music/snowstorm.m4a");

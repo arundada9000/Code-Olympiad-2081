@@ -20,6 +20,7 @@
         <h1 class="title">Code Olympiad Registration</h1>
         <p>Think it, Code it, Qwn it – Register now!</p>
         <p class="subtitle">Join the ultimate coding showdown and showcase your skills!</p>
+        <p class="remaining-days" id="remainingDays">Calculating days to register...</p>
     </header>
 
     <main class="form-container">
@@ -163,6 +164,24 @@
     </footer>
 
     <script>
+        // Countdown for registration deadline
+        const remainingDaysElement = document.getElementById("remainingDays");
+
+        function calculateRemainingDays() {
+            const currentDate = new Date();
+            const targetDate = new Date("2025-01-13");
+            const difference = targetDate - currentDate;
+
+            if (difference > 0) {
+                const daysLeft = Math.floor(difference / (1000 * 60 * 60 * 24));
+                remainingDaysElement.textContent = `${daysLeft} days left to register!`;
+            } else {
+                remainingDaysElement.textContent = "Registration closed!";
+            }
+        }
+
+        calculateRemainingDays();
+
         // Select styling
         document.querySelectorAll('.styled-select').forEach((select) => {
             select.addEventListener('change', () => {
