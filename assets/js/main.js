@@ -166,13 +166,17 @@ function processString(input) {
     const key = match.toLowerCase();
     return curseWords[key];
   });
-  if (input.toLowerCase() === "register") {
+  if (input.toLowerCase().trim() === "register") {
     window.location = "./assets/html/Register.html";
     return "cd Register.html";
   }
-  if (input.toLowerCase() === "participants") {
+  if (input.toLowerCase().trim() === "participants") {
     window.location = "./assets/html/participants.html";
     return "cd Participants.html";
+  }
+  if (input.toLowerCase().trim() === "volunteers") {
+    window.location = "./assets/html/volunteer.html";
+    return "cd volunteers.html";
   }
   if (input.toLowerCase() === "intro") {
     window.location = "./assets/videos/intro.mp4";

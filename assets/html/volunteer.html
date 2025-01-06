@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Links</title>
+    <link rel="shortcut icon" href="../images/bmc-it-club-circle-logo.ico" type="image/x-icon">
+    <meta name="keyword"
+        content="CodeOlympiad register, codeolympiad,Code Olympiad 2081, BMC IT Club, coding competition Bhairahawa, coding skills championship, Arun Neupane, arundada9000" />
+
+    <meta name="description"
+        content="Join the BMC IT Club's Code Olympiad 2081 in Bhairahawa. Test your coding skills, compete for amazing prizes, and enhance your expertise in a dynamic competition!" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #ddd;
+        }
+
+        .links-container {
+            text-align: center;
+        }
+
+        .link {
+            display: block;
+            margin: 15px 0;
+            text-decoration: none;
+            font-size: 1.2rem;
+            color: #fff;
+            background: #3b5998;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .link:hover {
+            background: #4c70ba;
+            transform: scale(1.05);
+        }
+
+        .copy-button {
+            display: inline-block;
+            margin-top: 5px;
+            font-size: 0.9rem;
+            color: #333;
+            background: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .copy-button:hover {
+            background: #eee;
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Volunteer Resources</h1>
+        <p>Links and Resources so you don't have to remember anything.</p>
+    </header>
+
+    <div class="links-container">
+        <a href="https://forms.gle/P6H7QK1UMfqvTvhB8" rel="noopener" class="link" target="_blank">Google Form</a>
+        <button class="copy-button" onclick="copyToClipboard('https://forms.gle/P6H7QK1UMfqvTvhB8')">Copy Link</button>
+
+        <a href="https://docs.google.com/spreadsheets/d/1JBUqOKqajatBVJtgz3k9daIiHx8ld6jKQXoUY-R3D9c/edit?gid=1325652850#gid=1325652850"
+            rel="noopener" class="link" target="_blank">Excel Form</a>
+        <button class="copy-button"
+            onclick="copyToClipboard('https://docs.google.com/spreadsheets/d/1JBUqOKqajatBVJtgz3k9daIiHx8ld6jKQXoUY-R3D9c/edit?gid=1325652850#gid=1325652850')">Copy
+            Link</button>
+
+        <a href="../html/participants.html" class="link">View Participants</a>
+        <button class="copy-button" onclick="copyToClipboard('../html/participants.html')">Copy Link</button>
+    </div>
+
+    <footer>
+        © 2025 CodeOlympiad2081. All rights reserved.
+    </footer>
+
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Link copied to clipboard: " + text);
+            }).catch(err => {
+                alert("Failed to copy the link. Please try again.");
+            });
+        }
+    </script>
+</body>
+
+</html>
