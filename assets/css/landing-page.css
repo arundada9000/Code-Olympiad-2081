@@ -182,6 +182,7 @@
   border: 1px solid #333;
   margin: 0 auto;
   animation: fadeIn 0.5s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 
 .title-bar {
@@ -372,6 +373,7 @@
   color: #f5f5f5;
   display: none;
   animation: fadeIn 2s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 .fight-club-container a {
   text-decoration: none;
@@ -415,6 +417,7 @@
   z-index: 2;
   background-color: var(--editor-bg, #1e1e1e);
   box-shadow: none;
+  transition: all 1s ease-in-out;
 }
 @keyframes fadeIn {
   from {
