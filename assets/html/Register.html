@@ -326,6 +326,7 @@
 
         form.addEventListener('submit', async function (event) {
             event.preventDefault();
+            return false;
 
             const email = document.getElementById('email').value;
 
@@ -380,7 +381,7 @@
                 return false;
             }
 
-            const apiKey = '907db0c5f52181f8a72aaf717afd1c5c'; 
+            const apiKey = '907db0c5f52181f8a72aaf717afd1c5c';
             const apiUrl = `https://apilayer.net/api/check?access_key=${apiKey}&email=${email}`;
 
             try {
