@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="shortcut icon" href="../images/bmc-it-club-circle-logo.ico" type="image/x-icon">
+    <meta name="keyword"
+        content="CodeOlympiad register, codeolympiad,Code Olympiad 2081, BMC IT Club, coding competition Bhairahawa, coding skills championship, Arun Neupane, arundada9000" />
+
+    <meta name="description"
+        content="Join the BMC IT Club's Code Olympiad 2081 in Bhairahawa. Test your coding skills, compete for amazing prizes, and enhance your expertise in a dynamic competition!" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/register.css">
+</head>
+
+<body>
+    <header class="header">
+        <h1 class="title">Code Olympiad Registration</h1>
+        <p>Think it, Code it, Qwn it – Register now!</p>
+        <p class="subtitle">Join the ultimate coding showdown and showcase your skills!</p>
+        <p class="remaining-days" id="remainingDays">Calculating days to register...</p>
+    </header>
+
+    <main class="form-container">
+        <form id="team-registration-form" action="https://api.web3forms.com/submit" method="post" autocomplete="off">
+            <fieldset>
+                <input type="hidden" name="access_key" value="683c630a-19ea-426c-a560-3148bd42d8dd">
+                <input type="hidden" name="from_name" value="Code Olympiad Form Submission">
+                <input type="text" name="honeypot" id="honeypot" title="Spam detection" />
+
+                <!-- Team Information -->
+                <legend class="legend">Participant Information</legend>
+
+                <div class="form-group">
+                    <input autocomplete="off" type="text" name="Team-Name" id="team-name" placeholder=" " required>
+                    <label for="team-name">Team Name</label>
+
+                </div>
+                <div class="form-group">
+                    <input autocomplete="off" type="text" name="Team-Captain" id="team-captain" placeholder=" "
+                        required>
+                    <label for="team-captain">Team Captain's Name</label>
+                </div>
+                <div class="form-group">
+                    <input autocomplete="off" type="email" name="Email" id="email" placeholder=" " required>
+                    <label for="email">Email</label>
+                </div>
+                <div class="form-group">
+                    <select name="Campus" id="selected-campus" class="styled-select" required>
+                        <option value="" selected disabled hidden></option>
+                        <option value="Bhairahawa-Multiple-Campus">Bhairahawa Multiple Campus</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <label for="selected-campus" class="floating-label">Campus</label>
+                </div>
+
+                <div id="custom-campus-container" class="form-group">
+                    <input autocomplete="off" name="Other-campus" type="text" id="custom-campus" placeholder=" ">
+                    <label for="custom-campus">Campus Name</label>
+                </div>
+
+                <div class="form-group">
+                    <input type="tel" name="Phone-Number" id="team-phone" placeholder=" " pattern="^(98|97)\d{8}$"
+                        inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
+
+                    <label for="team-phone">Team Phone Number</label>
+                </div>
+                <!-- Team Members -->
+                <div class="form-group">
+                    <input autocomplete="off" type="number" name="Team-Member-Count" id="member-count" placeholder=" "
+                        required>
+                    <label for="member-count">Number of Team Members (max 4)</label>
+                </div>
+                <div id="members-container"></div>
+                <!-- Preferred Programming Languages -->
+                <div class="form-group">
+                    <select name="preferred-language" id="preferred-language" class="styled-select" required>
+                        <option value="" disabled selected hidden></option>
+                        <option value="c">C</option>
+                        <option value="c++">C++</option>
+                        <option value="c#">C#</option>
+                        <option value="java">Java</option>
+                        <option value="python">python</option>
+                        <option value="ruby">Ruby</option>
+                        <option value="rust">Rust</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <label for="preferred-language" class="floating-label">Preferred Programming Languages</label>
+
+                </div>
+
+                <div id="custom-language-container" class="form-group">
+                    <input autocomplete="off" name="Custom-Language" type="text" id="custom-language" placeholder=" ">
+                    <label for="custom-language">Specify Other Language</label>
+                </div>
+
+                <div class="form-group">
+                    <select id="category" name="category" class="styled-select">
+                        <option value="" disabled selected hidden></option>
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                    <label for="category" class="floating-label">Category</label>
+                </div>
+
+                <div class="payment-gateways">
+                    <div class="form-group">
+                        <select id="payment-method" name="Payment-Method" class="styled-select" required>
+                            <option value="" disabled selected hidden></option>
+                            <option value="esewa">Esewa</option>
+                            <option value="bank">Bank Transfer</option>
+                        </select>
+                        <label for="payment-method" class="floating-label">Payment Method</label>
+                    </div>
+
+                    <div class="payment-img">
+                        <div class="photo-container esewa">
+                            <img src="../payment/bijay-esewa.jpg" alt="Bijay Esewa" class="photo-thumbnail"
+                                id="photo-thumbnail">
+
+                            <div class="download-button-container">
+                                <a href="../payment/bijay-esewa.jpg" download="Esewa-code-olympiad.jpg"
+                                    class="download-btn">Download
+                                    Photo</a>
+                            </div>
+
+                            <div class="photo-fullscreen" id="photo-fullscreen">
+                                <img src="../payment/bijay-esewa.jpg" alt="Esewa fullscreen view"
+                                    class="fullscreen-img">
+                                <span class="close-btn" id="close-btn">&times;</span>
+                            </div>
+                        </div>
+
+                        <div class="photo-container bank">
+                            <img src="../payment/arun-bank.jpg" alt="Arun Bank" class="photo-thumbnail"
+                                id="photo-thumbnail">
+
+                            <div class="download-button-container">
+                                <a href="../payment/arun-bank.jpg" download="Bank-code-olympiad.jpg"
+                                    class="download-btn">Download
+                                    Photo</a>
+                            </div>
+
+                            <div class="photo-fullscreen" id="photo-fullscreen">
+                                <img src="../payment/arun-bank.jpg" alt="Bank fullscreen view" class="fullscreen-img">
+                                <span class="close-btn" id="close-btn">&times;</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Please confirm your registration here <a href="tel:+9779811420975">9811420975</a></p>
+                </div>
+                <!-- Buttons -->
+                <div class="button-group">
+                    <button type="submit" class="btn submit" id="submit-btn">Submit</button>
+                    <button type="reset" class="btn clear">Clear</button>
+                </div>
+            </fieldset>
+        </form>
+    </main>
+
+    <footer class="footer">
+        <p>Your journey to coding greatness starts here.</p>
+        <p>Designed with ❤️ for the Code Olympiad</p>
+    </footer>
+
+    <script>
+        const _0x2382d6 = _0x1985; (function (_0x400c1f, _0x3795ce) { const _0x55286d = _0x1985, _0xfcd8a3 = _0x400c1f(); while (!![]) { try { const _0x38be92 = -parseInt(_0x55286d(0x1d4)) / 0x1 * (-parseInt(_0x55286d(0x1bf)) / 0x2) + parseInt(_0x55286d(0x1cb)) / 0x3 * (-parseInt(_0x55286d(0x1f3)) / 0x4) + -parseInt(_0x55286d(0x1e9)) / 0x5 + parseInt(_0x55286d(0x1cc)) / 0x6 * (-parseInt(_0x55286d(0x1d1)) / 0x7) + -parseInt(_0x55286d(0x1e7)) / 0x8 + -parseInt(_0x55286d(0x1d7)) / 0x9 * (parseInt(_0x55286d(0x1b9)) / 0xa) + parseInt(_0x55286d(0x1c7)) / 0xb; if (_0x38be92 === _0x3795ce) break; else _0xfcd8a3['push'](_0xfcd8a3['shift']()); } catch (_0x1cafef) { _0xfcd8a3['push'](_0xfcd8a3['shift']()); } } }(_0x17cf, 0x44f30)); function _0x17cf() { const _0x58308c = ['Submit', '3ExtXzy', '3011358piMpjT', 'If\x20you\x20are\x20that\x20good\x20then\x20meet\x20me\x20at\x20the\x20challenge.\x20You\x20baaka.', 'other', 'preventDefault', 'members-container', '7AeHBCH', 'Submitted', 'setAttribute', '62381tEnaeu', 'key', 'forEach', '9sUjEyG', 'flex', '</h3>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22form-group\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20name=\x22Member-', 'custom-campus-container', 'json', 'then', '907db0c5f52181f8a72aaf717afd1c5c', 'includes', 'Spam\x20detected!\x20Submission\x20blocked.', '-study\x22\x20class=\x22floating-label\x22>Current\x20Study</label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22form-group\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20name=\x22Member-', 'Developer\x20tools\x20are\x20disabled.\x20Please\x20don\x27t\x20try\x20to\x20mess\x20with\x20us.', 'textContent', 'block', 'payment-method', 'You\x20are\x20submitting\x20too\x20frequently.\x20Please\x20wait\x20a\x20while.', 'div', '3640368sOhoqH', 'style', '227880zPKKZp', 'close-btn', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h3>Member\x20', 'getElementById', '-Name\x22\x20type=\x22text\x22\x20id=\x22member-', 'form', 'input', 'catch', 'preferred-language', 'email', '771028ZkKUeO', 'format_valid', 'selected-campus', 'change', 'ctrlKey', 'https://api.web3forms.com/submit', 'querySelector', '.payment-gateways', '-study\x22\x20class=\x22styled-select\x22\x20required>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<option\x20value=\x22\x22\x20disabled\x20selected\x20hidden></option>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<option\x20value=\x2211\x22>11</option>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<option\x20value=\x2212\x22>12</option>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<option\x20value=\x221st\x20Semester\x22>1st\x20Semester</option>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<option\x20value=\x222nd\x20Semester\x22>2nd\x20Semester</option>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<option\x20value=\x223rd\x20Semester\x22>3rd\x20Semester</option>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<option\x20value=\x224th\x20Semester\x22>4th\x20Semester</option>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<option\x20value=\x225th\x20Semester\x22>5th\x20Semester</option>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<option\x20value=\x226th\x20Semester\x22>6th\x20Semester</option>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<option\x20value=\x227th\x20Semester\x22>7th\x20Semester</option>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<option\x20value=\x228th\x20Semester\x22>8th\x20Semester</option>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</select>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20for=\x22member-', 'test', 'now', 'none', 'photo-thumbnail', '-Study\x22\x20id=\x22member-', 'F12', 'setCustomValidity', 'reset', 'See\x20you\x20at\x20BMC', 'click', 'value', '-name\x22>Name</label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22form-group\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<select\x20name=\x22Member-', 'appendChild', 'Error,\x20Try\x20Again', 'Error\x20submitting\x20form:', 'There\x20was\x20an\x20error\x20with\x20the\x20email\x20verification\x20process.\x20Please\x20try\x20again\x20later.', 'display', '.esewa', 'innerHTML', '.bank', 'custom-language-container', 'target', 'smtp_check', 'add', 'member-count', 'required', 'Registration\x20closed!', 'removeAttribute', 'keydown', 'photo-fullscreen', '-phone\x22\x20placeholder=\x22\x20\x22\x20pattern=\x22^(98|97)\x5cd{8}$\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20for=\x22member-', 'https://apilayer.net/api/check?access_key=', 'shiftKey', '.styled-select', 'remainingDays', '4835800EFahko', 'classList', 'querySelectorAll', 'addEventListener', 'error', 'true', '4kaYZTl', '\x20days\x20left\x20to\x20register!', 'filled', '-name\x22\x20placeholder=\x22\x20\x22\x20required>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20for=\x22member-', 'esewa', 'floor', '2025-01-13', 'custom-campus', '20201566alzsxw', '-phone\x22>Phone\x20Number</label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20', 'message']; _0x17cf = function () { return _0x58308c; }; return _0x17cf(); } let lastSubmissionTime = 0x0; document[_0x2382d6(0x1bc)]('contextmenu', _0x38ff22 => _0x38ff22[_0x2382d6(0x1cf)]()), document[_0x2382d6(0x1bc)](_0x2382d6(0x1b2), _0x197f32 => { const _0x7b4510 = _0x2382d6; (_0x197f32[_0x7b4510(0x1d5)] === _0x7b4510(0x201) || _0x197f32[_0x7b4510(0x1f7)] && _0x197f32[_0x7b4510(0x1b6)] && _0x197f32[_0x7b4510(0x1d5)] === 'I') && (_0x197f32[_0x7b4510(0x1cf)](), alert(_0x7b4510(0x1e1))); }), document[_0x2382d6(0x1ec)](_0x2382d6(0x214))[_0x2382d6(0x1bc)](_0x2382d6(0x1ef), function (_0x39f459) { const _0x1fdb72 = _0x2382d6; let _0x242c63 = _0x39f459[_0x1fdb72(0x211)][_0x1fdb72(0x206)]; !['1', '2', '3', '4'][_0x1fdb72(0x1de)](_0x242c63) ? (_0x39f459[_0x1fdb72(0x211)]['setCustomValidity']('Only\x201,\x202,\x203,\x20or\x204\x20are\x20allowed'), _0x39f459[_0x1fdb72(0x211)][_0x1fdb72(0x206)] = '') : _0x39f459[_0x1fdb72(0x211)][_0x1fdb72(0x202)](''); }); function _0x1985(_0x29b162, _0x5a9860) { const _0x17cf72 = _0x17cf(); return _0x1985 = function (_0x1985a5, _0x1dd8a3) { _0x1985a5 = _0x1985a5 - 0x1b0; let _0x1a69ed = _0x17cf72[_0x1985a5]; return _0x1a69ed; }, _0x1985(_0x29b162, _0x5a9860); } const remainingDaysElement = document['getElementById'](_0x2382d6(0x1b8)); function calculateRemainingDays() { const _0x1b2e7a = _0x2382d6, _0x441ff7 = new Date(), _0x1f0ab4 = new Date(_0x1b2e7a(0x1c5)), _0x3358f8 = _0x1f0ab4 - _0x441ff7; if (_0x3358f8 > 0x0) { const _0x5e6f82 = Math[_0x1b2e7a(0x1c4)](_0x3358f8 / (0x3e8 * 0x3c * 0x3c * 0x18)); remainingDaysElement[_0x1b2e7a(0x1e2)] = _0x5e6f82 + _0x1b2e7a(0x1c0); } else remainingDaysElement[_0x1b2e7a(0x1e2)] = _0x1b2e7a(0x1b0); } calculateRemainingDays(), document[_0x2382d6(0x1bb)](_0x2382d6(0x1b7))[_0x2382d6(0x1d6)](_0x3aa2b7 => { const _0x7f17cb = _0x2382d6; _0x3aa2b7[_0x7f17cb(0x1bc)](_0x7f17cb(0x1f6), () => { const _0x33c217 = _0x7f17cb; _0x3aa2b7[_0x33c217(0x206)] ? _0x3aa2b7[_0x33c217(0x1ba)][_0x33c217(0x213)](_0x33c217(0x1c1)) : _0x3aa2b7[_0x33c217(0x1ba)]['remove'](_0x33c217(0x1c1)); }); }); const selectedCampus = document[_0x2382d6(0x1ec)](_0x2382d6(0x1f5)), customCampusContainer = document[_0x2382d6(0x1ec)](_0x2382d6(0x1da)), customCampusInput = document[_0x2382d6(0x1ec)](_0x2382d6(0x1c6)); selectedCampus[_0x2382d6(0x1bc)]('change', () => { const _0x7b1ff2 = _0x2382d6, _0x1d7bd4 = selectedCampus['value']; _0x1d7bd4 === _0x7b1ff2(0x1ce) ? (customCampusContainer[_0x7b1ff2(0x1e8)][_0x7b1ff2(0x20c)] = _0x7b1ff2(0x1e3), customCampusInput[_0x7b1ff2(0x1d3)](_0x7b1ff2(0x215), _0x7b1ff2(0x1be)), paymentGateway(!![])) : (customCampusContainer[_0x7b1ff2(0x1e8)][_0x7b1ff2(0x20c)] = 'none', customCampusInput[_0x7b1ff2(0x1b1)](_0x7b1ff2(0x215), _0x7b1ff2(0x1be)), paymentGateway(![])); }); const preferredLanguage = document[_0x2382d6(0x1ec)](_0x2382d6(0x1f1)), customLanguageContainer = document[_0x2382d6(0x1ec)](_0x2382d6(0x210)), customLanguageInput = document[_0x2382d6(0x1ec)]('custom-language'); preferredLanguage[_0x2382d6(0x1bc)](_0x2382d6(0x1f6), () => { const _0x2d5a40 = _0x2382d6, _0x42168d = preferredLanguage['value']; _0x42168d === 'other' ? (customLanguageContainer[_0x2d5a40(0x1e8)][_0x2d5a40(0x20c)] = _0x2d5a40(0x1e3), customLanguageInput[_0x2d5a40(0x1d3)](_0x2d5a40(0x215), _0x2d5a40(0x1be))) : (customLanguageContainer['style']['display'] = _0x2d5a40(0x1fe), customLanguageInput[_0x2d5a40(0x1b1)](_0x2d5a40(0x215), 'true')); }); const paymentMethod = document[_0x2382d6(0x1ec)](_0x2382d6(0x1e4)); paymentMethod['addEventListener'](_0x2382d6(0x1f6), () => { const _0x2abc59 = _0x2382d6, _0x4dc8a0 = paymentMethod['value']; _0x4dc8a0 === _0x2abc59(0x1c3) ? (document[_0x2abc59(0x1f9)]('.esewa')[_0x2abc59(0x1e8)][_0x2abc59(0x20c)] = _0x2abc59(0x1e3), document[_0x2abc59(0x1f9)](_0x2abc59(0x20f))[_0x2abc59(0x1e8)][_0x2abc59(0x20c)] = _0x2abc59(0x1fe)) : (document[_0x2abc59(0x1f9)](_0x2abc59(0x20f))[_0x2abc59(0x1e8)][_0x2abc59(0x20c)] = 'block', document[_0x2abc59(0x1f9)](_0x2abc59(0x20d))[_0x2abc59(0x1e8)]['display'] = _0x2abc59(0x1fe)); }); function paymentGateway(_0x5c1c0f) { const _0x5e0b5c = _0x2382d6; _0x5c1c0f ? (document[_0x5e0b5c(0x1f9)](_0x5e0b5c(0x1fa))[_0x5e0b5c(0x1e8)][_0x5e0b5c(0x20c)] = _0x5e0b5c(0x1e3), paymentMethod['setAttribute'](_0x5e0b5c(0x215), _0x5e0b5c(0x1be))) : (document['querySelector'](_0x5e0b5c(0x1fa))[_0x5e0b5c(0x1e8)]['display'] = _0x5e0b5c(0x1fe), paymentMethod[_0x5e0b5c(0x1b1)](_0x5e0b5c(0x215), 'true')); } const photoThumbnail = document[_0x2382d6(0x1ec)](_0x2382d6(0x1ff)), photoFullscreen = document[_0x2382d6(0x1ec)](_0x2382d6(0x1b3)), closeBtn = document[_0x2382d6(0x1ec)](_0x2382d6(0x1ea)); photoThumbnail[_0x2382d6(0x1bc)](_0x2382d6(0x205), () => { const _0x84e152 = _0x2382d6; photoFullscreen['style']['display'] = _0x84e152(0x1d8); }), closeBtn[_0x2382d6(0x1bc)](_0x2382d6(0x205), () => { const _0x1e3138 = _0x2382d6; photoFullscreen[_0x1e3138(0x1e8)][_0x1e3138(0x20c)] = 'none'; }), photoFullscreen[_0x2382d6(0x1bc)]('click', _0x11311b => { const _0x17d1ac = _0x2382d6; _0x11311b['target'] === photoFullscreen && (photoFullscreen[_0x17d1ac(0x1e8)]['display'] = _0x17d1ac(0x1fe)); }), document['getElementById'](_0x2382d6(0x214))[_0x2382d6(0x1bc)](_0x2382d6(0x1ef), function () { const _0x38e218 = _0x2382d6; let _0x569b87 = parseInt(this['value']) || 0x0; const _0x5c1fa9 = document[_0x38e218(0x1ec)](_0x38e218(0x1d0)); _0x5c1fa9[_0x38e218(0x20e)] = ''; _0x569b87 > 0x4 && (_0x569b87 = 0x4); _0x569b87 < 0x1 && (_0x569b87 = 0x1); for (let _0x4eb91d = 0x1; _0x4eb91d <= _0x569b87; _0x4eb91d++) { const _0x2eb053 = document['createElement'](_0x38e218(0x1e6)); _0x2eb053['classList']['add']('member-input'), _0x2eb053[_0x38e218(0x20e)] = _0x38e218(0x1eb) + _0x4eb91d + _0x38e218(0x1d9) + _0x4eb91d + _0x38e218(0x1ed) + _0x4eb91d + _0x38e218(0x1c2) + _0x4eb91d + _0x38e218(0x207) + _0x4eb91d + _0x38e218(0x200) + _0x4eb91d + _0x38e218(0x1fb) + _0x4eb91d + _0x38e218(0x1e0) + _0x4eb91d + '-Phone\x22\x20type=\x22tel\x22\x20id=\x22member-' + _0x4eb91d + _0x38e218(0x1b4) + _0x4eb91d + _0x38e218(0x1c8), _0x5c1fa9[_0x38e218(0x208)](_0x2eb053); } }); const form = document[_0x2382d6(0x1f9)](_0x2382d6(0x1ee)), submitButton = document[_0x2382d6(0x1ec)]('submit-btn'); form[_0x2382d6(0x1bc)]('submit', async function (_0x2798e0) { const _0x5869b3 = _0x2382d6; _0x2798e0[_0x5869b3(0x1cf)](); const _0x387ab2 = document[_0x5869b3(0x1ec)]('honeypot')[_0x5869b3(0x206)]; if (_0x387ab2) return alert(_0x5869b3(0x1df)), ![]; const _0x2ca885 = Date[_0x5869b3(0x1fd)](); if (_0x2ca885 - lastSubmissionTime < 0x7530) return alert(_0x5869b3(0x1e5)), ![]; lastSubmissionTime = _0x2ca885; const _0x31525e = document[_0x5869b3(0x1ec)](_0x5869b3(0x1f2))[_0x5869b3(0x206)]; if (!await validateEmailAndSubmit(_0x31525e)) return; submitButton[_0x5869b3(0x1e2)] = 'Submitting...'; const _0x2e8704 = new FormData(form); fetch(_0x5869b3(0x1f8), { 'method': 'POST', 'body': _0x2e8704 })['then'](_0x155544 => _0x155544[_0x5869b3(0x1db)]())[_0x5869b3(0x1dc)](_0x37093d => { const _0x4a2fd3 = _0x5869b3; _0x37093d['success'] ? (submitButton[_0x4a2fd3(0x206)] = _0x4a2fd3(0x1d2), setTimeout(() => { const _0x4d2ce8 = _0x4a2fd3; submitButton[_0x4d2ce8(0x1e2)] = _0x4d2ce8(0x204), submitButton['disabled'] = !![]; }, 0x1388), form[_0x4a2fd3(0x203)]()) : (submitButton['textContent'] = _0x4a2fd3(0x209), console[_0x4a2fd3(0x1bd)]('Error:', _0x37093d[_0x4a2fd3(0x1c9)]), setTimeout(() => { const _0xd23f5f = _0x4a2fd3; submitButton['textContent'] = _0xd23f5f(0x1ca); }, 0x1388)); })[_0x5869b3(0x1f0)](_0x192525 => { const _0x47f468 = _0x5869b3; console[_0x47f468(0x1bd)](_0x47f468(0x20a), _0x192525), submitButton[_0x47f468(0x206)] = _0x47f468(0x209), setTimeout(() => { const _0x5e78af = _0x47f468; submitButton[_0x5e78af(0x1e2)] = _0x5e78af(0x1ca); }, 0x1388); }); }); function isValidEmail(_0x43165a) { const _0x2bc447 = _0x2382d6, _0x486ce6 = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/; return _0x486ce6[_0x2bc447(0x1fc)](_0x43165a); } async function validateEmailAndSubmit(_0x478323) { const _0x5717c9 = _0x2382d6; if (!isValidEmail(_0x478323)) return alert('Please\x20enter\x20a\x20valid\x20email\x20address.\x20The\x20format\x20is\x20crucial\x20for\x20processing\x20your\x20request.'), ![]; const _0x5e8983 = ['arjunpaudel452@gmail.com']; if (_0x5e8983[_0x5717c9(0x1de)](_0x478323)) return alert(_0x5717c9(0x1cd)), form[_0x5717c9(0x203)](), ![]; const _0x1259f4 = _0x5717c9(0x1dd), _0x5c2a9f = _0x5717c9(0x1b5) + _0x1259f4 + '&email=' + _0x478323; try { const _0x2f772c = await fetch(_0x5c2a9f), _0x3512c5 = await _0x2f772c['json'](); return _0x3512c5[_0x5717c9(0x1f4)] && _0x3512c5[_0x5717c9(0x212)] ? !![] : (alert('This\x20email\x20is\x20either\x20invalid\x20or\x20cannot\x20receive\x20emails.\x20Please\x20use\x20a\x20valid\x20email\x20address.'), ![]); } catch (_0x30acdd) { return console[_0x5717c9(0x1bd)]('Error:', _0x30acdd), alert(_0x5717c9(0x20b)), ![]; } }
+    </script>
+</body>
+
+</html>

@@ -22,6 +22,25 @@
 ::-webkit-scrollbar-thumb:hover {
   background: black;
 }
+/* For webkit browsers (Chrome, Safari) */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* For Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Optional: to make it look better by removing any border or outline */
+input[type="number"] {
+  appearance: none;
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   background: linear-gradient(120deg, #121212, #1e3c72);
@@ -166,6 +185,10 @@ form .btn.clear {
 
 form .btn:hover {
   opacity: 0.9;
+}
+#honeypot {
+  display: none;
+  visibility: hidden;
 }
 #custom-language-container,
 #custom-campus-container {
