@@ -24,7 +24,7 @@ const remainingDaysElement = document.getElementById("remainingDays");
 
 function calculateRemainingDays() {
   const currentDate = new Date();
-  const targetDate = new Date("2025-01-13");
+  const targetDate = new Date("2025-01-14");
   const difference = targetDate - currentDate;
 
   if (difference > 0) {
