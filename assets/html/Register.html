@@ -4,174 +4,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <link rel="shortcut icon" href="../images/bmc-it-club-circle-logo.ico" type="image/x-icon">
-    <meta name="keyword"
-        content="CodeOlympiad register, codeolympiad,Code Olympiad 2081, BMC IT Club, coding competition Bhairahawa, coding skills championship, Arun Neupane, arundada9000" />
+    <title>Form Submission Closed</title>
+    <style>
+        /* General Reset */
+        body,
+        h1,
+        p {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <meta name="description"
-        content="Join the BMC IT Club's Code Olympiad 2081 in Bhairahawa. Test your coding skills, compete for amazing prizes, and enhance your expertise in a dynamic competition!" />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/register.css">
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1d1f21, #3b5998);
+            color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #ff6f61;
+        }
+
+        .message {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .message .date {
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        .cta .button {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            color: #f4f4f4;
+            background: #3b5998;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .cta .button:hover {
+            background: #ff6f61;
+        }
+    </style>
 </head>
 
 <body>
-    <header class="header">
-        <h1 class="title">Code Olympiad Registration</h1>
-        <p>Think it, Code it, Qwn it – Register now!</p>
-        <p class="subtitle">Join the ultimate coding showdown and showcase your skills!</p>
-        <p class="remaining-days" id="remainingDays">Calculating days to register...</p>
-    </header>
-
-    <main class="form-container">
-        <form id="team-registration-form" action="https://api.web3forms.com/submit" method="post" autocomplete="off">
-            <fieldset>
-                <input type="hidden" name="access_key" value="683c630a-19ea-426c-a560-3148bd42d8dd">
-                <input type="hidden" name="from_name" value="Code Olympiad Form Submission">
-                <input type="text" name="honeypot" id="honeypot" title="Spam detection" />
-
-                <!-- Team Information -->
-                <legend class="legend">Participant Information</legend>
-
-                <div class="form-group">
-                    <input autocomplete="off" type="text" name="Team-Name" id="team-name" placeholder=" " required>
-                    <label for="team-name">Team Name</label>
-
-                </div>
-                <div class="form-group">
-                    <input autocomplete="off" type="text" name="Team-Captain" id="team-captain" placeholder=" "
-                        required>
-                    <label for="team-captain">Team Captain's Name</label>
-                </div>
-                <div class="form-group">
-                    <input autocomplete="off" type="email" name="Email" id="email" placeholder=" " required>
-                    <label for="email">Email</label>
-                </div>
-                <div class="form-group">
-                    <select name="Campus" id="selected-campus" class="styled-select" required>
-                        <option value="" selected disabled hidden></option>
-                        <option value="Bhairahawa-Multiple-Campus">Bhairahawa Multiple Campus</option>
-                        <option value="other">Other</option>
-                    </select>
-                    <label for="selected-campus" class="floating-label">Campus</label>
-                </div>
-
-                <div id="custom-campus-container" class="form-group">
-                    <input autocomplete="off" name="Other-campus" type="text" id="custom-campus" placeholder=" ">
-                    <label for="custom-campus">Campus Name</label>
-                </div>
-
-                <div class="form-group">
-                    <input type="tel" name="Phone-Number" id="team-phone" placeholder=" " pattern="^(98|97)\d{8}$"
-                        inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" required>
-
-                    <label for="team-phone">Team Phone Number</label>
-                </div>
-                <!-- Team Members -->
-                <div class="form-group">
-                    <input autocomplete="off" type="number" name="Team-Member-Count" id="member-count" placeholder=" "
-                        required>
-                    <label for="member-count">Number of Team Members (max 4)</label>
-                </div>
-                <div id="members-container"></div>
-                <!-- Preferred Programming Languages -->
-                <div class="form-group">
-                    <select name="preferred-language" id="preferred-language" class="styled-select" required>
-                        <option value="" disabled selected hidden></option>
-                        <option value="c">C</option>
-                        <option value="c++">C++</option>
-                        <option value="c#">C#</option>
-                        <option value="java">Java</option>
-                        <option value="python">python</option>
-                        <option value="ruby">Ruby</option>
-                        <option value="rust">Rust</option>
-                        <option value="other">Other</option>
-                    </select>
-                    <label for="preferred-language" class="floating-label">Preferred Programming Languages</label>
-
-                </div>
-
-                <div id="custom-language-container" class="form-group">
-                    <input autocomplete="off" name="Custom-Language" type="text" id="custom-language" placeholder=" ">
-                    <label for="custom-language">Specify Other Language</label>
-                </div>
-
-                <div class="form-group">
-                    <select id="category" name="category" class="styled-select">
-                        <option value="" disabled selected hidden></option>
-                        <option value="beginner">Beginner</option>
-                        <option value="intermediate">Intermediate</option>
-                        <option value="advanced">Advanced</option>
-                    </select>
-                    <label for="category" class="floating-label">Category</label>
-                </div>
-
-                <div class="payment-gateways">
-                    <div class="form-group">
-                        <select id="payment-method" name="Payment-Method" class="styled-select" required>
-                            <option value="" disabled selected hidden></option>
-                            <option value="esewa">Esewa</option>
-                            <option value="bank">Bank Transfer</option>
-                        </select>
-                        <label for="payment-method" class="floating-label">Payment Method</label>
-                    </div>
-
-                    <div class="payment-img">
-                        <div class="photo-container esewa">
-                            <img src="../payment/bijay-esewa.jpg" alt="Bijay Esewa" class="photo-thumbnail"
-                                id="photo-thumbnail">
-
-                            <div class="download-button-container">
-                                <a href="../payment/bijay-esewa.jpg" download="Esewa-code-olympiad.jpg"
-                                    class="download-btn">Download
-                                    Photo</a>
-                            </div>
-
-                            <div class="photo-fullscreen" id="photo-fullscreen">
-                                <img src="../payment/bijay-esewa.jpg" alt="Esewa fullscreen view"
-                                    class="fullscreen-img">
-                                <span class="close-btn" id="close-btn">&times;</span>
-                            </div>
-                        </div>
-
-                        <div class="photo-container bank">
-                            <img src="../payment/arun-bank.jpg" alt="Arun Bank" class="photo-thumbnail"
-                                id="photo-thumbnail">
-
-                            <div class="download-button-container">
-                                <a href="../payment/arun-bank.jpg" download="Bank-code-olympiad.jpg"
-                                    class="download-btn">Download
-                                    Photo</a>
-                            </div>
-
-                            <div class="photo-fullscreen" id="photo-fullscreen">
-                                <img src="../payment/arun-bank.jpg" alt="Bank fullscreen view" class="fullscreen-img">
-                                <span class="close-btn" id="close-btn">&times;</span>
-                            </div>
-                        </div>
-                    </div>
-                    <p>Please confirm your registration here <a href="tel:+9779811420975">9811420975</a></p>
-                </div>
-                <!-- Buttons -->
-                <div class="button-group">
-                    <button type="submit" class="btn submit" id="submit-btn">Submit</button>
-                    <button type="reset" class="btn clear">Clear</button>
-                </div>
-            </fieldset>
-        </form>
-    </main>
-
-    <footer class="footer">
-        <p>“Programs must be written for people to read, and only incidentally for machines to execute.” — Harold
-            Abelson</p>
-        <p>Your journey to coding greatness starts here.</p>
-        <p>Designed with ❤️ for the Code Olympiad</p>
-    </footer>
-
-    <script>
-        function _0x826b(_0x54af13, _0x4072d6) { const _0x2ee250 = _0x2ee2(); return _0x826b = function (_0x826b08, _0x4a7e5e) { _0x826b08 = _0x826b08 - 0x15f; let _0x445985 = _0x2ee250[_0x826b08]; return _0x445985; }, _0x826b(_0x54af13, _0x4072d6); } const _0xaec84f = _0x826b; (function (_0x222a68, _0x2e1e52) { const _0x26ed49 = _0x826b, _0x55cf6c = _0x222a68(); while (!![]) { try { const _0xc056af = parseInt(_0x26ed49(0x197)) / 0x1 * (-parseInt(_0x26ed49(0x1a7)) / 0x2) + -parseInt(_0x26ed49(0x1aa)) / 0x3 + parseInt(_0x26ed49(0x196)) / 0x4 + -parseInt(_0x26ed49(0x1b0)) / 0x5 + parseInt(_0x26ed49(0x17e)) / 0x6 + parseInt(_0x26ed49(0x19b)) / 0x7 + parseInt(_0x26ed49(0x1a2)) / 0x8 * (-parseInt(_0x26ed49(0x1b4)) / 0x9); if (_0xc056af === _0x2e1e52) break; else _0x55cf6c['push'](_0x55cf6c['shift']()); } catch (_0xb87c95) { _0x55cf6c['push'](_0x55cf6c['shift']()); } } }(_0x2ee2, 0x2d19d)); let lastSubmissionTime = 0x0; document['addEventListener'](_0xaec84f(0x171), _0x2cce25 => _0x2cce25[_0xaec84f(0x162)]()), document[_0xaec84f(0x178)]('keydown', _0x19d854 => { const _0xf808bc = _0xaec84f; (_0x19d854[_0xf808bc(0x1ad)] === _0xf808bc(0x175) || _0x19d854[_0xf808bc(0x185)] && _0x19d854[_0xf808bc(0x1b2)] && _0x19d854['key'] === 'I') && (_0x19d854[_0xf808bc(0x162)](), alert(_0xf808bc(0x1c0))); }), document[_0xaec84f(0x161)](_0xaec84f(0x16e))[_0xaec84f(0x178)](_0xaec84f(0x1ac), function (_0x197dd6) { const _0x1bd565 = _0xaec84f; let _0x2a4335 = _0x197dd6[_0x1bd565(0x18d)][_0x1bd565(0x1bd)]; !['1', '2', '3', '4'][_0x1bd565(0x172)](_0x2a4335) ? (_0x197dd6[_0x1bd565(0x18d)][_0x1bd565(0x17b)](_0x1bd565(0x1be)), _0x197dd6[_0x1bd565(0x18d)]['value'] = '') : _0x197dd6['target'][_0x1bd565(0x17b)](''); }); const remainingDaysElement = document[_0xaec84f(0x161)]('remainingDays'); function calculateRemainingDays() { const _0x37bd18 = _0xaec84f, _0x406c97 = new Date(), _0x31a024 = new Date(_0x37bd18(0x1c2)), _0x22d560 = _0x31a024 - _0x406c97; if (_0x22d560 > 0x0) { const _0x46bee5 = Math[_0x37bd18(0x18b)](_0x22d560 / (0x3e8 * 0x3c * 0x3c * 0x18)); remainingDaysElement['textContent'] = _0x46bee5 + _0x37bd18(0x1b5); } else remainingDaysElement[_0x37bd18(0x19f)] = _0x37bd18(0x1ae); } calculateRemainingDays(), document[_0xaec84f(0x170)](_0xaec84f(0x183))[_0xaec84f(0x180)](_0x294242 => { const _0x59d20f = _0xaec84f; _0x294242[_0x59d20f(0x178)](_0x59d20f(0x1a5), () => { const _0x4e2ca1 = _0x59d20f; _0x294242['value'] ? _0x294242[_0x4e2ca1(0x16b)][_0x4e2ca1(0x18c)](_0x4e2ca1(0x1c1)) : _0x294242[_0x4e2ca1(0x16b)][_0x4e2ca1(0x190)](_0x4e2ca1(0x1c1)); }); }); const selectedCampus = document[_0xaec84f(0x161)](_0xaec84f(0x192)), customCampusContainer = document[_0xaec84f(0x161)](_0xaec84f(0x17d)), customCampusInput = document[_0xaec84f(0x161)]('custom-campus'); selectedCampus['addEventListener'](_0xaec84f(0x1a5), () => { const _0x175922 = _0xaec84f, _0x3521a1 = selectedCampus[_0x175922(0x1bd)]; _0x3521a1 === _0x175922(0x160) ? (customCampusContainer['style'][_0x175922(0x1a9)] = _0x175922(0x195), customCampusInput['setAttribute']('required', _0x175922(0x163)), paymentGateway(!![])) : (customCampusContainer['style'][_0x175922(0x1a9)] = _0x175922(0x18f), customCampusInput[_0x175922(0x19d)](_0x175922(0x1a6), _0x175922(0x163)), paymentGateway(![])); }); const preferredLanguage = document[_0xaec84f(0x161)](_0xaec84f(0x186)), customLanguageContainer = document[_0xaec84f(0x161)](_0xaec84f(0x1b9)), customLanguageInput = document[_0xaec84f(0x161)](_0xaec84f(0x17a)); preferredLanguage[_0xaec84f(0x178)](_0xaec84f(0x1a5), () => { const _0x53923b = _0xaec84f, _0x34adb8 = preferredLanguage['value']; _0x34adb8 === _0x53923b(0x160) ? (customLanguageContainer[_0x53923b(0x18a)][_0x53923b(0x1a9)] = _0x53923b(0x195), customLanguageInput[_0x53923b(0x189)](_0x53923b(0x1a6), _0x53923b(0x163))) : (customLanguageContainer['style'][_0x53923b(0x1a9)] = _0x53923b(0x18f), customLanguageInput[_0x53923b(0x19d)](_0x53923b(0x1a6), _0x53923b(0x163))); }); const paymentMethod = document[_0xaec84f(0x161)]('payment-method'); paymentMethod[_0xaec84f(0x178)](_0xaec84f(0x1a5), () => { const _0x49245c = _0xaec84f, _0x5df814 = paymentMethod[_0x49245c(0x1bd)]; _0x5df814 === 'esewa' ? (document[_0x49245c(0x16c)](_0x49245c(0x16d))['style'][_0x49245c(0x1a9)] = _0x49245c(0x195), document['querySelector']('.bank')['style'][_0x49245c(0x1a9)] = _0x49245c(0x18f)) : (document[_0x49245c(0x16c)](_0x49245c(0x199))['style'][_0x49245c(0x1a9)] = _0x49245c(0x195), document['querySelector'](_0x49245c(0x16d))[_0x49245c(0x18a)][_0x49245c(0x1a9)] = _0x49245c(0x18f)); }); function paymentGateway(_0x1583c7) { const _0x2e7e57 = _0xaec84f; _0x1583c7 ? (document[_0x2e7e57(0x16c)]('.payment-gateways')['style'][_0x2e7e57(0x1a9)] = _0x2e7e57(0x195), paymentMethod[_0x2e7e57(0x189)]('required', 'true')) : (document[_0x2e7e57(0x16c)](_0x2e7e57(0x18e))[_0x2e7e57(0x18a)]['display'] = _0x2e7e57(0x18f), paymentMethod['removeAttribute'](_0x2e7e57(0x1a6), _0x2e7e57(0x163))); } const photoThumbnail = document['getElementById'](_0xaec84f(0x1a1)), photoFullscreen = document[_0xaec84f(0x161)]('photo-fullscreen'), closeBtn = document['getElementById']('close-btn'); photoThumbnail[_0xaec84f(0x178)]('click', () => { const _0x3a838e = _0xaec84f; photoFullscreen[_0x3a838e(0x18a)][_0x3a838e(0x1a9)] = _0x3a838e(0x194); }), closeBtn[_0xaec84f(0x178)](_0xaec84f(0x191), () => { const _0x25b398 = _0xaec84f; photoFullscreen[_0x25b398(0x18a)][_0x25b398(0x1a9)] = 'none'; }), photoFullscreen[_0xaec84f(0x178)](_0xaec84f(0x191), _0x3e2908 => { const _0x389406 = _0xaec84f; _0x3e2908[_0x389406(0x18d)] === photoFullscreen && (photoFullscreen[_0x389406(0x18a)]['display'] = _0x389406(0x18f)); }), document[_0xaec84f(0x161)]('member-count')[_0xaec84f(0x178)](_0xaec84f(0x1ac), function () { const _0x50dfd8 = _0xaec84f; let _0x1146bb = parseInt(this[_0x50dfd8(0x1bd)]) || 0x0; const _0x2a4f04 = document[_0x50dfd8(0x161)](_0x50dfd8(0x165)); _0x2a4f04[_0x50dfd8(0x1b7)] = ''; _0x1146bb > 0x4 && (_0x1146bb = 0x4); _0x1146bb < 0x1 && (_0x1146bb = 0x1); for (let _0x44ac84 = 0x1; _0x44ac84 <= _0x1146bb; _0x44ac84++) { const _0x3acf7a = document['createElement'](_0x50dfd8(0x173)); _0x3acf7a[_0x50dfd8(0x16b)][_0x50dfd8(0x18c)](_0x50dfd8(0x15f)), _0x3acf7a[_0x50dfd8(0x1b7)] = _0x50dfd8(0x1af) + _0x44ac84 + _0x50dfd8(0x19e) + _0x44ac84 + _0x50dfd8(0x179) + _0x44ac84 + _0x50dfd8(0x164) + _0x44ac84 + _0x50dfd8(0x184) + _0x44ac84 + _0x50dfd8(0x187) + _0x44ac84 + _0x50dfd8(0x166) + _0x44ac84 + _0x50dfd8(0x174) + _0x44ac84 + '-Phone\x22\x20type=\x22tel\x22\x20id=\x22member-' + _0x44ac84 + _0x50dfd8(0x1ba) + _0x44ac84 + _0x50dfd8(0x182), _0x2a4f04[_0x50dfd8(0x193)](_0x3acf7a); } }); const form = document[_0xaec84f(0x16c)](_0xaec84f(0x168)), submitButton = document['getElementById'](_0xaec84f(0x176)); form[_0xaec84f(0x178)](_0xaec84f(0x1a3), async function (_0x4fd3c6) { const _0x2da90a = _0xaec84f; _0x4fd3c6[_0x2da90a(0x162)](); const _0x5d3a36 = document[_0x2da90a(0x161)](_0x2da90a(0x1ab))[_0x2da90a(0x1bd)]; if (_0x5d3a36) return alert('Spam\x20detected!\x20Submission\x20blocked.'), ![]; const _0x188a89 = Date['now'](); if (_0x188a89 - lastSubmissionTime < 0x7530) return alert(_0x2da90a(0x1a8)), ![]; lastSubmissionTime = _0x188a89; const _0x494889 = document['getElementById'](_0x2da90a(0x1b1))[_0x2da90a(0x1bd)]; if (!await validateEmailAndSubmit(_0x494889)) return; submitButton[_0x2da90a(0x19f)] = 'Submitting...'; const _0x51addd = new FormData(form); fetch('https://api.web3forms.com/submit', { 'method': _0x2da90a(0x1bf), 'body': _0x51addd })[_0x2da90a(0x167)](_0x3186ac => _0x3186ac[_0x2da90a(0x1a4)]())[_0x2da90a(0x167)](_0x1ccf35 => { const _0x2847aa = _0x2da90a; _0x1ccf35['success'] ? (submitButton['value'] = _0x2847aa(0x17f), setTimeout(() => { const _0x25d3c8 = _0x2847aa; submitButton[_0x25d3c8(0x19f)] = _0x25d3c8(0x16a), submitButton[_0x25d3c8(0x17c)] = !![]; }, 0x1388), form[_0x2847aa(0x1b3)]()) : (submitButton[_0x2847aa(0x19f)] = _0x2847aa(0x1b8), console['error'](_0x2847aa(0x16f), _0x1ccf35[_0x2847aa(0x181)]), setTimeout(() => { const _0x3280e6 = _0x2847aa; submitButton[_0x3280e6(0x19f)] = _0x3280e6(0x198); }, 0x1388)); })['catch'](_0x18a504 => { const _0x1150be = _0x2da90a; console[_0x1150be(0x1a0)](_0x1150be(0x19c), _0x18a504), submitButton[_0x1150be(0x1bd)] = _0x1150be(0x1b8), setTimeout(() => { const _0x59e055 = _0x1150be; submitButton['textContent'] = _0x59e055(0x198); }, 0x1388); }); }); function isValidEmail(_0x4fe9d4) { const _0x132890 = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/; return _0x132890['test'](_0x4fe9d4); } function _0x2ee2() { const _0x22e284 = ['submit', 'json', 'change', 'required', '15716FNTBtn', 'You\x20are\x20submitting\x20too\x20frequently.\x20Please\x20wait\x20a\x20while.', 'display', '185292KTVKEB', 'honeypot', 'input', 'key', 'Registration\x20closed!', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h3>Member\x20', '1173020coseVj', 'email', 'shiftKey', 'reset', '6057ooIanm', '\x20days\x20left\x20to\x20register!', 'https://apilayer.net/api/check?access_key=', 'innerHTML', 'Error,\x20Try\x20Again', 'custom-language-container', '-phone\x22\x20placeholder=\x22\x20\x22\x20pattern=\x22^(98|97)\x5cd{8}$\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20for=\x22member-', '&email=', 'This\x20email\x20is\x20either\x20invalid\x20or\x20cannot\x20receive\x20emails.\x20Please\x20use\x20a\x20valid\x20email\x20address.', 'value', 'Only\x201,\x202,\x203,\x20or\x204\x20are\x20allowed', 'POST', 'Developer\x20tools\x20are\x20disabled.\x20Please\x20don\x27t\x20try\x20to\x20mess\x20with\x20us.', 'filled', '2025-01-14', 'member-input', 'other', 'getElementById', 'preventDefault', 'true', '-name\x22\x20placeholder=\x22\x20\x22\x20required>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20for=\x22member-', 'members-container', '-study\x22\x20class=\x22styled-select\x22\x20required>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<option\x20value=\x22\x22\x20disabled\x20selected\x20hidden></option>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<option\x20value=\x2211\x22>11</option>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<option\x20value=\x2212\x22>12</option>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<option\x20value=\x221st\x20Semester\x22>1st\x20Semester</option>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<option\x20value=\x222nd\x20Semester\x22>2nd\x20Semester</option>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<option\x20value=\x223rd\x20Semester\x22>3rd\x20Semester</option>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<option\x20value=\x224th\x20Semester\x22>4th\x20Semester</option>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<option\x20value=\x225th\x20Semester\x22>5th\x20Semester</option>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<option\x20value=\x226th\x20Semester\x22>6th\x20Semester</option>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<option\x20value=\x227th\x20Semester\x22>7th\x20Semester</option>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<option\x20value=\x228th\x20Semester\x22>8th\x20Semester</option>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</select>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20for=\x22member-', 'then', 'form', 'There\x20was\x20an\x20error\x20with\x20the\x20email\x20verification\x20process.\x20Please\x20try\x20again\x20later.', 'See\x20you\x20at\x20BMC', 'classList', 'querySelector', '.esewa', 'member-count', 'Error:', 'querySelectorAll', 'contextmenu', 'includes', 'div', '-study\x22\x20class=\x22floating-label\x22>Current\x20Study</label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22form-group\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20name=\x22Member-', 'F12', 'submit-btn', 'If\x20you\x20are\x20that\x20good\x20then\x20meet\x20me\x20at\x20the\x20challenge.\x20You\x20baaka.', 'addEventListener', '-Name\x22\x20type=\x22text\x22\x20id=\x22member-', 'custom-language', 'setCustomValidity', 'disabled', 'custom-campus-container', '1552350XTybAh', 'Submitted', 'forEach', 'message', '-phone\x22>Phone\x20Number</label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20', '.styled-select', '-name\x22>Name</label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22form-group\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<select\x20name=\x22Member-', 'ctrlKey', 'preferred-language', '-Study\x22\x20id=\x22member-', 'format_valid', 'setAttribute', 'style', 'floor', 'add', 'target', '.payment-gateways', 'none', 'remove', 'click', 'selected-campus', 'appendChild', 'flex', 'block', '679432rprLuG', '17ZLrUJs', 'Submit', '.bank', 'smtp_check', '2423946ANwIzl', 'Error\x20submitting\x20form:', 'removeAttribute', '</h3>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22form-group\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20name=\x22Member-', 'textContent', 'error', 'photo-thumbnail', '1904mBBxTl']; _0x2ee2 = function () { return _0x22e284; }; return _0x2ee2(); } async function validateEmailAndSubmit(_0x4a21f2) { const _0x2c9bca = _0xaec84f; if (!isValidEmail(_0x4a21f2)) return alert('Please\x20enter\x20a\x20valid\x20email\x20address.\x20The\x20format\x20is\x20crucial\x20for\x20processing\x20your\x20request.'), ![]; const _0x65bf3d = ['arjunpaudel452@gmail.com']; if (_0x65bf3d[_0x2c9bca(0x172)](_0x4a21f2)) return alert(_0x2c9bca(0x177)), form[_0x2c9bca(0x1b3)](), ![]; const _0x2c8bd3 = '907db0c5f52181f8a72aaf717afd1c5c', _0x2d8e91 = _0x2c9bca(0x1b6) + _0x2c8bd3 + _0x2c9bca(0x1bb) + _0x4a21f2; try { const _0x1c6e94 = await fetch(_0x2d8e91), _0x35fb73 = await _0x1c6e94[_0x2c9bca(0x1a4)](); return _0x35fb73[_0x2c9bca(0x188)] && _0x35fb73[_0x2c9bca(0x19a)] ? !![] : (alert(_0x2c9bca(0x1bc)), ![]); } catch (_0x239518) { return console['error'](_0x2c9bca(0x16f), _0x239518), alert(_0x2c9bca(0x169)), ![]; } }
-    </script>
-
+    <div class="container">
+        <h1>Registration for Code Olympiad 2081 Closed</h1>
+        <p class="message">
+            Thank you for your interest! The form submission period has ended. <br>
+            Join us for the program on <span class="date">January 16</span>.
+        </p>
+        <div class="cta">
+            <a href="../../index.html" class="button">Go Back to Home</a>
+        </div>
+    </div>
 </body>
 
 </html>
