@@ -399,7 +399,6 @@ h2 {
 
 /* Individual Card Styling */
 .prize-cards .card {
-  background: linear-gradient(145deg, #252525, #1e1e1e);
   color: #abb2bf;
   width: 250px;
   padding: 20px;
@@ -408,20 +407,36 @@ h2 {
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border: 1px solid #333;
+  cursor: pointer;
 }
-
+.card:nth-child(1) {
+  background: url("../images/first.jpg");
+  background-size: cover;
+}
+.card:nth-child(2) {
+  background: url("../images/second.jpg");
+  background-size: cover;
+}
+.card:nth-child(3) {
+  background: url("../images/third.jpg");
+  background-size: cover;
+}
 .prize-cards .card:hover {
   transform: translateY(-10px);
   box-shadow: 0 6px 25px rgba(32, 183, 238, 0.5);
-  background: linear-gradient(145deg, #2d2d2d, #1e1e1e);
+}
+.prize-cards .card:hover h3,
+.prize-cards .card:hover p {
+  opacity: 0;
 }
 
 /* Card Heading */
 .prize-cards .card h3 {
   font-size: 1.5rem;
   font-family: "Fira Code", monospace;
-  color: #20b7ee;
+  color: #007bff;
   margin-bottom: 15px;
+  transition: 0.5s ease;
 }
 
 .prize-cards .card p {
@@ -433,6 +448,7 @@ h2 {
   border-radius: 5px;
   display: inline-block;
   box-shadow: 0 4px 10px rgba(32, 183, 238, 0.4);
+  transition: 0.5s ease;
 }
 
 @media (max-width: 768px) {
@@ -476,6 +492,22 @@ h2 {
 #query {
   margin-bottom: 50px;
 }
+
+/* video container */
+.video-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.video {
+  width: max(80%, 500px);
+  height: 400px;
+  margin: 10px auto;
+  border-radius: 20px;
+}
+/* footer */
 .contact-section {
   max-width: 900px;
   width: 100%;
@@ -579,9 +611,9 @@ h2 {
   .button-group {
     flex-direction: column;
   }
-
-  form .btn {
+  .video {
     width: 100%;
+    height: 250px;
   }
 }
 
@@ -704,6 +736,7 @@ h2 {
     border-radius: 8px;
     text-align: center;
   }
+
   .footer-container {
     flex-direction: column;
     align-items: center;

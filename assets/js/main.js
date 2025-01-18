@@ -36,16 +36,16 @@ const codeLines1 = [
 const readme = [
   "# Code Olympiad 2081",
   "",
-  "**Welcome to Code Olympiad 2081!**",
-  "Code Olympiad is an exciting coding competition",
-  "focused on enhancing logical thinking and",
-  "problem-solving skills through engaging challenges.",
+  "**Code Olympiad 2081 was a huge success**",
+  "It was organized on 3 Magh 2081",
+  "It was our first time and we tried to do ",
+  "out best. We hope you enjoyed the program.",
   "",
-  "This event is proudly organized by **BMC IT Club**",
-  "at Bhairahawa Multiple Campus.",
-  "",
-  "0101 Everyone is invited to participate 1010",
-  "Scroll down for more information.",
+  "**BMC IT** Club is always open for any IT ",
+  "related programs and discussions.",
+  "❤️ from BMC IT Club",
+  "Type the platform you want to connect us",
+  "in the console in main.c tab.",
 ];
 
 let userCustomText = "❤️ from BMC IT Club";
@@ -169,6 +169,33 @@ function processString(input) {
   if (input.toLowerCase().trim() === "register") {
     window.location = "./assets/html/Register.html";
     return "cd Register.html";
+  }
+  if (
+    input.toLowerCase().trim() === "facebook" ||
+    input.toLowerCase().trim() === "fb"
+  ) {
+    window.location = "https://www.facebook.com/profile.php?id=100094504922018";
+    return "Redirecting to Facebook Page";
+  }
+  if (
+    input.toLowerCase().trim() === "github" ||
+    input.toLowerCase().trim() === "gh"
+  ) {
+    window.location = "https://github.com/arundada9000";
+    return "Redirecting to Github";
+  }
+  if (
+    input.toLowerCase().trim() === "instagram" ||
+    input.toLowerCase().trim() === "ig"
+  ) {
+    window.location = "https://instagram.com/arundada9000";
+    return "Redirecting to Instagram";
+  }
+  if (
+    input.toLowerCase().trim() === "whatsapp" ||
+    input.toLowerCase().trim() === "telegram"
+  ) {
+    return "+9779811420975";
   }
   if (input.toLowerCase().trim() === "participants") {
     window.location = "./assets/html/participants.html";
