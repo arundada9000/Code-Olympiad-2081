@@ -241,7 +241,23 @@ h2 {
 .syllabus-container strong {
   color: #20b7ee;
 }
-
+.question-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.question-container a {
+  color: #27c93f;
+  background-color: #0049af;
+  padding: 10px 20px;
+  border-radius: 10px;
+  transition: 0.5s ease;
+  margin: 10px 0;
+}
+.question-container a:hover {
+  color: #ffffff;
+  transform: translateY(-10px);
+}
 /* Remaining Days */
 .countdown-section {
   display: flex;
@@ -445,7 +461,6 @@ h2 {
   display: inline-block;
   border-radius: 10px;
   animation: pulse 1s infinite;
-
 }
 
 #demo-questions a {

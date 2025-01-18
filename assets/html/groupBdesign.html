@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Olympiad 2081 | BMC IT Club Bhairahawa | Coding Competition</title>
+    <link rel="shortcut icon" href="../images/bmc-it-club-circle-logo.ico" type="image/x-icon">
+    <meta name="keyword"
+        content="codeolympiad,Code Olympiad 2081, BMC IT Club, coding competition Bhairahawa, coding skills championship, Arun Neupane, arundada9000" />
+
+    <meta name="description"
+        content="Join the BMC IT Club's Code Olympiad 2081 in Bhairahawa. Test your coding skills, compete for amazing prizes, and enhance your expertise in a dynamic competition!" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1e1e2f, #2e2e48);
+            color: #f4f4f9;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .page {
+            width: 100vw;
+            height: 100vh;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            grid-template-areas:
+                "header"
+                "main"
+                "footer";
+            padding: 1rem;
+        }
+
+        header {
+            grid-area: header;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #20b7ee;
+        }
+
+        .logo span {
+            color: #f28c28;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #f4f4f9;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #20b7ee;
+        }
+
+        .hero {
+            grid-area: main;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #f4f4f9;
+        }
+
+        .hero .highlight {
+            color: #20b7ee;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #cfcfe1;
+        }
+
+        .cta-button {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            background: #20b7ee;
+            color: #1e1e2f;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #f28c28;
+            transform: scale(1.05);
+        }
+
+        .services {
+            display: flex;
+            justify-content: space-evenly;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            padding: 1rem;
+            width: 20%;
+            text-align: center;
+            background: #2e2e48;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-card h2 {
+            font-size: 1.2rem;
+            color: #20b7ee;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: #cfcfe1;
+        }
+
+        footer {
+            grid-area: footer;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <!-- Navigation -->
+        <header>
+            <div class="logo">Code<span>Olympiad</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Work</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Main Section -->
+        <main>
+            <section class="hero">
+                <h1>Crafting Modern <span class="highlight">Web Solutions</span></h1>
+                <p>Empower your ideas with sleek designs and flawless code.</p>
+                <button class="cta-button">Get Started</button>
+            </section>
+
+            <section class="services">
+                <div class="service-card">
+                    <h2>HTML & CSS</h2>
+                    <p>Structure and style that speaks volumes.</p>
+                </div>
+                <div class="service-card">
+                    <h2>Responsive Design</h2>
+                    <p>Perfect on every device, every time.</p>
+                </div>
+                <div class="service-card">
+                    <h2>Interactive UI</h2>
+                    <p>Bringing your vision to life with animations and interactivity.</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>Designed with ❤️ for coders.</p>
+            <p>&copy; 2025 CodeOlympiad2081. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+
+</html>

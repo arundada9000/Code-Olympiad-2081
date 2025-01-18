@@ -29,7 +29,7 @@ const codeLines1 = [
   "#include <stdio.h>",
   "",
   "int main() {",
-  '    printf("Welcome to Code Olympiad 2081!\\n");',
+  '    printf("❤️ from BMC IT Club\\n");',
   "    return 0;",
   "}",
 ];
@@ -48,7 +48,7 @@ const readme = [
   "Scroll down for more information.",
 ];
 
-let userCustomText = "Welcome to Code Olympiad 2081!";
+let userCustomText = "❤️ from BMC IT Club";
 let activeTimeouts = [];
 
 // Reset typing state and clear existing animations
@@ -212,7 +212,8 @@ function processString(input) {
     /cristiano/i.test(input) ||
     /ronaldo/i.test(input) ||
     /cr7/i.test(input) ||
-    /siu/i.test(input)
+    /siu/i.test(input) ||
+    /goat/i.test(input)
   ) {
     playSong("./assets/music/siu.m4a");
   }
@@ -253,7 +254,7 @@ function playSong(path) {
 terminalOutput.addEventListener("click", () => {
   const userText = prompt("Enter your custom text for printf:");
   if (userText !== null) {
-    userCustomText = userText || "Welcome to Code Olympiad 2081!";
+    userCustomText = userText || "❤️ from BMC IT Club";
     if (mainTab.classList.contains("active")) {
       updateTypingEffect();
     }
@@ -424,7 +425,7 @@ function initializeCountdown(containerId, targetDate) {
 
     if (timeLeft < 0) {
       document.querySelector(`#${containerId}`).innerHTML =
-        "<h1>Time's Up!</h1>";
+        "<h1>Program was successful.</h1>";
       clearInterval(timer); // Stop the interval when the countdown ends
       return;
     }
