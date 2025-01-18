@@ -1,6 +1,6 @@
 # Code Olympiad
 
-Welcome to **Code Olympiad 2081**, an exciting platform for hosting coding competition for the **BMC IT Club**. This repository contains the source code for the **Code Olympiad 2081** website, which facilitates organizing and participating in competitive programming challenge **Code Olympiad** . Event is going to be held at Magh 3 with a winning cash prize of **16000** , **8000**, **4000** .
+Welcome to **Code Olympiad 2081**, an exciting platform for hosting coding competition for the **BMC IT Club**. This repository contains the source code for the **Code Olympiad 2081** website, which facilitates organizing and participating in competitive programming challenge **Code Olympiad** . Event has successfully ended and winners are : Normies **16000** , CodeRed **8000**, GGCoders **4000** . All the questions and solutions are available here. If anything is missing you can request it , everything is done for learning purposes so we are always ready to help a learner. Connect with BMC Information Technology Club for more exciting programs.
 
 ---
 
@@ -52,4 +52,4 @@ For any questions, issues, or suggestions, feel free to open an issue or reach o
 ---
 
 _Thanks for checking out **Code Olympiad 2081**!_ 🎉
-_I hope we will meet at the competition, me as a host and you as a participant._ ❤️
+_Thank you for making the program a success, I promise next year it will be better than this time._ ❤️

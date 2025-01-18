@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Olympiad Promo</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: black;
+            font-family: 'Courier New', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: limegreen;
+            cursor: none;
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .countdown-container {
+            position: absolute;
+            text-align: center;
+            top: 15%;
+            width: 100%;
+            animation: slide-down 3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        .countdown-container h1 {
+            font-size: 7rem;
+            margin: 0;
+            text-shadow: 0 0 20px limegreen, 0 0 30px limegreen;
+            animation: glitch 3s infinite;
+        }
+
+        .countdown-container p {
+            font-size: 2rem;
+            margin-top: 10px;
+            color: #00ffcc;
+        }
+
+        .progress-bar {
+            width: 80%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 20px auto;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, limegreen, cyan);
+            width: 0;
+            animation: fill-bar 10s linear forwards;
+        }
+
+        .final-reveal {
+            display: none;
+            text-align: center;
+            color: white;
+            opacity: 0;
+            animation: fade-in 2s 3s ease forwards;
+        }
+
+        .final-reveal img {
+            max-width: 200px;
+            border-radius: 10px;
+            animation: glow-pulse 2s infinite alternate;
+        }
+
+        .final-reveal h1 {
+            font-size: 3rem;
+            margin-top: 20px;
+        }
+
+        .final-reveal p {
+            font-size: 1.5rem;
+            color: #00ffcc;
+        }
+
+        /* Animations */
+        @keyframes slide-down {
+            0% {
+                transform: translateY(-100%);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes glitch {
+
+            0%,
+            100% {
+                text-shadow: 2px 2px red, -2px -2px blue;
+            }
+
+            25% {
+                text-shadow: -2px -2px lime, 2px 2px purple;
+            }
+
+            50% {
+                text-shadow: 4px 4px cyan, -4px -4px yellow;
+            }
+        }
+
+        @keyframes fill-bar {
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes glow-pulse {
+            0% {
+                box-shadow: 0 0 10px limegreen;
+            }
+
+            100% {
+                box-shadow: 0 0 30px limegreen;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Binary Rain Canvas -->
+    <canvas id="binaryRain"></canvas>
+
+    <!-- Countdown Section -->
+    <div class="countdown-container" id="countdown-container">
+        <h1 id="countdown">365 Days Left</h1>
+        <p>The Ultimate Coding Challenge Awaits!</p>
+        <div class="progress-bar">
+            <div class="progress-bar-fill"></div>
+        </div>
+    </div>
+
+    <!-- Final Reveal Section -->
+    <div class="final-reveal" id="final-reveal">
+        <img src="your-club-logo.png" alt="Club Logo">
+        <h1>Code Olympiad 2081</h1>
+        <p>Mark Your Calendar: January 16</p>
+    </div>
+
+    <script>
+        // Canvas for Binary Rain
+        const canvas = document.getElementById('binaryRain');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const fontSize = 35;
+        const columns = canvas.width / fontSize;
+        const drops = Array.from({ length: columns }).fill(0);
+
+        function drawRain() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = 'limegreen';
+            ctx.font = fontSize + 'px Courier New';
+
+            drops.forEach((y, x) => {
+                const text = Math.random() > 0.5 ? '1' : '0';
+                ctx.fillText(text, x * fontSize, y * fontSize);
+
+                if (y * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[x] = 0;
+                }
+
+                drops[x]++;
+            });
+        }
+
+        const rainInterval = setInterval(drawRain, 50);
+
+        // Countdown Timer
+        const countdownElement = document.getElementById('countdown');
+        const finalReveal = document.getElementById('final-reveal');
+        const countdownContainer = document.getElementById('countdown-container');
+        const eventDate = new Date('2025-01-15T10:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            if (distance <= 0) {
+                clearInterval(countdownInterval);
+                clearInterval(rainInterval);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                countdownContainer.style.display = 'none';
+                finalReveal.style.display = 'block';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            countdownElement.textContent = `${days} Days ${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        const countdownInterval = setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+
+</html>

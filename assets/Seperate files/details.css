@@ -1,0 +1,131 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: "Courier New", Courier, monospace;
+  color: #d4d4d4;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+/* Header Section */
+.header-section {
+  text-align: center;
+  padding: 10px 20px;
+}
+
+.main-title {
+  font-size: 3rem;
+  color: #64b5f6;
+  animation: slide-in 1.5s ease-out;
+}
+
+.highlight {
+  color: #ffcc00;
+}
+
+.tagline {
+  font-size: 1.5rem;
+  color: #a0a0a0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: "Roboto Mono", monospace;
+  color: #dcdcdc;
+}
+
+section {
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-size: 1.8rem;
+  border-bottom: 2px solid #20b7ee;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+}
+
+.details-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.detail-item {
+  width: 45%;
+}
+
+.prize-cards {
+  display: flex;
+  justify-content: space-around;
+}
+
+.card {
+  background: #1e1e1e;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  width: 30%;
+}
+
+.card h3 {
+  color: #20b7ee;
+}
+
+.question {
+  margin-bottom: 15px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+form input,
+.btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+form input {
+  background: #2d2d2d;
+  color: #dcdcdc;
+}
+
+form .btn {
+  background: #20b7ee;
+  color: #1e1e1e;
+  cursor: pointer;
+  font-weight: bold;
+}
+@media (max-width: 768px) {
+  .prize-cards {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+  }
+  .card {
+    flex: 1;
+    padding: 0;
+    background: #1e1e1e;
+    border-radius: 8px;
+    text-align: center;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

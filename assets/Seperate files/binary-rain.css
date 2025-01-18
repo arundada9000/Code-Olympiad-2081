@@ -1,0 +1,49 @@
+body,
+html {
+  height: 100svh;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Binary rain container */
+.binary-rain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 20px);
+  grid-template-rows: repeat(auto-fill, 20px);
+  z-index: -1;
+}
+
+/* Binary numbers style */
+.binary-rain span {
+  font-family: monospace;
+  font-size: 16px;
+  color: #00ff00;
+  display: block;
+  animation: fall infinite linear;
+  text-align: center;
+  line-height: 20px;
+  /* Matches grid-template-rows */
+  opacity: 0.7;
+  /* Slight transparency for better effect */
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}

@@ -166,10 +166,7 @@ function processString(input) {
     const key = match.toLowerCase();
     return curseWords[key];
   });
-  if (input.toLowerCase().trim() === "register") {
-    window.location = "./assets/html/Register.html";
-    return "cd Register.html";
-  }
+
   if (
     input.toLowerCase().trim() === "facebook" ||
     input.toLowerCase().trim() === "fb"
@@ -205,10 +202,7 @@ function processString(input) {
     window.location = "./assets/html/volunteer.html";
     return "cd volunteers.html";
   }
-  if (input.toLowerCase() === "intro") {
-    window.location = "./assets/videos/intro.mp4";
-    return "Playing Intro Video";
-  }
+
   if (/pooja/i.test(input)) {
     playSong("./assets/music/you are all i want.m4a");
     return "I love you";
@@ -452,7 +446,7 @@ function initializeCountdown(containerId, targetDate) {
 
     if (timeLeft < 0) {
       document.querySelector(`#${containerId}`).innerHTML =
-        "<h1>Program was successful.</h1>";
+        "<h1>Code Olympiad has Ended</h1>";
       clearInterval(timer); // Stop the interval when the countdown ends
       return;
     }

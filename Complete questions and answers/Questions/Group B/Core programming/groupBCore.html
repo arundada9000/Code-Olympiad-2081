@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core Programming B</title>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        body {
+            font-family: monospace, poppins, roboto, sans-serif;
+            background-color: #1a1a1a;
+            color: #f1f1f1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            background-color: #2c2c2c;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .examples {
+            font-size: 2rem;
+            margin-top: 15px;
+            background-color: black;
+            color: rgb(2, 255, 2);
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .header {
+            text-align: center;
+        }
+
+        .header h1 {
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+
+        .header p {
+            font-size: 1rem;
+            color: #bdbdbd;
+        }
+
+        .timer {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            color: #ffeb3b;
+        }
+
+        .progress {
+            margin-top: 20px;
+            height: 10px;
+            background-color: #444;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        #progress-bar {
+            height: 100%;
+            background-color: #90caf9;
+            width: 0;
+            border-radius: 5px;
+        }
+
+        .question-container {
+            margin-top: 20px;
+            font-size: 2rem;
+        }
+
+        .question-container h2 {
+            font-size: 2.5rem;
+            color: #e3f2fd;
+        }
+
+        .question-container p {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        #question-constraints {
+            margin-top: 15px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-left: 4px solid #0073ff;
+        }
+
+        #question-examples h3,
+        #question-constraints h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #90caf9;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        li {
+            margin: 5px 0;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .nav-btn {
+            background-color: #90caf9;
+            color: #1a1a1a;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-btn:hover {
+            background-color: #64b5f6;
+        }
+
+        .nav-btn:disabled {
+            background-color: #bdbdbd;
+            cursor: not-allowed;
+        }
+
+        .timer-controls {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .timer-controls button {
+            background-color: #90caf9;
+            color: #1a1a1a;
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 0 5px;
+            transition: background-color 0.3s;
+        }
+
+        .timer-controls button:hover {
+            background-color: #64b5f6;
+        }
+
+        .timer-controls button:disabled {
+            background-color: #bdbdbd;
+            cursor: not-allowed;
+        }
+
+        .fade-in-jump {
+            opacity: 0;
+            transform: translateY(-30px);
+            animation: fadeInJump 2s forwards;
+        }
+
+        @keyframes fadeInJump {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            50% {
+                opacity: 0.5;
+                transform: translateY(10px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="particles-js"></div>
+
+    <div class="container">
+        <div class="header">
+            <h1>Code Olympiad 2081</h1>
+            <p>Question <span id="question-number">1</span> of <span id="total-questions">42</span></p>
+
+        </div>
+        <div class="progress">
+            <div id="progress-bar"></div>
+        </div>
+        <div class="question-container">
+            <h2 id="question-title">Question Title</h2>
+            <p id="question-description">Question description goes here...</p>
+            <div class="examples" id="question-examples">
+                <h3>Examples:</h3>
+                <ul>
+                    <li><strong>Input:</strong> Example input 1</li>
+                    <li><strong>Output:</strong> Example output 1</li>
+                </ul>
+            </div>
+            <div id="question-constraints">
+                <h3>Constraints:</h3>
+                <ul>
+                    <li>Constraint 1</li>
+                    <li>Constraint 2</li>
+                </ul>
+            </div>
+        </div>
+        <div class="navigation">
+            <button id="prev-btn" class="nav-btn">← Previous</button>
+            <div class="timer">
+                Time: <span id="timer">08:00</span>
+            </div>
+            <div class="timer-controls">
+                <button id="play-btn">Play</button>
+                <button id="pause-btn" disabled>Pause</button>
+                <button id="reset-btn">Reset</button>
+            </div>
+            <button id="next-btn" class="nav-btn">Next →</button>
+        </div>
+    </div>
+
+    <script>
+        //Questions
+        const questions = [
+            {
+                title: "Sum of N Natural Numbers",
+                description: "Write a program to calculate the sum of the first N natural numbers.",
+                examples: [
+                    { input: "N = 5", output: "15" },
+                    { input: "N = 10", output: "55" }
+                ],
+                constraints: ["1 <= N <= 10^5"]
+            },
+            {
+                title: "Numbers with Conditions",
+                description: "Write a program that prints numbers from 1 to N. Print 'Code' if the number is divisible by 3, 'Olympiad' if divisible by 5, 'CodeOlympiad' if divisible by both, and the number otherwise.",
+                examples: [
+                    { input: "N = 10", output: "1 2 Code 4 Olympiad Code 7 8 Code Olympiad" }
+                ],
+                constraints: ["1 <= N <= 10^3"]
+            },
+            {
+                title: "Print Every Other Element",
+                description: "Write an algorithm to print every other element of an array starting from the first element.",
+                examples: [
+                    { input: "Array = [1, 2, 3, 4, 5]", output: "1, 3, 5" }
+                ],
+                constraints: ["1 <= Array.length <= 10^5"]
+            },
+            {
+                title: "Reverse Digits",
+                description: "Given an integer X, reverse its digits without converting it into a string.",
+                examples: [
+                    { input: "X = 12345", output: "54321" },
+                    { input: "X = 100", output: "1" }
+                ],
+                constraints: [" X <= 10^9"]
+            },
+
+            {
+                title: "Repeatedly Sum Digits",
+                description: "Given a number, repeatedly sum its digits until the result is a single digit.",
+                examples: [
+                    { input: "Number = 9875", output: "2" }
+                ],
+                constraints: ["1 <= Number <= 10^9"]
+            },
+            {
+                title: "Replace Vowels",
+                description: "Write a program to replace all vowels in a given string with a specified character.",
+                examples: [
+                    { input: "String = 'hello', Char = '*'", output: "'h*ll*'" },
+                    { input: "String = 'world', Char = '#'", output: "'w#rld'" }
+                ],
+                constraints: ["1 <= String.length <= 10^5"]
+            },
+
+            {
+                title: "Power of Two",
+                description: "Write a program to check whether a given number N is a power of two. A number is a power of two if it can be written as 2^k for some integer k.",
+                examples: [
+                    { input: "Number = 16", output: "True" },
+                    { input: "Number = 18", output: "False" }
+                ],
+                constraints: ["1 <= Number <= 10^9"]
+            },
+            {
+                title: "Count Positive, Negative, and Zeros",
+                description: "Write a program to count the number of positive, negative, and zero elements in an array.",
+                examples: [
+                    { input: "Array = [1, -2, 0, 3, -4, 0]", output: "Positive = 3, Negative = 2, Zeros = 2" }
+                ],
+                constraints: ["1 <= Array.length <= 10^5"]
+            },
+
+            {
+                title: "First Non-Repeating Character",
+                description: "From a given string, return the first non-repeating character. If none exists, return -1.",
+                examples: [
+                    { input: "String = 'swiss'", output: "'w'" },
+                    { input: "String = 'aabbcc'", output: "-1" }
+                ],
+                constraints: ["1 <= String.length <= 10^5"]
+            },
+            {
+                title: "Find Largest Digit",
+                description: "Write an algorithm to find the largest digit in a given number.",
+                examples: [
+                    { input: "Number = 12345", output: "5" },
+                    { input: "Number = 987", output: "9" }
+                ],
+                constraints: ["1 <= Number <= 10^9"]
+            }
+
+        ];
+
+        let currentQuestionIndex = 0;
+        let timerInterval;
+        let timeLeft = 360;
+        let isTimerRunning = false;
+
+        function updateProgressBar() {
+            const progress = (currentQuestionIndex + 1) / questions.length * 100;
+            document.getElementById('progress-bar').style.width = progress + '%';
+        }
+
+        function updateTimer() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            document.getElementById('timer').textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            timeLeft--;
+
+            if (timeLeft < 0) {
+                clearInterval(timerInterval);
+                alert("Time's up!");
+                document.getElementById('play-btn').disabled = true;
+            }
+        }
+
+        function startTimer() {
+            if (isTimerRunning) return;
+            timerInterval = setInterval(updateTimer, 1000);
+            isTimerRunning = true;
+            document.getElementById('play-btn').disabled = true;
+            document.getElementById('pause-btn').disabled = false;
+        }
+
+        function pauseTimer() {
+            clearInterval(timerInterval);
+            isTimerRunning = false;
+            document.getElementById('play-btn').disabled = false;
+            document.getElementById('pause-btn').disabled = true;
+        }
+
+        function resetTimer() {
+            clearInterval(timerInterval);
+            isTimerRunning = false;
+            timeLeft = 360;
+            updateTimer();
+            document.getElementById('play-btn').disabled = false;
+            document.getElementById('pause-btn').disabled = true;
+        }
+
+        function updateQuestion() {
+            resetTimer();
+            const container = document.querySelector('.container');
+            if (!container.classList.contains('fade-in-jump')) {
+                container.classList.add('fade-in-jump');
+                setTimeout(() => {
+                    container.classList.remove('fade-in-jump');
+                }, 1500);
+            }
+
+            const question = questions[currentQuestionIndex];
+            document.getElementById('question-title').textContent = question.title;
+            document.getElementById('question-description').textContent = question.description;
+
+            const examplesContainer = document.getElementById('question-examples');
+            examplesContainer.innerHTML = "<h3>Examples:</h3>";
+            question.examples.forEach(example => {
+                examplesContainer.innerHTML += `
+                <ul>
+                    <li><strong>Input:</strong> ${example.input}</li>
+                    <li><strong>Output:</strong> ${example.output}</li>
+                </ul>
+            `;
+            });
+
+            const constraintsContainer = document.getElementById('question-constraints');
+            constraintsContainer.innerHTML = "<h3>Constraints:</h3>";
+            question.constraints.forEach(constraint => {
+                constraintsContainer.innerHTML += `<ul><li>${constraint}</li></ul>`;
+            });
+
+            document.getElementById('question-number').textContent = currentQuestionIndex + 1;
+            document.getElementById('total-questions').textContent = questions.length;
+
+            document.getElementById('prev-btn').disabled = currentQuestionIndex === 0;
+            document.getElementById('next-btn').disabled = currentQuestionIndex === questions.length - 1;
+
+            updateProgressBar();
+        }
+
+        document.getElementById('prev-btn').addEventListener('click', () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                updateQuestion();
+            }
+        });
+
+        document.getElementById('next-btn').addEventListener('click', () => {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                updateQuestion();
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowRight' && currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                updateQuestion();
+            }
+            if (event.key === 'ArrowLeft' && currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                updateQuestion();
+            }
+            if (event.key === 'f' || event.key === 'F') {
+                // Toggle fullscreen mode
+                if (!document.fullscreenElement) {
+                    document.documentElement.requestFullscreen().catch(err => {
+                        console.error(`Error attempting to enable fullscreen mode: ${err.message}`);
+                    });
+                } else {
+                    document.exitFullscreen().catch(err => {
+                        console.error(`Error attempting to exit fullscreen mode: ${err.message}`);
+                    });
+                }
+            }
+
+            if (event.code === 'Space') {
+                event.preventDefault(); // Prevent scrolling on space press
+                if (isTimerRunning) {
+                    pauseTimer();
+                } else {
+                    startTimer();
+                }
+            }
+        });
+
+        updateQuestion();
+
+        document.getElementById('play-btn').addEventListener('click', startTimer);
+        document.getElementById('pause-btn').addEventListener('click', pauseTimer);
+        document.getElementById('reset-btn').addEventListener('click', resetTimer);
+
+    </script>
+
+    <script>
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#ffffff" },
+                shape: {
+                    type: "circle",
+                    stroke: { width: 0, color: "#000000" },
+                    polygon: { nb_sides: 5 },
+                },
+                opacity: {
+                    value: 0.5,
+                    random: false,
+                    anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false },
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: { enable: false, speed: 40, size_min: 0.1, sync: false },
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#ffffff",
+                    opacity: 0.4,
+                    width: 1,
+                },
+                move: {
+                    enable: true,
+                    speed: 6,
+                    direction: "none",
+                    random: false,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false,
+                    attract: { enable: false, rotateX: 600, rotateY: 1200 },
+                },
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "repulse" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true,
+                },
+                modes: {
+                    grab: { distance: 400, line_linked: { opacity: 1 } },
+                    bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 },
+                    repulse: { distance: 200, duration: 0.4 },
+                    push: { particles_nb: 4 },
+                    remove: { particles_nb: 2 },
+                },
+            },
+            retina_detect: true,
+        });
+    </script>
+</body>
+
+</html>
