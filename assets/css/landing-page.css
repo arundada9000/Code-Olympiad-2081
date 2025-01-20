@@ -20,6 +20,46 @@
   height: 80%;
   position: relative;
 }
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  position: absolute;
+  top: 10px;
+  background-color: #007acc;
+  color: white;
+  padding: 5px 0px;
+}
+
+.marquee {
+  display: inline-block;
+  animation: scroll 40s linear infinite;
+  font-size: 1.5rem;
+  font-family: poppins, sans-serif;
+}
+.marquee-container:hover .marquee {
+  animation: glitch 2s infinite;
+}
+.marquee-logo img {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+@keyframes scroll {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
 .left {
   display: flex;
   align-items: center;
@@ -460,6 +500,9 @@
 }
 
 @media (max-width: 768px) {
+  .background {
+    display: none;
+  }
   .landing-page {
     flex-direction: column;
     height: 90%;

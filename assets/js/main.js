@@ -99,10 +99,7 @@ function simulateTerminal() {
   displayStep();
 }
 
-function processString(input) {
-  if (/[^\\]"/.test(input)) {
-    return 'syntax_error " not allowed';
-  }
+function profanityFilter(input) {
   const curseWords = {
     fuck: "fudge",
     motherfucker: "mother-lover",
@@ -167,6 +164,13 @@ function processString(input) {
     return curseWords[key];
   });
 
+  return input.replace(/\n/g, "<br>");
+}
+function processString(input) {
+  if (/[^\\]"/.test(input)) {
+    return 'syntax_error " not allowed';
+  }
+
   if (
     input.toLowerCase().trim() === "facebook" ||
     input.toLowerCase().trim() === "fb"
@@ -205,11 +209,13 @@ function processString(input) {
 
   if (/pooja/i.test(input)) {
     playSong("./assets/music/you are all i want.m4a");
+    poojaInput();
     return "I love you";
   }
 
   if (/pooju/i.test(input)) {
     playSong("./assets/music/you are all i want.m4a");
+    poojaInput();
     return "I love you sooo much";
   }
   if (/suguru/i.test(input) || /geto/i.test(input)) {
@@ -267,6 +273,10 @@ function processString(input) {
 
   return input.replace(/\n/g, "<br>");
 }
+function poojaInput() {
+  const marquee = document.getElementById("marquee");
+  marquee.innerHTML = `I know my feelings may not change your heart, and I respect the space you’ve drawn between us. But I hope you know that my care for you isn't tied to any expectations—it's simply there, quietly constant, like the moonlight that doesn’t ask for anything but still shines for you. `;
+}
 function playSong(path) {
   const audio = new Audio(path);
   audio.play();
@@ -276,6 +286,7 @@ terminalOutput.addEventListener("click", () => {
   const userText = prompt("Enter your custom text for printf:");
   if (userText !== null) {
     userCustomText = userText || "❤️ from BMC IT Club";
+    userCustomText = profanityFilter(userCustomText);
     if (mainTab.classList.contains("active")) {
       updateTypingEffect();
     }
@@ -391,7 +402,7 @@ observer.observe(container1);
 const navItems = document.querySelectorAll(".nav-item");
 
 navItems.forEach((item) => {
-  item.addEventListener("click", () => {
+  item.addEventListener("mouseenter", () => {
     const targetId = item.getAttribute("data-target");
     const targetBox = document.getElementById(targetId);
 
@@ -543,4 +554,121 @@ function pawan() {
   setTimeout(() => {
     dynamicDiv.remove();
   }, 10000);
+}
+
+// form validation
+let lastSubmissionTime = 0;
+document.addEventListener("contextmenu", (e) => e.preventDefault());
+document.addEventListener("keydown", (e) => {
+  if (e.key === "F12" || (e.ctrlKey && e.shiftKey && e.key === "I")) {
+    e.preventDefault();
+    alert("Developer tools are disabled. Please visit my Github for code.");
+  }
+});
+
+const form = document.querySelector("form");
+const submitButton = document.getElementById("submit-btn");
+
+form.addEventListener("submit", async function (event) {
+  event.preventDefault();
+
+  const honeypot = document.getElementById("honeypot").value;
+
+  if (honeypot) {
+    alert("Spam detected! Submission blocked.");
+    return false;
+  }
+
+  const now = Date.now();
+  if (now - lastSubmissionTime < 30000) {
+    alert("You are submitting too frequently. Please wait a while.");
+    return false;
+  }
+  lastSubmissionTime = now;
+
+  const email = document.getElementById("email").value;
+
+  if (!(await validateEmailAndSubmit(email))) {
+    return;
+  }
+
+  submitButton.textContent = "Submitting...";
+
+  const formData = new FormData(form);
+
+  fetch("https://api.web3forms.com/submit", {
+    method: "POST",
+    body: formData,
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.success) {
+        submitButton.value = "Submitted";
+        setTimeout(() => {
+          submitButton.textContent = "Thank you for the feedback";
+          submitButton.disabled = true;
+        }, 5000);
+        form.reset();
+      } else {
+        submitButton.textContent = "Error, Try Again";
+        console.error("Error:", data.message);
+        setTimeout(() => {
+          submitButton.textContent = "Submit";
+        }, 5000);
+      }
+    })
+    .catch((error) => {
+      console.error("Error submitting form:", error);
+      submitButton.value = "Error, Try Again";
+      setTimeout(() => {
+        submitButton.textContent = "Submit";
+      }, 5000);
+    });
+});
+
+// Check if the email is in a valid format
+function isValidEmail(email) {
+  const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  return regex.test(email);
+}
+
+async function validateEmailAndSubmit(email) {
+  if (!isValidEmail(email)) {
+    alert(
+      "Please enter a valid email address. I am looking for genuine feedback."
+    );
+    return false;
+  }
+
+  const blockedEmails = ["arjunpaudel452@gmail.com"];
+  if (blockedEmails.includes(email)) {
+    alert("I don't want anything from you stay away.");
+    form.reset();
+    window.close();
+    window.location.href = "https://www.youtube.com";
+    return false;
+  }
+
+  const apiKey = "907db0c5f52181f8a72aaf717afd1c5c";
+  const apiUrl = `https://apilayer.net/api/check?access_key=${apiKey}&email=${email}`;
+
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+
+    if (data.format_valid && data.smtp_check) {
+      return true;
+    } else {
+      alert(
+        "This email is either invalid or cannot receive emails. Please use a valid email address."
+      );
+      return false;
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    alert(
+      "There was an error with the email verification process. Please try again later."
+    );
+    return false;
+  }
 }

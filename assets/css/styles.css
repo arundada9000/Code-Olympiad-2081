@@ -760,5 +760,122 @@ h2 {
 }
 
 .highlight-nav {
-  border: 1px solid rgb(76, 254, 6);
+  box-shadow: 0px 1px 3px 4px rgba(9, 238, 32, 0.5) !important;
+}
+
+/* form */
+.form-container-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.form-container {
+  background: #212121;
+  border-radius: 10px;
+  padding: 20px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  margin: 20px 0;
+  color: white;
+}
+
+fieldset {
+  border: none;
+  margin-bottom: 15px;
+}
+.legend {
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #03a9f4;
+  margin-bottom: 10px;
+}
+.form-group {
+  margin: 25px 0;
+  position: relative;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #333;
+  border-radius: 5px;
+  background: #121212;
+  color: #f0f0f0;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #03a9f4;
+  outline: none;
+}
+form select[multiple] {
+  height: auto;
+}
+
+label {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+input:focus + label,
+input:not(:placeholder-shown) + label {
+  top: -10px;
+  font-size: 0.85rem;
+  color: #03a9f4;
+}
+.styled-select:focus + .floating-label {
+  top: -10px;
+  font-size: 0.85rem;
+  color: #03a9f4;
+}
+
+.styled-select.filled + .floating-label {
+  top: -10px;
+  font-size: 0.85rem;
+  color: #03a9f4;
+}
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+form .btn {
+  flex: 1;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  margin-bottom: 10px;
+}
+
+form .btn.submit {
+  background: #20b7ee;
+  color: #1e1e1e;
+}
+
+form .btn.clear {
+  background: #f44336;
+  color: #fff;
+}
+
+form .btn:hover {
+  opacity: 0.9;
+}
+#honeypot {
+  display: none;
+  visibility: hidden;
 }

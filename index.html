@@ -82,7 +82,17 @@
     <div class="main-content">
 
         <div class="landing-page-container">
+            <div class="background">
+                <div class="marquee-container">
+                    <div class="marquee" id="marquee">
+                        🌟 Welcome to Code Olympiad 2081! 🌟 Join us for an epic coding adventure and exciting prizes!🚀
+                        BMC Information Technology Club <span class="marquee-logo"><img
+                                src="./assets/images/bmc-it-club-circle-logo.png" alt="BMC IT Club"></span> | Bhairahawa
+                        Multiple Campus
 
+                    </div>
+                </div>
+            </div>
             <div class="landing-page">
                 <!-- Left Section -->
                 <header class="header-section left">
@@ -483,6 +493,40 @@
                         title="Code Olympiad 2081 Promo video" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </section>
+
+                <section class="form-container-wrapper">
+                    <div class="form-container">
+                        <form id="team-registration-form" action="https://api.web3forms.com/submit" method="post"
+                            autocomplete="off">
+
+                            <input type="hidden" name="access_key" value="683c630a-19ea-426c-a560-3148bd42d8dd">
+                            <input type="hidden" name="from_name" value="Code Olympiad Feedback Form Submission">
+                            <input type="text" name="honeypot" id="honeypot" title="Spam detection" />
+
+                            <legend class="legend">Feedback Form</legend>
+
+                            <div class="form-group">
+                                <input type="text" placeholder=" " id="name" name="Name" required>
+                                <label for="name">Name</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="Email" id="email" placeholder=" ">
+                                <label for="email">Email</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" placeholder=" " name="Good-Part" id="good" required>
+                                <label for="good">What was Good</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" placeholder=" " name="Improvement" id="improvement" required>
+                                <label for="improvement">What could have been better</label>
+                            </div>
+
+                            <input type="submit" class="btn submit" id="submit-btn">
+                            <input type="reset" class="btn clear">
+                        </form>
+                    </div>
                 </section>
             </main>
 
