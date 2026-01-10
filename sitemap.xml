@@ -1,16 +1,115 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+  <!-- created with Arun Neupane /arundada9000 -->
 
 
-<url>
-  <loc>https://codeolympiad2081.netlify.app/</loc>
-  <lastmod>2024-12-10T16:22:08+00:00</lastmod>
-</url>
+  <url>
+    <loc>https://codeolympiad2081.netlify.app/</loc>
+    <lastmod>2026-01-10T14:04:02+00:00</lastmod>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://codeolympiad2081.netlify.app/assets/html/fight-club</loc>
+    <lastmod>2026-01-10T14:04:02+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://codeolympiad2081.netlify.app/assets/html/groupacore</loc>
+    <lastmod>2026-01-10T14:04:02+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://codeolympiad2081.netlify.app/assets/html/groupaoutput</loc>
+    <lastmod>2026-01-10T14:04:02+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://codeolympiad2081.netlify.app/assets/html/written</loc>
+    <lastmod>2026-01-10T14:04:02+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://codeolympiad2081.netlify.app/assets/html/groupadesign</loc>
+    <lastmod>2026-01-10T14:04:02+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://codeolympiad2081.netlify.app/assets/html/groupbcore</loc>
+    <lastmod>2026-01-10T14:04:02+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://codeolympiad2081.netlify.app/assets/html/groupboutput</loc>
+    <lastmod>2026-01-10T14:04:02+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://codeolympiad2081.netlify.app/assets/html/groupbwritten</loc>
+    <lastmod>2026-01-10T14:04:02+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://codeolympiad2081.netlify.app/assets/html/groupbdesign</loc>
+    <lastmod>2026-01-10T14:04:02+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://codeolympiad2081.netlify.app/assets/html/finalcore</loc>
+    <lastmod>2026-01-10T14:04:02+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://codeolympiad2081.netlify.app/assets/html/finaldayoutput</loc>
+    <lastmod>2026-01-10T14:04:02+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://codeolympiad2081.netlify.app/assets/html/finalwritten</loc>
+    <lastmod>2026-01-10T14:04:02+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://codeolympiad2081.netlify.app/assets/html/design</loc>
+    <lastmod>2026-01-10T14:04:02+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://codeolympiad2081.netlify.app/assets/html/demo-questions</loc>
+    <lastmod>2026-01-10T14:04:02+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://codeolympiad2081.netlify.app/assets/html/members</loc>
+    <lastmod>2026-01-10T14:04:02+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://codeolympiad2081.netlify.app/assets/demo-html-css/form-design</loc>
+    <lastmod>2026-01-10T14:04:02+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://codeolympiad2081.netlify.app/assets/demo-html-css/footer-design</loc>
+    <lastmod>2026-01-10T14:04:02+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://codeolympiad2081.netlify.app/assets/demo-html-css/modal-design</loc>
+    <lastmod>2026-01-10T14:04:02+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://codeolympiad2081.netlify.app/assets/demo-html-css/landing-page-design</loc>
+    <lastmod>2026-01-10T14:04:02+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://codeolympiad2081.netlify.app/assets/demo-html-css/blog-card</loc>
+    <lastmod>2026-01-10T14:04:02+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
 
 
 </urlset>

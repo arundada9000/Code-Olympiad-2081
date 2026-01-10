@@ -4,7 +4,7 @@ Welcome to **Code Olympiad 2081**, an exciting platform for hosting coding compe
 
 ---
 
-## 🚀 Features
+## Features
 
 - **Event Details:** Participants can see coding event's details, demo questions, syllabus and other participants.
 - **Participant Registration:** Competitors can register, view available events, and track their progress.
@@ -14,9 +14,18 @@ Welcome to **Code Olympiad 2081**, an exciting platform for hosting coding compe
 
 ---
 
-## 🌟 Demo
+## Demo
 
 You can check out the live version of the website at: [Code Olympiad Website](https://codeolympiad2081.netlify.app).
+
+## Preview
+
+<p align="center"> 
+<img src="./assets/preview/codeolympiad.png" width=300>
+<img src="./assets/preview/codeolympiad3.png" width=300>
+<img src="./assets/preview/codeolympiad1.png" width=300>
+<img src="./assets/preview/codeolympiad2.png" width=300>
+</p>
 
 ---
 
@@ -29,25 +38,28 @@ The **Code Olympiad** website is built using the following technologies:
 
 ---
 
-## 📄 Contributing
+## Contributing
 
 If you'd like to contribute to **Code Olympiad 2081**, follow these steps:
 
 1. Fork the repository
 2. Create a new branch for your feature or bugfix (`git checkout -b feature-name`)
-3. Commit your changes (`git commit -am 'Add new feature'`)
+3. Commit your changes (`git commit -m 'Add new feature'`)
 4. Push to the branch (`git push origin feature-name`)
 5. Create a pull request
 
 ---
 
-## 📬 Contact
+## Contact
 
 For any questions, issues, or suggestions, feel free to open an issue or reach out to me directly.
 
 - Email: [arunneupane0000@gmail.com](mailto:arunneupane0000@gmail.com)
 - Facebook: [@arunneupane9000](https://facebook.com/arunneupane9000)
 - Instagram: [@arundada9000](https://instagram.com/arundada9000)
+- GitHub: [@arundada9000](https://github.com/arundada9000)
+- Youtube: [@arundada9000](https://youtube.com/@arundada9000)
+- WhatsApp: +977 9811420976
 
 ---
 
