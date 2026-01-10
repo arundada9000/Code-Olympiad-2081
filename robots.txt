@@ -1,4 +1,24 @@
+# robots.txt for Code Olympiad 2081 Website
+# Allow all search engines to crawl main pages
 User-agent: *
 Allow: /
 
+# Disallow crawling of static assets that don't need indexing
+Disallow: /assets/css/
+Disallow: /assets/Demo-html-css/
+Disallow: /assets/Design/
+Disallow: /assets/icons/
+Disallow: /assets/images/
+Disallow: /assets/js/
+Disallow: /assets/member-images/
+Disallow: /assets/music/
+Disallow: /assets/payment/
+Disallow: /assets/preview/
+Disallow: /assets/Separate files/
+Disallow: /Complete questions and answers/
+
+# Sitemap location for faster indexing
 Sitemap: https://codeolympiad2081.netlify.app/sitemap.xml
+
+# Optional crawl-delay to be polite (in seconds)
+# Crawl-delay: 5
